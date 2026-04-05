@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 
 const PROPERTY = {
   title: "Luxury Northstar Getaway",
@@ -64,14 +64,6 @@ const REVIEW_THEMES = [
 ];
 
 export default function NorthstarPage() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://app.lodgify.com/booking-widget/stable/loader.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => { document.body.removeChild(script); };
-  }, []);
-
   return (
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
       <Header />
@@ -194,14 +186,16 @@ export default function NorthstarPage() {
                 <div className="rounded-xl bg-charcoal-700 p-3 text-center"><p className="text-stone-400">Rating</p><p className="font-semibold text-gold-300">{PROPERTY.rating} ★</p></div>
               </div>
 
-              <div
-                id="lodgify-booking-widget"
-                data-id={String(PROPERTY.lodgifyId)}
-                data-currency="USD"
-                data-locale="en"
-                data-theme-color="#C9A96E"
-                className="min-h-[200px] rounded-xl overflow-hidden"
-              />
+              <AvailabilityCalendar propertyId={PROPERTY.lodgifyId} />
+
+              <a
+                href={`https://checkout.lodgify.com/colby-culbertson/en/?currency=USD#/${PROPERTY.lodgifyId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-full bg-gold-400 py-3.5 text-center text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/20"
+              >
+                Book This Property
+              </a>
 
               <p className="text-xs text-center text-stone-500">Book direct for the best rate — no platform fees</p>
             </div>
