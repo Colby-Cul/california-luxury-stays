@@ -1,0 +1,60 @@
+{
+  "id": "northstar",
+  "title": "Luxury Northstar Getaway on the Golf Course",
+  "tagline": "A premium mountain residence with panoramic views, chef's kitchen, and resort-level amenities",
+  "address": "210 Bitter Brush Way, Truckee, CA 96161",
+  "region": "Northstar, Lake Tahoe, Placer County",
+  "lodgify_property_id": 746614,
+  "lodgify_room_id": 813739,
+  "max_guests": 13,
+  "bedrooms": 5,
+  "beds": 7,
+  "bathrooms": 3.5,
+  "rating": 5.0,
+  "review_count": 5,
+  "price_range": "$690 – $3,029/night",
+  "description": [
+    "Welcome to our luxury Northstar residence — a spacious, fully remodeled home situated on the Northstar Golf Course in Martis Valley with panoramic forest and mountain views. This is where elevated mountain living meets resort-style comfort.",
+    "With 5,000 square feet of living space, this home offers room for everyone. The great room features vaulted ceilings, a stone gas fireplace, and floor-to-ceiling windows that frame classic Tahoe scenery. Two separate family rooms — one with a game area and one with a media center — mean everyone has their own space.",
+    "The chef's kitchen is the heart of the home, equipped with premium appliances, a large island with bar seating, and everything you need to cook for a crowd. Step outside to the expansive deck with hot tub, where you'll enjoy unobstructed views of the golf course and surrounding mountains.",
+    "You're steps from Tompkins Trail for hiking and biking, minutes from Northstar Village with its shops and restaurants, and a short drive to Lake Tahoe's north shore. In winter, Northstar ski resort is literally next door."
+  ],
+  "the_space": "5,000 sq ft remodeled home on two levels. Main floor: great room with vaulted ceilings and gas fireplace, chef's kitchen with premium appliances, dining area seats 12, primary suite with king bed and spa-style en-suite bathroom. Upper level: 4 additional bedrooms (2 kings, 1 queen, 1 bunk room), 2.5 additional bathrooms, family room with games, media room. Deck with hot tub and mountain views. Heated 2-car garage with ski storage.",
+  "guest_access": "Full access to entire home, all 5,000 sq ft, hot tub, deck, heated garage with ski/snowboard storage, and direct trail access to Tompkins Trail and Northstar Golf Course.",
+  "amenities": {
+    "kitchen": ["Chef's kitchen", "Premium appliances", "Large island with bar seating", "Double oven", "Wine fridge", "Refrigerator", "Dishwasher", "Coffee maker (drip + espresso)", "Full cookware and dish sets"],
+    "entertainment": ["Sonos whole-home audio", "Smart TVs in every room", "Game room (pool table, foosball)", "Media room with projector", "Board games", "Books"],
+    "outdoor": ["Hot tub", "Expansive deck", "Mountain and golf course views", "Direct trail access (Tompkins Trail)", "BBQ grill", "Outdoor dining for 8"],
+    "comfort": ["Gas fireplace", "Radiant floor heating", "Central air conditioning", "Spa-style master bathroom", "Premium linens", "Extra pillows and blankets"],
+    "practical": ["High-speed WiFi", "Smart home system", "Free parking (4 cars)", "Heated 2-car garage", "Ski and snowboard storage", "Washer", "Dryer", "Iron", "Hair dryers"],
+    "luxury": ["Wine cellar", "Espresso machine", "Heated garage", "Vaulted ceilings", "Floor-to-ceiling windows"],
+    "outdoor_activities": ["Northstar ski resort (minutes away)", "Northstar Golf Course (on-site)", "Tompkins Trail (direct access)", "Lake Tahoe (15 min)", "Mountain biking", "Hiking"]
+  },
+  "house_rules": {
+    "check_in": "4:00 PM",
+    "check_out": "11:00 AM",
+    "pets": "No pets allowed (service animals welcome)",
+    "smoking": "No smoking anywhere on the property",
+    "parties": "No parties or events",
+    "quiet_hours": "10:00 PM – 8:00 AM",
+    "max_guests": 13,
+    "additional": ["No shoes on hardwood floors", "Hot tub rules posted on deck", "Garage door must be closed at night"]
+  },
+  "location_highlights": [
+    "On the Northstar Golf Course",
+    "Direct access to Tompkins Trail",
+    "5 min to Northstar Village (shops, restaurants)",
+    "5 min to Northstar ski lifts",
+    "15 min to Lake Tahoe north shore",
+    "45 min to Reno-Tahoe International Airport",
+    "Martis Valley — one of Tahoe's most prestigious neighborhoods"
+  ],
+  "review_themes": [
+    "Stunning home, even better in person",
+    "Hot tub views were incredible",
+    "Kitchen was amazing for cooking group dinners",
+    "Perfect ski trip base — so close to the lifts",
+    "Immaculately clean and beautifully decorated",
+    "Responsive host, smooth check-in"
+  ]
+}

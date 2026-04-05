@@ -1,0 +1,60 @@
+{
+  "id": "graeagle",
+  "title": "Family Cabin in Graeagle with King Bed & EV Charging",
+  "tagline": "A charming Sierra Nevada retreat where rustic allure meets modern comfort",
+  "address": "47 Shasta Trail, Graeagle, CA 96103",
+  "region": "Plumas County, Sierra Nevada",
+  "lodgify_property_id": 533203,
+  "lodgify_room_id": 599857,
+  "max_guests": 9,
+  "bedrooms": 4,
+  "beds": 5,
+  "bathrooms": 2,
+  "rating": 4.73,
+  "review_count": 52,
+  "price_range": "$259 – $580/night",
+  "description": [
+    "An idyllic retreat at 47 Shasta Trail in Graeagle, California — a charming cabin nestled in the heart of the Sierra Nevada Mountains. With its rustic allure and modern comforts, this cozy property invites you to unwind by the stone fireplace or watch a movie with the family on the 86-inch 4K TV in the family room.",
+    "Explore the endless hiking and biking trails just steps from the front door, and marvel at the local wildlife — deer, eagles, and the occasional bear are all part of the Graeagle experience. When the sun sets, fire up the Weber charcoal grill or the Traeger electric smoker on the deck for a mountain-style dinner under the stars.",
+    "The cabin sits on a quiet, tree-lined street in one of Graeagle's most desirable neighborhoods. You're minutes from the Graeagle Meadow, the historic Graeagle Mill Pond, and Plumas Eureka State Park. In winter, skiing at Plumas Eureka and cross-country trails at the Graeagle Meadow are right in your backyard.",
+    "Whether you're planning a ski weekend, a summer family reunion, or a quiet autumn escape — this is mountain living done right."
+  ],
+  "the_space": "The main living area features an open floor plan with a stone fireplace as the centerpiece. The chef's kitchen is fully equipped with modern appliances, and the dining area seats 8. The family room features an 86-inch 4K Smart TV. Four bedrooms include a master suite with a king bed, two bedrooms with queen beds, and a bunk room for the kids. Two full bathrooms. A wraparound deck provides forest views from every angle.",
+  "guest_access": "You have full access to the entire property, including the deck, yard, BBQ area, and EV charger. A dedicated parking area fits 3 vehicles.",
+  "amenities": {
+    "kitchen": ["Full kitchen", "Refrigerator", "Oven", "Microwave", "Dishwasher", "Coffee maker", "Toaster", "Cooking basics", "Dishes and silverware"],
+    "entertainment": ["86-inch 4K Smart TV", "Streaming services (Netflix, etc.)", "Board games", "Card games", "Books"],
+    "outdoor": ["Weber charcoal grill", "Traeger electric smoker", "Wraparound deck", "Outdoor dining area", "Forest views", "Yard"],
+    "comfort": ["Stone fireplace", "Central heating", "Ceiling fans", "Linens provided", "Extra pillows and blankets"],
+    "practical": ["Free WiFi", "Free parking (3 cars)", "EV charger (Level 2)", "Washer", "Dryer", "Iron", "Hair dryer"],
+    "family": ["High chair (on request)", "Pack-n-play (on request)", "Kid-friendly"],
+    "outdoor_activities": ["Hiking trail access", "Biking trail access", "Skiing nearby (Plumas Eureka)", "Fishing", "Golf (Graeagle Meadows)"]
+  },
+  "house_rules": {
+    "check_in": "4:00 PM",
+    "check_out": "11:00 AM",
+    "pets": "Dogs allowed (2 max, $75 pet fee)",
+    "smoking": "No smoking inside the property",
+    "parties": "No parties or events without prior approval",
+    "quiet_hours": "10:00 PM – 8:00 AM",
+    "max_guests": 9,
+    "additional": ["Remove shoes indoors", "Take out trash on departure", "Lock doors when leaving"]
+  },
+  "location_highlights": [
+    "5 min walk to Graeagle Meadow",
+    "10 min drive to Plumas Eureka State Park",
+    "15 min to Lakes Basin Recreation Area",
+    "45 min to Reno-Tahoe International Airport",
+    "Quiet residential neighborhood",
+    "Wildlife viewing from the deck"
+  ],
+  "review_themes": [
+    "Incredibly clean and well-maintained",
+    "Perfect for families — kids loved the bunk room",
+    "Stone fireplace was a highlight",
+    "Great communication from host",
+    "Peaceful location, gorgeous nature surroundings",
+    "Well-stocked kitchen for cooking meals",
+    "EV charger was a huge plus"
+  ]
+}
