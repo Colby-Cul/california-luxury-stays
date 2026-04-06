@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AvailabilityCalendar from "@/components/AvailabilityCalendar";
+import PhotoCarousel from "@/components/PhotoCarousel";
 
 const PROPERTY = {
   title: "Luxury Northstar Getaway",
@@ -54,6 +55,42 @@ const LOCATION = [
   "Martis Valley — Tahoe's most prestigious neighborhood",
 ];
 
+const PHOTOS = [
+  { src: "/images/northstar/exterior-1.jpg", alt: "Northstar luxury home exterior with aspen trees and two-car garage" },
+  { src: "/images/northstar/interior-1.jpg", alt: "Great room with vaulted ceilings and floor-to-ceiling windows" },
+  { src: "/images/northstar/interior-2.jpg", alt: "Chef's kitchen with premium appliances and island bar seating" },
+  { src: "/images/northstar/interior-3.jpg", alt: "Dining area with seating for twelve" },
+  { src: "/images/northstar/interior-4.jpg", alt: "Primary suite with king bed and spa-style en-suite" },
+  { src: "/images/northstar/interior-5.jpg", alt: "Game room with pool table and entertainment area" },
+  { src: "/images/northstar/interior-6.jpg", alt: "Media room with projector setup" },
+  { src: "/images/northstar/interior-7.jpg", alt: "Upper level bedroom with mountain views" },
+  { src: "/images/northstar/interior-8.jpg", alt: "Expansive deck with golf course and mountain panorama" },
+  { src: "/images/northstar/hot-tub-deck-view.jpg", alt: "Hot tub on the upper deck with panoramic mountain views" },
+];
+
+const PLACES_TO_EAT = [
+  { name: "Manzanita", description: "Upscale mountain cuisine with a stone fireplace, serving breakfast and dinner inside the Ritz-Carlton.", distance: "0.5 mi", cuisine: "New American", price: "$$$" },
+  { name: "Rubicon Pizza", description: "High-energy Northstar Village staple serving gourmet pizzas with bold toppings.", distance: "0.5 mi", cuisine: "Pizza", price: "$$" },
+  { name: "Moody's Bistro Bar & Beats", description: "Farm-to-table dining with craft cocktails and live music on historic Commercial Row.", distance: "6 mi", cuisine: "Bistro", price: "$$$" },
+  { name: "Bar of America", description: "Iconic downtown Truckee watering hole specializing in campfire-inspired American cuisine.", distance: "6 mi", cuisine: "American", price: "$$" },
+  { name: "Squeeze In", description: "Beloved breakfast institution famous for its enormous selection of creative omelettes.", distance: "6 mi", cuisine: "Breakfast", price: "$" },
+  { name: "Christy Hill Lakeside Bistro", description: "Lakefront fine dining with panoramic Lake Tahoe views and French-Mediterranean influences.", distance: "14 mi", cuisine: "Fine Dining", price: "$$$" },
+  { name: "Spindleshanks", description: "Lodge-style restaurant on Old Brockway Golf Course with alfresco dining and seafood specials.", distance: "12 mi", cuisine: "American & Seafood", price: "$$$" },
+  { name: "Lanza's Restaurant", description: "Family-run Italian serving hearty scratch-made red sauce and pastas since 1974.", distance: "12 mi", cuisine: "Italian", price: "$$" },
+];
+
+const THINGS_TO_DO = [
+  { name: "Northstar California Resort", description: "100+ trails across 3,000 acres with 20 lifts, terrain parks, and runs for all levels.", distance: "0.5 mi", category: "Winter Sports" },
+  { name: "Northstar Bike Park & Gondola", description: "Lift-served mountain biking and scenic Big Springs Gondola rides for hikers and sightseers.", distance: "0.5 mi", category: "Summer Adventure" },
+  { name: "Village at Northstar", description: "Outdoor ice rink, bungee trampolines, pottery, shopping, and dining in a pedestrian village.", distance: "0.5 mi", category: "Family Activities" },
+  { name: "Donner Lake & Memorial State Park", description: "Historic alpine lake with swimming, paddleboarding, kayaking, picnicking, and easy hiking trails.", distance: "10 mi", category: "Lake & Outdoors" },
+  { name: "Donner Lake Rim Trail", description: "Scenic 23-mile loop through high country surrounding Donner Lake, with 9 miles open to bikes.", distance: "10 mi", category: "Hiking & Biking" },
+  { name: "Kings Beach State Recreation Area", description: "The largest public sandy beach on Tahoe's north shore — 1,700 feet of south-facing lakefront.", distance: "12 mi", category: "Beach" },
+  { name: "Truckee River Rafting", description: "Self-guided 5-mile Class I float through scenic meadows — fun for ages 2 and up.", distance: "14 mi", category: "Water Sports" },
+  { name: "Martis Valley Trail", description: "Paved 4.6-mile pathway connecting downtown Truckee to Northstar — walk or bike from the house.", distance: "0 mi", category: "Hiking & Biking" },
+  { name: "Historic Downtown Truckee", description: "Charming Commercial Row with galleries, boutiques, restaurants, and the historic train depot.", distance: "6 mi", category: "Shopping & Culture" },
+];
+
 const REVIEWS = [
   { text: "Stunning home, even better in person. Every detail was perfect for our family reunion.", guest: "Rachel H.", date: "March 2026" },
   { text: "Hot tub views were incredible — we spent every evening out there watching the sunset.", guest: "Brian S.", date: "February 2026" },
@@ -67,29 +104,24 @@ export default function NorthstarPage() {
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
       <Header />
 
-      <section className="relative pt-20">
-        <div className="h-[50vh] bg-gradient-to-br from-sky-900/25 via-stone-900 to-charcoal-800 flex items-center justify-center">
-          <span className="rounded-full bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.3em] text-stone-200 backdrop-blur-sm">
-            Property Photos Coming Soon
-          </span>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal-800 to-transparent pt-20 pb-6">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="text-sm text-gold-400/80 uppercase tracking-wider">{PROPERTY.region}</p>
-                <h1 className="text-3xl font-semibold text-white font-serif sm:text-4xl">{PROPERTY.title}</h1>
-                <p className="text-stone-300 mt-1">{PROPERTY.subtitle}</p>
-              </div>
-              <div className="flex gap-4 text-sm text-stone-300">
-                <span className="text-gold-300 font-semibold">{PROPERTY.rating} ★ ({PROPERTY.reviews} reviews)</span>
-                <span>·</span>
-                <span>{PROPERTY.guests} guests</span>
-                <span>·</span>
-                <span>{PROPERTY.bedrooms} bed</span>
-                <span>·</span>
-                <span>{PROPERTY.baths} bath</span>
-              </div>
+      {/* Hero — Photo Carousel + Property Info */}
+      <section className="pt-20">
+        <div className="mx-auto max-w-7xl px-6 pt-8 lg:px-10">
+          <PhotoCarousel photos={PHOTOS} aspectRatio="aspect-[16/9]" />
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-sm text-gold-400/80 uppercase tracking-wider">{PROPERTY.region}</p>
+              <h1 className="text-3xl font-semibold text-white font-serif sm:text-4xl">{PROPERTY.title}</h1>
+              <p className="text-stone-300 mt-1">{PROPERTY.subtitle}</p>
+            </div>
+            <div className="flex gap-4 text-sm text-stone-300">
+              <span className="text-gold-300 font-semibold">{PROPERTY.rating} ★ ({PROPERTY.reviews} reviews)</span>
+              <span>·</span>
+              <span>{PROPERTY.guests} guests</span>
+              <span>·</span>
+              <span>{PROPERTY.bedrooms} bed</span>
+              <span>·</span>
+              <span>{PROPERTY.baths} bath</span>
             </div>
           </div>
         </div>
@@ -156,6 +188,46 @@ export default function NorthstarPage() {
               </ul>
             </section>
 
+            {/* Things to Do */}
+            <section>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Things to Do</h2>
+              <p className="text-sm text-stone-400 mb-6">Our favorite adventures and attractions near the property.</p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {THINGS_TO_DO.map((item) => (
+                  <div key={item.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-sm font-semibold text-white">{item.name}</h3>
+                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{item.distance}</span>
+                    </div>
+                    <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{item.category}</span>
+                    <p className="text-xs text-stone-400 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Places to Eat */}
+            <section>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Places to Eat</h2>
+              <p className="text-sm text-stone-400 mb-6">Local restaurants and dining spots we recommend to our guests.</p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {PLACES_TO_EAT.map((spot) => (
+                  <div key={spot.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-sm font-semibold text-white">{spot.name}</h3>
+                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{spot.distance}</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{spot.cuisine}</span>
+                      <span className="text-xs text-stone-500">{spot.price}</span>
+                    </div>
+                    <p className="text-xs text-stone-400 leading-relaxed">{spot.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Reviews */}
             <section>
               <h2 className="text-2xl font-semibold text-white font-serif mb-4">
                 Guest Reviews <span className="text-gold-300">{PROPERTY.rating} ★</span> <span className="text-stone-400 text-base font-normal">({PROPERTY.reviews} reviews)</span>

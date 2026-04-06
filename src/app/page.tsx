@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -16,6 +17,8 @@ const PROPERTIES = [
     beds: 5,
     baths: 2,
     highlights: ["Stone fireplace", "Forest views", "Hot tub", "Game room"],
+    image: "/images/graeagle/front-yard-snow.jpg",
+    imageAlt: "Graeagle cabin front yard blanketed in fresh snow",
     accent: "from-amber-900/40 via-stone-900 to-charcoal-800",
     href: "/properties/graeagle",
   },
@@ -29,6 +32,8 @@ const PROPERTIES = [
     beds: 7,
     baths: 3.5,
     highlights: ["Spa bathroom", "Chef's kitchen", "Ski-in proximity", "Mountain panoramas"],
+    image: "/images/northstar/exterior-1.jpg",
+    imageAlt: "Northstar luxury home exterior with aspen trees",
     accent: "from-sky-900/30 via-stone-900 to-charcoal-800",
     href: "/properties/northstar",
   },
@@ -113,13 +118,16 @@ export default function Home() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group overflow-hidden rounded-3xl border border-gold-400/10 bg-charcoal-600 shadow-2xl shadow-black/30 transition hover:border-gold-400/25"
             >
-              {/* Image placeholder */}
-              <div className={`relative h-64 bg-gradient-to-br ${prop.accent} overflow-hidden`}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="rounded-full bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.3em] text-stone-200 backdrop-blur-sm">
-                    Photo Coming Soon
-                  </span>
-                </div>
+              {/* Property image */}
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src={prop.image}
+                  alt={prop.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-600/60 to-transparent" />
                 <div className="absolute top-4 right-4 rounded-full bg-charcoal-800/80 px-4 py-2 text-sm font-semibold text-gold-300 backdrop-blur-sm">
                   {prop.rate}
                 </div>

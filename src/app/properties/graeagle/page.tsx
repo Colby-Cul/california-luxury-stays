@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AvailabilityCalendar from "@/components/AvailabilityCalendar";
+import PhotoCarousel from "@/components/PhotoCarousel";
 
 const PROPERTY = {
   title: "Family Cabin in Graeagle",
@@ -52,6 +53,42 @@ const LOCATION = [
   "Wildlife viewing from the deck",
 ];
 
+const PHOTOS = [
+  { src: "/images/graeagle/front-yard-snow.jpg", alt: "Graeagle cabin front yard blanketed in fresh snow with towering pines" },
+  { src: "/images/graeagle/family-room.jpg", alt: "Cozy family room with stone fireplace and comfortable seating" },
+  { src: "/images/graeagle/interior-1.jpg", alt: "Open living area with natural light and mountain decor" },
+  { src: "/images/graeagle/interior-2.jpg", alt: "Dining area with seating for eight guests" },
+  { src: "/images/graeagle/interior-3.jpg", alt: "Fully equipped chef's kitchen with modern appliances" },
+  { src: "/images/graeagle/interior-4.jpg", alt: "Master bedroom with king bed and forest views" },
+  { src: "/images/graeagle/interior-5.jpg", alt: "Guest bedroom with queen bed and warm decor" },
+  { src: "/images/graeagle/interior-6.jpg", alt: "Bunk room perfect for kids" },
+  { src: "/images/graeagle/interior-7.jpg", alt: "Wraparound deck with forest views and outdoor dining" },
+  { src: "/images/graeagle/interior-8.jpg", alt: "Cabin exterior surrounded by Sierra Nevada pines" },
+];
+
+const PLACES_TO_EAT = [
+  { name: "Grizzly Grill", description: "Upscale American dining with steaks, seafood, and housemade desserts in a cozy mountain setting.", distance: "1 mi", cuisine: "American", price: "$$" },
+  { name: "Cuccia's Pasta, Pizza & Wine Bar", description: "Family-run Sicilian restaurant with handmade pizza, fresh seafood, and a curated wine list.", distance: "0.5 mi", cuisine: "Italian", price: "$$" },
+  { name: "The Iron Door", description: "Historic 1906 fine-dining restaurant offering gourmet entrees like lobster and wiener schnitzel.", distance: "5 mi", cuisine: "Fine Dining", price: "$$$" },
+  { name: "Longboards Bar & Grill", description: "Casual bistro at Plumas Pines Golf Resort with hearty entrees and craft cocktails.", distance: "2 mi", cuisine: "American", price: "$$" },
+  { name: "Graeagle Meadows Clubhouse", description: "Panoramic mountain views, fresh American cuisine, and Saturday prime rib on an outdoor patio.", distance: "0.3 mi", cuisine: "American", price: "$$" },
+  { name: "The Brewing Lair", description: "Outdoor craft brewery on 15 forested acres with house-brewed ales, tacos, disc golf, and live music.", distance: "2 mi", cuisine: "Brewery", price: "$" },
+  { name: "Firewoods at Gray Eagle Lodge", description: "Seasonal gourmet lodge restaurant serving prime rib and cocktails in a serene forest setting.", distance: "5 mi", cuisine: "Gourmet", price: "$$$" },
+  { name: "Graeagle Outpost", description: "Espresso, breakfast burritos, ice cream, and paddleboat rentals at the Mill Pond.", distance: "0.2 mi", cuisine: "Coffee & Snacks", price: "$" },
+];
+
+const THINGS_TO_DO = [
+  { name: "Plumas-Eureka State Park", description: "Historic gold mining park with museum, camping, hiking trails, and winter skiing at Plumas Eureka Ski Bowl.", distance: "5 mi", category: "Hiking & History" },
+  { name: "Lakes Basin Recreation Area", description: "20+ glacial lakes connected by 30 miles of trails — swimming, fishing, and wildflower viewing.", distance: "3 mi", category: "Hiking & Swimming" },
+  { name: "Frazier Falls Trail", description: "Easy, paved 1-mile family-friendly trail to a fenced overlook of a stunning 176-foot waterfall.", distance: "6 mi", category: "Family Hike" },
+  { name: "Graeagle Mill Pond", description: "In-town swimming spot with kayak, paddleboard, canoe, and paddleboat rentals plus a sandy beach.", distance: "0.2 mi", category: "Water Sports" },
+  { name: "Gold Lake", description: "Pristine alpine lake with excellent trout fishing, non-motorized boating, and scenic shoreline picnicking.", distance: "7 mi", category: "Fishing & Boating" },
+  { name: "Plumas Pines Golf Resort", description: "18-hole championship course winding along the Feather River with tree-lined fairways and mountain views.", distance: "2 mi", category: "Golf" },
+  { name: "Graeagle Meadows Golf Course", description: "Scenic 18-hole public course in the heart of town with meadow and mountain views.", distance: "0.3 mi", category: "Golf" },
+  { name: "Western Pacific Railroad Museum", description: "One of the largest diesel locomotive collections in the country with seasonal train rides.", distance: "15 mi", category: "Museum & Family" },
+  { name: "Middle Fork Feather River", description: "Year-round trout fishing across 1,000+ miles of mountain streams and 100+ lakes in Plumas County.", distance: "1–10 mi", category: "Fishing" },
+];
+
 const REVIEWS = [
   { text: "Incredibly clean and well-maintained. We felt right at home from the moment we walked in.", guest: "Sarah M.", date: "March 2026" },
   { text: "Perfect for families — kids loved the bunk room and we loved the stone fireplace.", guest: "David R.", date: "February 2026" },
@@ -67,32 +104,24 @@ export default function GraeaglePage() {
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
       <Header />
 
-      {/* Hero */}
-      <section className="relative pt-20">
-        <div className="h-[50vh] bg-gradient-to-br from-amber-900/30 via-stone-900 to-charcoal-800 flex items-center justify-center">
-          {/* TODO: Replace with real property photos */}
-          <span className="rounded-full bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.3em] text-stone-200 backdrop-blur-sm">
-            Property Photos Coming Soon
-          </span>
-        </div>
-        {/* Quick stats overlay */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal-800 to-transparent pt-20 pb-6">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="text-sm text-gold-400/80 uppercase tracking-wider">{PROPERTY.region}</p>
-                <h1 className="text-3xl font-semibold text-white font-serif sm:text-4xl">{PROPERTY.title}</h1>
-                <p className="text-stone-300 mt-1">{PROPERTY.subtitle}</p>
-              </div>
-              <div className="flex gap-4 text-sm text-stone-300">
-                <span className="text-gold-300 font-semibold">{PROPERTY.rating} ★ ({PROPERTY.reviews} reviews)</span>
-                <span>·</span>
-                <span>{PROPERTY.guests} guests</span>
-                <span>·</span>
-                <span>{PROPERTY.bedrooms} bed</span>
-                <span>·</span>
-                <span>{PROPERTY.baths} bath</span>
-              </div>
+      {/* Hero — Photo Carousel + Property Info */}
+      <section className="pt-20">
+        <div className="mx-auto max-w-7xl px-6 pt-8 lg:px-10">
+          <PhotoCarousel photos={PHOTOS} aspectRatio="aspect-[16/9]" />
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-sm text-gold-400/80 uppercase tracking-wider">{PROPERTY.region}</p>
+              <h1 className="text-3xl font-semibold text-white font-serif sm:text-4xl">{PROPERTY.title}</h1>
+              <p className="text-stone-300 mt-1">{PROPERTY.subtitle}</p>
+            </div>
+            <div className="flex gap-4 text-sm text-stone-300">
+              <span className="text-gold-300 font-semibold">{PROPERTY.rating} ★ ({PROPERTY.reviews} reviews)</span>
+              <span>·</span>
+              <span>{PROPERTY.guests} guests</span>
+              <span>·</span>
+              <span>{PROPERTY.bedrooms} bed</span>
+              <span>·</span>
+              <span>{PROPERTY.baths} bath</span>
             </div>
           </div>
         </div>
@@ -163,6 +192,45 @@ export default function GraeaglePage() {
                   </li>
                 ))}
               </ul>
+            </section>
+
+            {/* Things to Do */}
+            <section>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Things to Do</h2>
+              <p className="text-sm text-stone-400 mb-6">Our favorite outdoor adventures and attractions near the cabin.</p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {THINGS_TO_DO.map((item) => (
+                  <div key={item.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-sm font-semibold text-white">{item.name}</h3>
+                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{item.distance}</span>
+                    </div>
+                    <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{item.category}</span>
+                    <p className="text-xs text-stone-400 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Places to Eat */}
+            <section>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Places to Eat</h2>
+              <p className="text-sm text-stone-400 mb-6">Local restaurants and dining spots we recommend to our guests.</p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {PLACES_TO_EAT.map((spot) => (
+                  <div key={spot.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-sm font-semibold text-white">{spot.name}</h3>
+                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{spot.distance}</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{spot.cuisine}</span>
+                      <span className="text-xs text-stone-500">{spot.price}</span>
+                    </div>
+                    <p className="text-xs text-stone-400 leading-relaxed">{spot.description}</p>
+                  </div>
+                ))}
+              </div>
             </section>
 
             {/* Reviews Summary */}
