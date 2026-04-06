@@ -204,7 +204,7 @@ export default function GraeaglePage() {
               <AvailabilityCalendar propertyId={PROPERTY.lodgifyId} />
 
               <a
-                href={`https://checkout.lodgify.com/colby-culbertson/en/?currency=USD#/${PROPERTY.lodgifyId}`}
+                href={`https://checkout.lodgify.com/en/colby-culbertson/${PROPERTY.lodgifyId}/reservation?currency=USD`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full rounded-full bg-gold-400 py-3.5 text-center text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/20"
