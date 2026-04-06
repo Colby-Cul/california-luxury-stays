@@ -33,7 +33,6 @@ export default function Footer() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">Contact</p>
             <ul className="mt-3 space-y-2 text-sm text-stone-300">
               <li><a href="mailto:stay@californialuxurystays.com" className="transition hover:text-gold-300">stay@californialuxurystays.com</a></li>
-              <li><a href="tel:+15305550198" className="transition hover:text-gold-300">(530) 555-0198</a></li>
             </ul>
           </div>
         </div>

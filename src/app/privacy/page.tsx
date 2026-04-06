@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | California Luxury Stays",
+  title: "Privacy Policy",
   description: "Privacy policy for California Luxury Stays vacation rental properties.",
 };
 

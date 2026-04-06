@@ -98,17 +98,18 @@ export default function ContactPage() {
                 <h2 className="text-lg font-semibold text-white font-serif">Contact Info</h2>
                 <div className="space-y-3 text-sm text-stone-300">
                   <div><p className="text-xs uppercase tracking-wider text-gold-400 mb-1">Email</p><a href="mailto:stay@californialuxurystays.com" className="hover:text-gold-300">stay@californialuxurystays.com</a></div>
-                  <div><p className="text-xs uppercase tracking-wider text-gold-400 mb-1">Phone</p><a href="tel:+15305550198" className="hover:text-gold-300">(530) 555-0198</a></div>
                   <div><p className="text-xs uppercase tracking-wider text-gold-400 mb-1">Response Time</p><p>Within 2 hours (8 AM \u2013 10 PM PT)</p></div>
                 </div>
               </div>
 
               <div className="rounded-2xl border border-gold-400/10 bg-charcoal-600 p-6 space-y-3">
-                <h2 className="text-lg font-semibold text-white font-serif">Also Book On</h2>
-                <div className="flex items-center justify-between py-2">
-                  <span className="text-sm text-stone-300">Direct Booking</span>
-                  <span className="text-xs font-semibold text-gold-400">Best Rate — No Platform Fees</span>
-                </div>
+                <h2 className="text-lg font-semibold text-white font-serif">Why Book Direct</h2>
+                <ul className="space-y-2 text-sm text-stone-300">
+                  <li className="flex items-center gap-2"><span className="text-gold-400">✓</span> Best rate guaranteed — no platform fees</li>
+                  <li className="flex items-center gap-2"><span className="text-gold-400">✓</span> Direct communication with your host</li>
+                  <li className="flex items-center gap-2"><span className="text-gold-400">✓</span> Flexible booking modifications</li>
+                  <li className="flex items-center gap-2"><span className="text-gold-400">✓</span> Personal concierge-level service</li>
+                </ul>
               </div>
 
               <Link href="/faq" className="block rounded-2xl border border-gold-400/10 bg-charcoal-600 p-6 transition hover:border-gold-400/25">

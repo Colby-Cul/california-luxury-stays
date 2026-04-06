@@ -52,7 +52,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               description: "Curated luxury cabin rentals in Graeagle and Northstar, California",
               url: "https://californialuxurystays.com",
               email: "stay@californialuxurystays.com",
-              telephone: "+1-530-555-0198",
               address: {
                 "@type": "PostalAddress",
                 addressRegion: "CA",

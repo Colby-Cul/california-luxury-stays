@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | California Luxury Stays",
+  title: "Terms of Service",
   description: "Terms of service and rental agreement for California Luxury Stays properties.",
 };
 

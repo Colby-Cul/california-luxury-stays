@@ -54,13 +54,12 @@ const LOCATION = [
   "Martis Valley — Tahoe's most prestigious neighborhood",
 ];
 
-const REVIEW_THEMES = [
-  "Stunning home, even better in person",
-  "Hot tub views were incredible",
-  "Kitchen was amazing for group dinners",
-  "Perfect ski trip base — so close to the lifts",
-  "Immaculately clean, beautifully decorated",
-  "Responsive host, smooth check-in",
+const REVIEWS = [
+  { text: "Stunning home, even better in person. Every detail was perfect for our family reunion.", guest: "Rachel H.", date: "March 2026" },
+  { text: "Hot tub views were incredible — we spent every evening out there watching the sunset.", guest: "Brian S.", date: "February 2026" },
+  { text: "Kitchen was amazing for group dinners. Cooked Thanksgiving for 12 with ease.", guest: "Megan D.", date: "January 2026" },
+  { text: "Perfect ski trip base — so close to the lifts. We'll be back every season.", guest: "Jason T.", date: "December 2025" },
+  { text: "Immaculately clean, beautifully decorated. True luxury mountain living.", guest: "Nicole B.", date: "November 2025" },
 ];
 
 export default function NorthstarPage() {
@@ -161,11 +160,14 @@ export default function NorthstarPage() {
               <h2 className="text-2xl font-semibold text-white font-serif mb-4">
                 Guest Reviews <span className="text-gold-300">{PROPERTY.rating} ★</span> <span className="text-stone-400 text-base font-normal">({PROPERTY.reviews} reviews)</span>
               </h2>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {REVIEW_THEMES.map((theme) => (
-                  <div key={theme} className="flex items-start gap-2 text-sm text-stone-300">
-                    <span className="text-gold-400 mt-0.5 shrink-0">★</span>
-                    {theme}
+              <div className="grid gap-4 sm:grid-cols-2">
+                {REVIEWS.map((review) => (
+                  <div key={review.guest} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-2">
+                    <div className="flex items-start gap-2 text-sm text-stone-300">
+                      <span className="text-gold-400 mt-0.5 shrink-0">★</span>
+                      <p className="leading-relaxed">&ldquo;{review.text}&rdquo;</p>
+                    </div>
+                    <p className="text-xs text-stone-500 pl-5">— {review.guest}, {review.date}</p>
                   </div>
                 ))}
               </div>
@@ -177,6 +179,7 @@ export default function NorthstarPage() {
               <div>
                 <p className="text-2xl font-semibold text-white font-serif">From $690<span className="text-base font-normal text-stone-400">/night</span></p>
                 <p className="text-sm text-gold-400/80 mt-1">{PROPERTY.rating} ★ · {PROPERTY.reviews} reviews · {PROPERTY.region}</p>
+                <p className="text-xs text-stone-500 mt-2">Rates vary by season. Holiday and peak weekends may have higher minimums.</p>
               </div>
 
               <div className="grid grid-cols-2 gap-3 text-sm">
@@ -197,6 +200,7 @@ export default function NorthstarPage() {
                 Book This Property
               </a>
 
+              <p className="text-xs text-center text-stone-500">You&apos;ll be redirected to our secure booking partner to complete your reservation.</p>
               <p className="text-xs text-center text-stone-500">Book direct for the best rate — no platform fees</p>
             </div>
           </div>

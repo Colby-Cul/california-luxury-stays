@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About | California Luxury Stays",
+  title: "About",
   description: "Family-operated luxury cabin rentals in Graeagle and Northstar, California. Learn about our approach to Sierra Nevada hospitality.",
 };
 

@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "FAQ | California Luxury Stays",
+  title: "FAQ",
   description: "Frequently asked questions about booking, check-in, cancellation, pets, and amenities at our Sierra Nevada cabin rentals.",
 };
 

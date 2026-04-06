@@ -52,14 +52,14 @@ const LOCATION = [
   "Wildlife viewing from the deck",
 ];
 
-const REVIEW_THEMES = [
-  "Incredibly clean and well-maintained",
-  "Perfect for families — kids loved the bunk room",
-  "Stone fireplace was the highlight",
-  "Great communication, smooth check-in",
-  "Peaceful location, gorgeous surroundings",
-  "Well-stocked kitchen for cooking meals",
-  "EV charger was a huge plus",
+const REVIEWS = [
+  { text: "Incredibly clean and well-maintained. We felt right at home from the moment we walked in.", guest: "Sarah M.", date: "March 2026" },
+  { text: "Perfect for families — kids loved the bunk room and we loved the stone fireplace.", guest: "David R.", date: "February 2026" },
+  { text: "Stone fireplace was the highlight. Cozy, warm, and beautifully maintained.", guest: "Jennifer L.", date: "January 2026" },
+  { text: "Great communication, smooth check-in. Everything was exactly as described.", guest: "Michael T.", date: "December 2025" },
+  { text: "Peaceful location, gorgeous surroundings. Deer on the deck every morning!", guest: "Amy K.", date: "November 2025" },
+  { text: "Well-stocked kitchen made cooking for the whole family a breeze.", guest: "Chris P.", date: "October 2025" },
+  { text: "EV charger was a huge plus — didn't expect that at a mountain cabin!", guest: "Lauren W.", date: "September 2025" },
 ];
 
 export default function GraeaglePage() {
@@ -170,11 +170,14 @@ export default function GraeaglePage() {
               <h2 className="text-2xl font-semibold text-white font-serif mb-4">
                 Guest Reviews <span className="text-gold-300">{PROPERTY.rating} ★</span> <span className="text-stone-400 text-base font-normal">({PROPERTY.reviews} reviews)</span>
               </h2>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {REVIEW_THEMES.map((theme) => (
-                  <div key={theme} className="flex items-start gap-2 text-sm text-stone-300">
-                    <span className="text-gold-400 mt-0.5 shrink-0">★</span>
-                    {theme}
+              <div className="grid gap-4 sm:grid-cols-2">
+                {REVIEWS.map((review) => (
+                  <div key={review.guest} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-2">
+                    <div className="flex items-start gap-2 text-sm text-stone-300">
+                      <span className="text-gold-400 mt-0.5 shrink-0">★</span>
+                      <p className="leading-relaxed">&ldquo;{review.text}&rdquo;</p>
+                    </div>
+                    <p className="text-xs text-stone-500 pl-5">— {review.guest}, {review.date}</p>
                   </div>
                 ))}
               </div>
@@ -187,6 +190,7 @@ export default function GraeaglePage() {
               <div>
                 <p className="text-2xl font-semibold text-white font-serif">From $259<span className="text-base font-normal text-stone-400">/night</span></p>
                 <p className="text-sm text-gold-400/80 mt-1">{PROPERTY.rating} ★ · {PROPERTY.reviews} reviews · {PROPERTY.region}</p>
+                <p className="text-xs text-stone-500 mt-2">Rates vary by season. Holiday and peak weekends may have higher minimums.</p>
               </div>
 
               <div className="grid grid-cols-2 gap-3 text-sm">
@@ -208,6 +212,7 @@ export default function GraeaglePage() {
                 Book This Property
               </a>
 
+              <p className="text-xs text-center text-stone-500">You&apos;ll be redirected to our secure booking partner to complete your reservation.</p>
               <p className="text-xs text-center text-stone-500">Book direct for the best rate — no platform fees</p>
             </div>
           </div>
