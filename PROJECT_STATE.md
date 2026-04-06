@@ -56,7 +56,8 @@
 - **Content status:** Full description, amenities, house rules, location, review themes — all from Airbnb scrape
 - **Booking:** Lodgify checkout link active
 - **Calendar:** Live Lodgify API availability calendar working
-- **Photos:** PLACEHOLDER — need real property photos
+- **Photos:** 10 real photos in `/public/images/graeagle/` — carousel on property page + featured on homepage
+- **Local Guide:** Things to Do (9 activities) + Places to Eat (8 restaurants)
 
 ### Northstar Luxury Getaway
 - **Lodgify Property ID:** 746614
@@ -68,7 +69,8 @@
 - **Content status:** Full description, amenities, house rules, location, review themes — all from Airbnb/VRBO scrape
 - **Booking:** Lodgify checkout link active
 - **Calendar:** Live Lodgify API availability calendar working
-- **Photos:** PLACEHOLDER — need real property photos
+- **Photos:** 10 real photos in `/public/images/northstar/` — carousel on property page + featured on homepage
+- **Local Guide:** Things to Do (9 activities) + Places to Eat (8 restaurants)
 
 ---
 
@@ -93,6 +95,8 @@
 | 2026-04-04 | Claude Opus 4.6 | Connected Lodgify API. Built AvailabilityCalendar component. API route for live availability. Lodgify checkout links. | api/availability/route.ts, AvailabilityCalendar.tsx, graeagle/page.tsx, northstar/page.tsx |
 | 2026-04-05 | Claude Opus 4.6 | Fixed broken build (parent package.json merge conflict). Created PROJECT_STATE.md and AGENT_README.md. | PROJECT_STATE.md, AGENT_README.md |
 | 2026-04-06 | Claude Opus 4.6 | QA directive fixes — see details below | layout.tsx, page.tsx, Header.tsx, Footer.tsx, contact/page.tsx, graeagle/page.tsx, northstar/page.tsx, about/page.tsx, faq/page.tsx, privacy/page.tsx, terms/page.tsx |
+| 2026-04-06 | Claude Opus 4.6 | Fix Lodgify checkout URLs to correct /en/{owner}/{id}/reservation path | graeagle/page.tsx, northstar/page.tsx |
+| 2026-04-06 | Claude Opus 4.6 | Add property photos (20 total), PhotoCarousel component, Things to Do + Places to Eat sections, real images on homepage cards | PhotoCarousel.tsx, page.tsx, graeagle/page.tsx, northstar/page.tsx, public/images/* |
 
 ### 2026-04-06 QA Directive Fix Details
 
@@ -113,7 +117,7 @@ Based on `CLS_Website_Fix_Directive_1.md` design review:
 
 ## Known TODOs
 
-- [ ] **Property photos** — Both pages have gradient placeholders. Need real photos uploaded to `/public/images/graeagle/` and `/public/images/northstar/`
+- [x] **Property photos** — 10 photos per property, carousel on property pages, featured images on homepage cards
 - [x] **Phone number** — Removed entirely per owner directive. AI chat system planned as replacement.
 - [ ] **AI Chat** — Owner wants AI-powered guest communication system with response queue in Mission Control
 - [ ] **Email** — `stay@californialuxurystays.com` needs to be set up (domain email or forwarding)
