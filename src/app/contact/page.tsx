@@ -7,21 +7,30 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", property: "", checkin: "", checkout: "", guests: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", property: "", checkin: "", checkout: "", guests: "", message: "", _honey: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMsg("");
     try {
-      // For now, open mailto with form data. Replace with API endpoint when backend is ready.
-      const subject = encodeURIComponent(`Booking Inquiry: ${form.property || "General"} - ${form.checkin || "Flexible"}`);
-      const body = encodeURIComponent(
-        `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nProperty: ${form.property}\nCheck-in: ${form.checkin}\nCheck-out: ${form.checkout}\nGuests: ${form.guests}\n\nMessage:\n${form.message}`
-      );
-      window.open(`mailto:stay@californialuxurystays.com?subject=${subject}&body=${body}`, "_self");
-      setStatus("sent");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data.error || "Something went wrong.");
+        setStatus("error");
+      } else {
+        setStatus("sent");
+        setForm({ name: "", email: "", phone: "", property: "", checkin: "", checkout: "", guests: "", message: "", _honey: "" });
+      }
     } catch {
+      setErrorMsg("Network error. Please email us directly at stay@californialuxurystays.com.");
       setStatus("error");
     }
   };
@@ -85,11 +94,15 @@ export default function ContactPage() {
                 <label htmlFor="message" className="block text-xs uppercase tracking-wider text-gold-400 mb-2">Message</label>
                 <textarea id="message" rows={4} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="Tell us about your trip — special occasions, questions, requests..." className={inputStyle + " resize-none"} />
               </div>
-              <button type="submit" disabled={status === "sending"} className="w-full rounded-full bg-gold-400 py-3.5 text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300 disabled:opacity-50">
+              {/* Honeypot — hidden from real users, catches bots */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" value={form._honey} onChange={e => setForm({ ...form, _honey: e.target.value })} />
+              </div>
+              <button type="submit" disabled={status === "sending" || status === "sent"} className="w-full rounded-full bg-gold-400 py-3.5 text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300 disabled:opacity-50">
                 {status === "sending" ? "Sending..." : status === "sent" ? "Inquiry Sent!" : "Send Inquiry"}
               </button>
-              {status === "sent" && <p className="text-sm text-green-400 text-center">Your inquiry has been sent. We&apos;ll respond within 2 hours.</p>}
-              {status === "error" && <p className="text-sm text-red-400 text-center">Something went wrong. Please email us directly.</p>}
+              {status === "sent" && <p className="text-sm text-green-400 text-center">Thanks! We typically respond within 2 hours.</p>}
+              {status === "error" && <p className="text-sm text-red-400 text-center">{errorMsg || "Something went wrong. Please email us directly."}</p>}
             </form>
 
             {/* Sidebar */}
