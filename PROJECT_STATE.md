@@ -27,20 +27,25 @@
 
 ---
 
-## Current Pages (9 total + sitemap)
+## Current Pages (16 total + sitemap)
 
 | Route | Status | Notes |
 |---|---|---|
-| `/` | Working | Homepage with hero, property cards, features, CTA |
-| `/properties/graeagle` | Working | Full content, amenities, house rules, availability calendar, Lodgify booking |
-| `/properties/northstar` | Working | Full content, amenities, house rules, availability calendar, Lodgify booking |
+| `/` | Working | Homepage with hero, property cards, features, blog cards, CTA |
+| `/properties/graeagle` | Working | Photo carousel, amenities, house rules, local guide, reviews, calendar, Lodgify booking |
+| `/properties/northstar` | Working | Photo carousel, amenities, house rules, local guide, reviews, calendar, Lodgify booking |
+| `/blog` | Working | Blog index with all posts sorted by date |
+| `/blog/[slug]` | Working | Individual blog posts (5 published) with BlogPosting schema |
 | `/about` | Working | Company story, approach |
-| `/contact` | Working | Booking inquiry form (mailto), contact info |
-| `/faq` | Working | 10 questions covering check-in, cancellation, pets, booking, etc. |
+| `/contact` | Working | Booking inquiry form → /api/contact, honeypot spam protection |
+| `/faq` | Working | 10 questions, FAQPage schema.org for Google rich results |
 | `/privacy` | Working | Privacy policy |
 | `/terms` | Working | Terms of service / rental agreement |
 | `/not-found` | Working | Custom 404 page |
-| `/sitemap.xml` | Working | Auto-generated sitemap |
+| `/sitemap.xml` | Working | Auto-generated sitemap including blog posts |
+| `/api/contact` | Working | Server-side form handling, Resend email support, fallback logging |
+| `/api/newsletter` | Working | Newsletter signup endpoint, ready for Mailchimp/ConvertKit |
+| `/api/availability` | Working | Lodgify API proxy for calendar data |
 
 ---
 
@@ -97,6 +102,9 @@
 | 2026-04-06 | Claude Opus 4.6 | QA directive fixes — see details below | layout.tsx, page.tsx, Header.tsx, Footer.tsx, contact/page.tsx, graeagle/page.tsx, northstar/page.tsx, about/page.tsx, faq/page.tsx, privacy/page.tsx, terms/page.tsx |
 | 2026-04-06 | Claude Opus 4.6 | Fix Lodgify checkout URLs to correct /en/{owner}/{id}/reservation path | graeagle/page.tsx, northstar/page.tsx |
 | 2026-04-06 | Claude Opus 4.6 | Add property photos (20 total), PhotoCarousel component, Things to Do + Places to Eat sections, real images on homepage cards | PhotoCarousel.tsx, page.tsx, graeagle/page.tsx, northstar/page.tsx, public/images/* |
+| 2026-04-07 | Claude Opus 4.6 | Directive 2 sprint: context-aware Book Now, rich local guides with links, VacationRental + FAQPage schemas | Header.tsx, graeagle/page.tsx, northstar/page.tsx, faq/page.tsx |
+| 2026-04-07 | Claude Opus 4.6 | Wire contact form to /api/contact, add newsletter signup in footer, /api/newsletter route | api/contact/route.ts, api/newsletter/route.ts, contact/page.tsx, Footer.tsx |
+| 2026-04-07 | Claude Opus 4.6 | Build blog system: /blog index, /blog/[slug] with 5 posts, homepage blog cards, sitemap update | blog/page.tsx, blog/[slug]/page.tsx, content/blog/posts.ts, page.tsx, sitemap.ts |
 
 ### 2026-04-06 QA Directive Fix Details
 
@@ -124,10 +132,20 @@ Based on `CLS_Website_Fix_Directive_1.md` design review:
 - [ ] **DNS** — Point CaliforniaLuxuryStays.com to Vercel (A record: 76.76.21.21, CNAME www: cname.vercel-dns.com)
 - [ ] **Google Analytics** — Not installed yet
 - [ ] **Lodgify webhook** — For real-time booking notifications (optional)
-- [ ] **Contact form backend** — Currently uses mailto: fallback. Wire to API endpoint or Formspree.
+- [x] **Contact form backend** — Wired to /api/contact with Resend support + console fallback. Honeypot spam protection.
+- [x] **Newsletter signup** — Footer banner with /api/newsletter endpoint. Ready for Mailchimp/ConvertKit.
+- [x] **Blog system** — 5 posts published, /blog index, /blog/[slug] with BlogPosting schema, homepage cards, sitemap entries
+- [x] **Structured data** — VacationRental on property pages, FAQPage on FAQ, LodgingBusiness on layout
+- [x] **"Around the Property" guides** — Comprehensive local guides with external links on both property pages
 - [ ] **About page photos** — Needs owner/family photo and property photos
 - [ ] **Favicon** — `/favicon.ico` referenced in metadata but verify file exists in `/public/`
 - [ ] **OG image** — `og:image` meta tag needs a real property photo URL
+- [ ] **Google Maps embeds** — Interactive maps on property pages (currently text-only location info)
+- [ ] **Resend API key** — Add `RESEND_API_KEY` to Vercel env vars for contact form email delivery
+- [ ] **Mailing list service** — Connect newsletter endpoint to Mailchimp/ConvertKit
+- [ ] **Blog content cadence** — Directive recommends 2 posts/week (every 3-4 days)
+- [ ] **Google Analytics** — Not installed yet
+- [ ] **Lighthouse audit** — Run and fix accessibility issues
 
 ---
 
@@ -140,4 +158,4 @@ Based on `CLS_Website_Fix_Directive_1.md` design review:
 
 ---
 
-*Last updated: 2026-04-06 by Claude Opus 4.6*
+*Last updated: 2026-04-07 by Claude Opus 4.6*
