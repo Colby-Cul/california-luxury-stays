@@ -20,9 +20,20 @@ const FAQS = [
   { q: "Do you offer discounts for longer stays?", a: "Yes. Stays of 7+ nights receive a 10% discount. Stays of 14+ nights receive a 15% discount. Monthly rates are available \u2014 contact us for pricing." },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
+
 export default function FAQPage() {
   return (
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
       <div className="pt-20">
         <div className="mx-auto max-w-4xl px-6 py-16 lg:px-10">

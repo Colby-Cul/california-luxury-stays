@@ -66,28 +66,46 @@ const PHOTOS = [
   { src: "/images/graeagle/interior-8.jpg", alt: "Cabin exterior surrounded by Sierra Nevada pines" },
 ];
 
-const PLACES_TO_EAT = [
-  { name: "Grizzly Grill", description: "Upscale American dining with steaks, seafood, and housemade desserts in a cozy mountain setting.", distance: "1 mi", cuisine: "American", price: "$$" },
-  { name: "Cuccia's Pasta, Pizza & Wine Bar", description: "Family-run Sicilian restaurant with handmade pizza, fresh seafood, and a curated wine list.", distance: "0.5 mi", cuisine: "Italian", price: "$$" },
-  { name: "The Iron Door", description: "Historic 1906 fine-dining restaurant offering gourmet entrees like lobster and wiener schnitzel.", distance: "5 mi", cuisine: "Fine Dining", price: "$$$" },
-  { name: "Longboards Bar & Grill", description: "Casual bistro at Plumas Pines Golf Resort with hearty entrees and craft cocktails.", distance: "2 mi", cuisine: "American", price: "$$" },
-  { name: "Graeagle Meadows Clubhouse", description: "Panoramic mountain views, fresh American cuisine, and Saturday prime rib on an outdoor patio.", distance: "0.3 mi", cuisine: "American", price: "$$" },
-  { name: "The Brewing Lair", description: "Outdoor craft brewery on 15 forested acres with house-brewed ales, tacos, disc golf, and live music.", distance: "2 mi", cuisine: "Brewery", price: "$" },
-  { name: "Firewoods at Gray Eagle Lodge", description: "Seasonal gourmet lodge restaurant serving prime rib and cocktails in a serene forest setting.", distance: "5 mi", cuisine: "Gourmet", price: "$$$" },
-  { name: "Graeagle Outpost", description: "Espresso, breakfast burritos, ice cream, and paddleboat rentals at the Mill Pond.", distance: "0.2 mi", cuisine: "Coffee & Snacks", price: "$" },
-];
-
-const THINGS_TO_DO = [
-  { name: "Plumas-Eureka State Park", description: "Historic gold mining park with museum, camping, hiking trails, and winter skiing at Plumas Eureka Ski Bowl.", distance: "5 mi", category: "Hiking & History" },
-  { name: "Lakes Basin Recreation Area", description: "20+ glacial lakes connected by 30 miles of trails — swimming, fishing, and wildflower viewing.", distance: "3 mi", category: "Hiking & Swimming" },
-  { name: "Frazier Falls Trail", description: "Easy, paved 1-mile family-friendly trail to a fenced overlook of a stunning 176-foot waterfall.", distance: "6 mi", category: "Family Hike" },
-  { name: "Graeagle Mill Pond", description: "In-town swimming spot with kayak, paddleboard, canoe, and paddleboat rentals plus a sandy beach.", distance: "0.2 mi", category: "Water Sports" },
-  { name: "Gold Lake", description: "Pristine alpine lake with excellent trout fishing, non-motorized boating, and scenic shoreline picnicking.", distance: "7 mi", category: "Fishing & Boating" },
-  { name: "Plumas Pines Golf Resort", description: "18-hole championship course winding along the Feather River with tree-lined fairways and mountain views.", distance: "2 mi", category: "Golf" },
-  { name: "Graeagle Meadows Golf Course", description: "Scenic 18-hole public course in the heart of town with meadow and mountain views.", distance: "0.3 mi", category: "Golf" },
-  { name: "Western Pacific Railroad Museum", description: "One of the largest diesel locomotive collections in the country with seasonal train rides.", distance: "15 mi", category: "Museum & Family" },
-  { name: "Middle Fork Feather River", description: "Year-round trout fishing across 1,000+ miles of mountain streams and 100+ lakes in Plumas County.", distance: "1–10 mi", category: "Fishing" },
-];
+const LOCAL_GUIDE: Record<string, { name: string; description: string; distance: string; href?: string; detail?: string }[]> = {
+  "Golf Courses": [
+    { name: "Graeagle Meadows Golf Course", description: "Par 72, 6,725 yards. Golf Digest \"Best Places to Play.\" Mountain views, elevated tees.", distance: "5 min", href: "https://graeaglemeadows.com/" },
+    { name: "Golf Club at Whitehawk Ranch", description: "Top 10 in California. Par 71, 6,983 yards. Dick Bailey design. Streams, waterfalls, wildflowers.", distance: "10 min", href: "https://www.whitehawkranch.com/" },
+    { name: "Plumas Pines Golf Course", description: "Par 72. Full resort with Longboard's Restaurant. Great for groups.", distance: "8 min", href: "https://www.plumaspinesgolfresort.com/" },
+    { name: "Grizzly Ranch Golf Club", description: "#1 public course in the Sierra Nevada, #11 in California (Golf Digest). Bob Cupp design.", distance: "20 min", href: "https://www.grizzlyranchgolfclub.com/" },
+    { name: "Dragon at Nakoma", description: "Frank Lloyd Wright clubhouse — the only one in the world for a golf club. Golf World Top 75.", distance: "25 min", href: "https://www.nakomaresort.com/" },
+    { name: "Feather River Park Resort", description: "Casual 9-hole, par 35 on the Middle Fork of the Feather River. Great for beginners and families.", distance: "5 min" },
+  ],
+  "Hiking & Nature": [
+    { name: "Frazier Falls Trail", description: "Easy, paved 1-mile family-friendly hike to a stunning 178-foot waterfall. Wheelchair accessible.", distance: "20 min", href: "https://www.fs.usda.gov/recarea/plumas/recarea/?recid=11488" },
+    { name: "Lakes Basin Recreation Area", description: "50+ glacial lakes including Gold Lake and Sardine Lake. Swimming, kayaking, fishing, wildflower viewing.", distance: "15 min", href: "https://www.fs.usda.gov/recarea/plumas/recarea/?recid=11453" },
+    { name: "Plumas Eureka State Park", description: "Historic gold mining museum, Eureka Peak loop trail, camping. Winter cross-country skiing.", distance: "10 min", href: "https://www.parks.ca.gov/?page_id=507" },
+    { name: "Graeagle Meadow", description: "Flat walking path right from the cabin. Wildflowers in summer, wildlife year-round.", distance: "5 min walk" },
+  ],
+  "Skiing & Winter": [
+    { name: "Plumas Eureka Ski Bowl", description: "Small, historic community ski area in the state park. Cross-country trails.", distance: "10 min", href: "https://www.parks.ca.gov/?page_id=507" },
+    { name: "Northstar California", description: "Full resort, 3,170 acres, 100 trails. Great day trip from the cabin.", distance: "60 min", href: "https://www.northstarcalifornia.com/" },
+  ],
+  "Fishing & Water": [
+    { name: "Middle Fork Feather River", description: "Year-round trout fishing across 1,000+ miles of mountain streams in Plumas County.", distance: "1–10 mi" },
+    { name: "Gold Lake", description: "Pristine alpine lake. Excellent fly fishing, kayaking, and shoreline picnicking.", distance: "15 min" },
+    { name: "Graeagle Mill Pond", description: "In-town swimming with kayak, paddleboard, canoe, and paddleboat rentals plus a sandy beach.", distance: "2 min walk" },
+  ],
+  "More Activities": [
+    { name: "Western Pacific Railroad Museum", description: "One of the largest diesel locomotive collections in the country. Seasonal train rides and cab rides.", distance: "20 min", href: "https://wplives.org/" },
+    { name: "Mountain Biking", description: "Hundreds of miles of trails. Howling Dog Bike and Ski for rentals in Blairsden.", distance: "Various" },
+    { name: "Horseback Riding", description: "Pacific Dunes Ranch Riding Stables — guided trail rides through the Plumas National Forest.", distance: "15 min" },
+  ],
+  "Dining & Drinks": [
+    { name: "Grizzly Grill", description: "Best restaurant in the area. Upscale American with steaks, seafood, and housemade desserts.", distance: "1 mi", detail: "$$" },
+    { name: "Cuccia's Pasta & Pizza", description: "Family-run Sicilian restaurant. Handmade pizza, fresh seafood, curated wine list.", distance: "0.5 mi", detail: "$$" },
+    { name: "The Iron Door", description: "Historic 1906 fine-dining. Lobster, wiener schnitzel, rib eye in rustic elegance.", distance: "5 mi", detail: "$$$" },
+    { name: "The Brewing Lair", description: "Outdoor craft brewery on 15 forested acres. House-brewed ales, tacos, disc golf, live summer music.", distance: "2 mi", href: "https://www.thebrewinglair.com/", detail: "$" },
+    { name: "Longboards Bar & Grill", description: "Casual bistro at Plumas Pines Golf Resort. Hearty entrees, craft cocktails, TVs for games.", distance: "2 mi", detail: "$$" },
+    { name: "Firewoods at Gray Eagle Lodge", description: "Seasonal gourmet lodge restaurant. Prime rib, sea bass, cocktails in a serene forest setting.", distance: "5 mi", href: "https://www.grayeaglelodge.com/", detail: "$$$" },
+    { name: "Graeagle Outpost", description: "Espresso, breakfast burritos, ice cream, milkshakes. Also the Mill Pond rental hub.", distance: "0.2 mi", detail: "$" },
+    { name: "Graeagle Meadows Clubhouse", description: "Panoramic mountain views, Saturday prime rib, outdoor patio dining.", distance: "0.3 mi", href: "https://graeaglemeadows.com/restaurant/", detail: "$$" },
+  ],
+};
 
 const REVIEWS = [
   { text: "Incredibly clean and well-maintained. We felt right at home from the moment we walked in.", guest: "Sarah M.", date: "March 2026" },
@@ -99,10 +117,32 @@ const REVIEWS = [
   { text: "EV charger was a huge plus — didn't expect that at a mountain cabin!", guest: "Lauren W.", date: "September 2025" },
 ];
 
+const vacationRentalSchema = {
+  "@context": "https://schema.org",
+  "@type": "VacationRental",
+  name: PROPERTY.title,
+  description: DESCRIPTION[0],
+  url: "https://californialuxurystays.com/properties/graeagle",
+  image: PHOTOS.map((p) => `https://californialuxurystays.com${p.src}`),
+  address: { "@type": "PostalAddress", streetAddress: "47 Shasta Trail", addressLocality: "Graeagle", addressRegion: "CA", postalCode: "96103", addressCountry: "US" },
+  aggregateRating: { "@type": "AggregateRating", ratingValue: PROPERTY.rating, reviewCount: PROPERTY.reviews, bestRating: 5 },
+  numberOfBedrooms: PROPERTY.bedrooms,
+  numberOfBathroomsTotal: PROPERTY.baths,
+  occupancy: { "@type": "QuantitativeValue", value: PROPERTY.guests },
+  petsAllowed: true,
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "EV Charger", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Fireplace", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Free Parking", value: true },
+  ],
+};
+
 export default function GraeaglePage() {
   return (
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
-      <Header />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }} />
+      <Header bookNowHref="#booking" />
 
       {/* Hero — Photo Carousel + Property Info */}
       <section className="pt-20">
@@ -194,43 +234,32 @@ export default function GraeaglePage() {
               </ul>
             </section>
 
-            {/* Things to Do */}
+            {/* Local Guide — Things to Do & Places to Eat */}
             <section>
-              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Things to Do</h2>
-              <p className="text-sm text-stone-400 mb-6">Our favorite outdoor adventures and attractions near the cabin.</p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {THINGS_TO_DO.map((item) => (
-                  <div key={item.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-semibold text-white">{item.name}</h3>
-                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{item.distance}</span>
-                    </div>
-                    <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{item.category}</span>
-                    <p className="text-xs text-stone-400 leading-relaxed">{item.description}</p>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Around the Property</h2>
+              <p className="text-sm text-stone-400 mb-8">Our curated guide to the best of Graeagle and the Northern Sierra.</p>
+              {Object.entries(LOCAL_GUIDE).map(([category, items]) => (
+                <div key={category} className="mb-8">
+                  <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-4">{category}</h3>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {items.map((item) => (
+                      <div key={item.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
+                        <div className="flex items-center justify-between">
+                          {item.href ? (
+                            <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-white hover:text-gold-300 transition">
+                              {item.name} <span className="text-gold-400/50 text-xs">&nearr;</span>
+                            </a>
+                          ) : (
+                            <h4 className="text-sm font-semibold text-white">{item.name}</h4>
+                          )}
+                          <span className="text-xs text-gold-400/70 shrink-0 ml-2">{item.distance}{item.detail ? ` · ${item.detail}` : ""}</span>
+                        </div>
+                        <p className="text-xs text-stone-400 leading-relaxed">{item.description}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Places to Eat */}
-            <section>
-              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Places to Eat</h2>
-              <p className="text-sm text-stone-400 mb-6">Local restaurants and dining spots we recommend to our guests.</p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {PLACES_TO_EAT.map((spot) => (
-                  <div key={spot.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-semibold text-white">{spot.name}</h3>
-                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{spot.distance}</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{spot.cuisine}</span>
-                      <span className="text-xs text-stone-500">{spot.price}</span>
-                    </div>
-                    <p className="text-xs text-stone-400 leading-relaxed">{spot.description}</p>
-                  </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </section>
 
             {/* Reviews Summary */}
@@ -253,7 +282,7 @@ export default function GraeaglePage() {
           </div>
 
           {/* Sidebar — Booking */}
-          <div className="space-y-6">
+          <div id="booking" className="space-y-6 scroll-mt-24">
             <div className="rounded-2xl border border-gold-400/15 bg-charcoal-600 p-6 space-y-5 sticky top-24">
               <div>
                 <p className="text-2xl font-semibold text-white font-serif">From $259<span className="text-base font-normal text-stone-400">/night</span></p>

@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-export default function Header() {
+export default function Header({ bookNowHref = "/#properties" }: { bookNowHref?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -35,7 +35,7 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <Link href="/#properties" className="rounded-full bg-gold-400 px-5 py-2 text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300">
+          <Link href={bookNowHref} className="rounded-full bg-gold-400 px-5 py-2 text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300">
             Book Now
           </Link>
         </nav>
@@ -56,7 +56,7 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Link href="/#properties" onClick={() => setMenuOpen(false)} className="mt-2 rounded-full bg-gold-400 px-5 py-3 text-center text-sm font-semibold text-charcoal-800">
+              <Link href={bookNowHref} onClick={() => setMenuOpen(false)} className="mt-2 rounded-full bg-gold-400 px-5 py-3 text-center text-sm font-semibold text-charcoal-800">
                 Book Now
               </Link>
             </div>

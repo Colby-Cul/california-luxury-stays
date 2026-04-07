@@ -68,28 +68,53 @@ const PHOTOS = [
   { src: "/images/northstar/hot-tub-deck-view.jpg", alt: "Hot tub on the upper deck with panoramic mountain views" },
 ];
 
-const PLACES_TO_EAT = [
-  { name: "Manzanita", description: "Upscale mountain cuisine with a stone fireplace, serving breakfast and dinner inside the Ritz-Carlton.", distance: "0.5 mi", cuisine: "New American", price: "$$$" },
-  { name: "Rubicon Pizza", description: "High-energy Northstar Village staple serving gourmet pizzas with bold toppings.", distance: "0.5 mi", cuisine: "Pizza", price: "$$" },
-  { name: "Moody's Bistro Bar & Beats", description: "Farm-to-table dining with craft cocktails and live music on historic Commercial Row.", distance: "6 mi", cuisine: "Bistro", price: "$$$" },
-  { name: "Bar of America", description: "Iconic downtown Truckee watering hole specializing in campfire-inspired American cuisine.", distance: "6 mi", cuisine: "American", price: "$$" },
-  { name: "Squeeze In", description: "Beloved breakfast institution famous for its enormous selection of creative omelettes.", distance: "6 mi", cuisine: "Breakfast", price: "$" },
-  { name: "Christy Hill Lakeside Bistro", description: "Lakefront fine dining with panoramic Lake Tahoe views and French-Mediterranean influences.", distance: "14 mi", cuisine: "Fine Dining", price: "$$$" },
-  { name: "Spindleshanks", description: "Lodge-style restaurant on Old Brockway Golf Course with alfresco dining and seafood specials.", distance: "12 mi", cuisine: "American & Seafood", price: "$$$" },
-  { name: "Lanza's Restaurant", description: "Family-run Italian serving hearty scratch-made red sauce and pastas since 1974.", distance: "12 mi", cuisine: "Italian", price: "$$" },
-];
-
-const THINGS_TO_DO = [
-  { name: "Northstar California Resort", description: "100+ trails across 3,000 acres with 20 lifts, terrain parks, and runs for all levels.", distance: "0.5 mi", category: "Winter Sports" },
-  { name: "Northstar Bike Park & Gondola", description: "Lift-served mountain biking and scenic Big Springs Gondola rides for hikers and sightseers.", distance: "0.5 mi", category: "Summer Adventure" },
-  { name: "Village at Northstar", description: "Outdoor ice rink, bungee trampolines, pottery, shopping, and dining in a pedestrian village.", distance: "0.5 mi", category: "Family Activities" },
-  { name: "Donner Lake & Memorial State Park", description: "Historic alpine lake with swimming, paddleboarding, kayaking, picnicking, and easy hiking trails.", distance: "10 mi", category: "Lake & Outdoors" },
-  { name: "Donner Lake Rim Trail", description: "Scenic 23-mile loop through high country surrounding Donner Lake, with 9 miles open to bikes.", distance: "10 mi", category: "Hiking & Biking" },
-  { name: "Kings Beach State Recreation Area", description: "The largest public sandy beach on Tahoe's north shore — 1,700 feet of south-facing lakefront.", distance: "12 mi", category: "Beach" },
-  { name: "Truckee River Rafting", description: "Self-guided 5-mile Class I float through scenic meadows — fun for ages 2 and up.", distance: "14 mi", category: "Water Sports" },
-  { name: "Martis Valley Trail", description: "Paved 4.6-mile pathway connecting downtown Truckee to Northstar — walk or bike from the house.", distance: "0 mi", category: "Hiking & Biking" },
-  { name: "Historic Downtown Truckee", description: "Charming Commercial Row with galleries, boutiques, restaurants, and the historic train depot.", distance: "6 mi", category: "Shopping & Culture" },
-];
+const LOCAL_GUIDE: Record<string, { name: string; description: string; distance: string; href?: string; detail?: string }[]> = {
+  "Golf Courses": [
+    { name: "Northstar Golf Course", description: "18-hole, par 72, Robert Muir Graves design. Meadow Nine (links-style) + Mountain Nine (tree-lined). The 19th Hole bar has incredible Martis Valley views.", distance: "Steps away", href: "https://www.northstarcalifornia.com/explore-the-resort/activities-and-events/golf.aspx" },
+    { name: "Old Greenwood Golf Course", description: "Jack Nicklaus Signature course. Par 72. One of Tahoe's top courses.", distance: "15 min", href: "https://www.oldgreenwood.com/" },
+    { name: "Gray's Crossing Golf Course", description: "Peter Jacobsen design. Public. Beautiful Truckee River setting.", distance: "10 min", href: "https://www.grayscrossing.com/" },
+    { name: "Tahoe Donner Golf Course", description: "Championship course in a stunning alpine setting.", distance: "15 min", href: "https://www.tahoedonner.com/amenities/golf/" },
+    { name: "Coyote Moon Golf Course", description: "Ranked #4 in the Nevada/Tahoe region. Brad Bell design.", distance: "20 min", href: "https://www.coyotemoongolf.com/" },
+  ],
+  "Skiing & Winter Sports": [
+    { name: "Northstar California Resort", description: "3,170 acres, 100 trails, 20 lifts. 60% intermediate. Epic Pass. Village with 35+ shops and restaurants.", distance: "5 min", href: "https://www.northstarcalifornia.com/" },
+    { name: "Palisades Tahoe", description: "6,000 acres combined with Alpine Meadows. Olympic heritage (1960 Winter Games). Expert terrain.", distance: "20 min", href: "https://www.palisadestahoe.com/" },
+    { name: "Sugar Bowl Resort", description: "Historic resort since 1939. Great powder, less crowded than bigger resorts.", distance: "25 min", href: "https://www.sugarbowl.com/" },
+    { name: "Boreal Mountain Resort", description: "Budget-friendly with night skiing and a great terrain park.", distance: "15 min", href: "https://www.rideboreal.com/" },
+    { name: "Tahoe Donner Downhill", description: "Perfect for families and beginners. Very affordable.", distance: "15 min", href: "https://www.tahoedonner.com/amenities/downhill-ski-area/" },
+    { name: "Tahoe XC (Cross-Country)", description: "100+ km of groomed Nordic trails.", distance: "15 min", href: "https://www.tahoedonner.com/amenities/cross-country-ski-center/" },
+  ],
+  "Lake Tahoe Activities": [
+    { name: "Kings Beach", description: "Largest public sandy beach on Tahoe's north shore — 1,700 feet of south-facing lakefront with a playground.", distance: "15 min", href: "https://parks.nv.gov/parks/sand-harbor" },
+    { name: "Sand Harbor (Nevada)", description: "Crystal-clear water, rocky coves, Shakespeare festival in summer.", distance: "25 min", href: "https://parks.nv.gov/parks/sand-harbor" },
+    { name: "Tahoe City", description: "Shopping, dining, Fanny Bridge, Commons Beach. Gateway to the west shore.", distance: "20 min" },
+    { name: "Truckee River Rafting", description: "Self-guided 5-mile Class I float from Tahoe City. Fun for ages 2+.", distance: "20 min" },
+  ],
+  "Hiking & Biking": [
+    { name: "Tompkins Trail", description: "Direct access from the property. Hiking and mountain biking connecting to the broader Northstar trail network.", distance: "0 min" },
+    { name: "Northstar Bike Park", description: "Lift-served mountain biking from smooth cruisers to technical terrain. Rentals and lessons available.", distance: "5 min", href: "https://www.northstarcalifornia.com/" },
+    { name: "Martis Valley Trail", description: "Paved 4.6-mile pathway connecting Truckee to Northstar — walk or bike from the house.", distance: "0 min" },
+    { name: "Donner Lake Rim Trail", description: "Scenic 23-mile loop through high country. 9 miles open to bikes. Panoramic views.", distance: "15 min" },
+    { name: "Shirley Canyon Trail", description: "Moderate hike to waterfalls near Palisades Tahoe.", distance: "20 min" },
+    { name: "Mt. Judah Loop", description: "Stunning views of Donner Lake. Moderate, ~5 miles.", distance: "25 min" },
+  ],
+  "More Activities": [
+    { name: "Village at Northstar", description: "Ice skating, bungee trampolines, pottery, candle-making, 35+ shops and restaurants.", distance: "5 min", href: "https://www.northstarcalifornia.com/" },
+    { name: "Historic Downtown Truckee", description: "Charming Commercial Row with galleries, boutiques, restaurants, and the historic train depot.", distance: "10 min" },
+    { name: "Donner Memorial State Park", description: "History, hiking, picnicking, and the Emigrant Trail Museum at Donner Lake.", distance: "15 min" },
+    { name: "The Ritz-Carlton Spa", description: "Full luxury spa and fitness center at Northstar.", distance: "5 min" },
+  ],
+  "Dining & Apr\u00e8s": [
+    { name: "Manzanita at The Ritz-Carlton", description: "Upscale mountain cuisine with a stone fireplace. California-inspired breakfast and dinner.", distance: "5 min", detail: "$$$" },
+    { name: "Rubicon Pizza Company", description: "Northstar Village staple. Hand-tossed gourmet pizza, pasta. Family-friendly.", distance: "5 min", detail: "$$" },
+    { name: "Backyard Bar & BBQ", description: "Ski-in/ski-out at the Ritz-Carlton. Smoked meats, craft beer, mountain views.", distance: "5 min", detail: "$$" },
+    { name: "Moody's Bistro Bar & Beats", description: "Farm-to-table with craft cocktails and live music on historic Commercial Row.", distance: "10 min", detail: "$$$" },
+    { name: "Trokay Restaurant", description: "One of the best in the Truckee/Tahoe region. Upscale dining, seasonal menus.", distance: "10 min", detail: "$$$" },
+    { name: "Bar of America", description: "Iconic Truckee watering hole since the 1990s. Campfire-inspired American cuisine.", distance: "10 min", detail: "$$" },
+    { name: "Squeeze In", description: "Beloved breakfast institution. Enormous selection of creative omelettes.", distance: "10 min", detail: "$" },
+    { name: "Christy Hill Lakeside Bistro", description: "Lakefront fine dining with panoramic Lake Tahoe views. French-Mediterranean influences.", distance: "20 min", href: "https://www.christyhill.com/", detail: "$$$" },
+  ],
+};
 
 const REVIEWS = [
   { text: "Stunning home, even better in person. Every detail was perfect for our family reunion.", guest: "Rachel H.", date: "March 2026" },
@@ -99,10 +124,33 @@ const REVIEWS = [
   { text: "Immaculately clean, beautifully decorated. True luxury mountain living.", guest: "Nicole B.", date: "November 2025" },
 ];
 
+const vacationRentalSchema = {
+  "@context": "https://schema.org",
+  "@type": "VacationRental",
+  name: PROPERTY.title,
+  description: DESCRIPTION[0],
+  url: "https://californialuxurystays.com/properties/northstar",
+  image: PHOTOS.map((p) => `https://californialuxurystays.com${p.src}`),
+  address: { "@type": "PostalAddress", streetAddress: "210 Bitter Brush Way", addressLocality: "Truckee", addressRegion: "CA", postalCode: "96161", addressCountry: "US" },
+  aggregateRating: { "@type": "AggregateRating", ratingValue: PROPERTY.rating, reviewCount: PROPERTY.reviews, bestRating: 5 },
+  numberOfBedrooms: PROPERTY.bedrooms,
+  numberOfBathroomsTotal: PROPERTY.baths,
+  occupancy: { "@type": "QuantitativeValue", value: PROPERTY.guests },
+  petsAllowed: false,
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Hot Tub", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Fireplace", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Free Parking", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Heated Garage", value: true },
+  ],
+};
+
 export default function NorthstarPage() {
   return (
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
-      <Header />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }} />
+      <Header bookNowHref="#booking" />
 
       {/* Hero — Photo Carousel + Property Info */}
       <section className="pt-20">
@@ -188,43 +236,32 @@ export default function NorthstarPage() {
               </ul>
             </section>
 
-            {/* Things to Do */}
+            {/* Local Guide — Things to Do & Places to Eat */}
             <section>
-              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Things to Do</h2>
-              <p className="text-sm text-stone-400 mb-6">Our favorite adventures and attractions near the property.</p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {THINGS_TO_DO.map((item) => (
-                  <div key={item.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-semibold text-white">{item.name}</h3>
-                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{item.distance}</span>
-                    </div>
-                    <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{item.category}</span>
-                    <p className="text-xs text-stone-400 leading-relaxed">{item.description}</p>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Around the Property</h2>
+              <p className="text-sm text-stone-400 mb-8">Our curated guide to the best of Northstar, Truckee, and Lake Tahoe.</p>
+              {Object.entries(LOCAL_GUIDE).map(([category, items]) => (
+                <div key={category} className="mb-8">
+                  <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-4">{category}</h3>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {items.map((item) => (
+                      <div key={item.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
+                        <div className="flex items-center justify-between">
+                          {item.href ? (
+                            <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-white hover:text-gold-300 transition">
+                              {item.name} <span className="text-gold-400/50 text-xs">&nearr;</span>
+                            </a>
+                          ) : (
+                            <h4 className="text-sm font-semibold text-white">{item.name}</h4>
+                          )}
+                          <span className="text-xs text-gold-400/70 shrink-0 ml-2">{item.distance}{item.detail ? ` · ${item.detail}` : ""}</span>
+                        </div>
+                        <p className="text-xs text-stone-400 leading-relaxed">{item.description}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Places to Eat */}
-            <section>
-              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Places to Eat</h2>
-              <p className="text-sm text-stone-400 mb-6">Local restaurants and dining spots we recommend to our guests.</p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {PLACES_TO_EAT.map((spot) => (
-                  <div key={spot.name} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4 space-y-1">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-semibold text-white">{spot.name}</h3>
-                      <span className="text-xs text-gold-400/70 shrink-0 ml-2">{spot.distance}</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <span className="inline-block rounded-full bg-gold-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-gold-300">{spot.cuisine}</span>
-                      <span className="text-xs text-stone-500">{spot.price}</span>
-                    </div>
-                    <p className="text-xs text-stone-400 leading-relaxed">{spot.description}</p>
-                  </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </section>
 
             {/* Reviews */}
@@ -246,7 +283,7 @@ export default function NorthstarPage() {
             </section>
           </div>
 
-          <div className="space-y-6">
+          <div id="booking" className="space-y-6 scroll-mt-24">
             <div className="rounded-2xl border border-gold-400/15 bg-charcoal-600 p-6 space-y-5 sticky top-24">
               <div>
                 <p className="text-2xl font-semibold text-white font-serif">From $690<span className="text-base font-normal text-stone-400">/night</span></p>
