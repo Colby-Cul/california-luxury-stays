@@ -5,6 +5,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getLatestPosts } from "@/../content/blog/posts";
+
+const LATEST_POSTS = getLatestPosts(3);
 
 const PROPERTIES = [
   {
@@ -186,6 +189,42 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Blog */}
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mb-12">
+          <p className="text-sm uppercase tracking-[0.35em] text-gold-400/70">From the Sierra</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white font-serif">Local Guides & Tips</h2>
+        </motion.div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {LATEST_POSTS.map((post, i) => (
+            <motion.div
+              key={post.slug}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group block rounded-2xl border border-gold-400/10 bg-charcoal-600 p-6 transition hover:border-gold-400/25 hover:shadow-lg hover:shadow-gold-400/5 h-full"
+              >
+                <div className="flex items-center gap-3 text-xs text-stone-500">
+                  <span className="rounded-full bg-gold-400/10 px-2.5 py-0.5 text-gold-300 uppercase tracking-wider">{post.category}</span>
+                  <time dateTime={post.date}>{new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</time>
+                </div>
+                <h3 className="mt-3 text-base font-semibold text-white font-serif group-hover:text-gold-300 transition leading-snug">{post.title}</h3>
+                <p className="mt-2 text-sm text-stone-400 leading-relaxed line-clamp-2">{post.description}</p>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link href="/blog" className="text-sm font-semibold text-gold-400 transition hover:text-gold-300">
+            View All Posts &rarr;
+          </Link>
         </div>
       </section>
 
