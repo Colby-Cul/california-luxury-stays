@@ -4,15 +4,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 import PhotoCarousel from "@/components/PhotoCarousel";
+import LodgifyBookingWidget from "@/components/LodgifyBookingWidget";
 
 const PROPERTY = {
   title: "Family Cabin in Graeagle",
   subtitle: "King Bed · EV Charging · Stone Fireplace",
   address: "47 Shasta Trail, Graeagle, CA 96103",
   region: "Plumas County, Sierra Nevada",
-  guests: 9, bedrooms: 4, beds: 5, baths: 2,
+  guests: 12, bedrooms: 3, beds: 9, baths: 2.5,
   rating: 4.73, reviews: 52,
   lodgifyId: 533203,
 };
@@ -23,25 +23,26 @@ const DESCRIPTION = [
   "The cabin sits on a quiet, tree-lined street in one of Graeagle's most desirable neighborhoods. You're minutes from the Graeagle Meadow, the historic Mill Pond, and Plumas Eureka State Park. In winter, skiing and cross-country trails are right in your backyard.",
 ];
 
-const THE_SPACE = "The main living area features an open floor plan with a stone fireplace as the centerpiece. The chef's kitchen is fully equipped with modern appliances, and the dining area seats 8. The family room features an 86-inch 4K Smart TV. Four bedrooms include a master suite with a king bed, two bedrooms with queen beds, and a bunk room for the kids. Two full bathrooms. A wraparound deck provides forest views from every angle.";
+const THE_SPACE = "The main living area features an open floor plan with a stone fireplace as the centerpiece. The chef's kitchen is fully equipped with modern appliances, and the dining area seats 8. The family room features an 86-inch 4K Smart TV. Three bedrooms include a master suite with a king bed, a bedroom with a queen bed, and an upstairs loft bedroom. Two and a half bathrooms. A wraparound deck provides forest views from every angle.";
 
 const AMENITIES = {
   "Kitchen & Dining": ["Full kitchen", "Refrigerator", "Oven & microwave", "Dishwasher", "Coffee maker", "Toaster", "Cooking basics", "Dishes & silverware", "Dining for 8"],
   "Entertainment": ["86\" 4K Smart TV", "Streaming services", "Board games", "Card games", "Books"],
   "Outdoor": ["Weber charcoal grill", "Traeger electric smoker", "Wraparound deck", "Outdoor dining", "Forest views", "Yard"],
-  "Comfort": ["Stone fireplace", "Central heating", "Ceiling fans", "Premium linens", "Extra pillows & blankets"],
+  "Comfort": ["Wood-burning stone fireplace (firewood provided)", "Central heating", "Ceiling fans", "Premium linens", "Extra pillows & blankets"],
   "Practical": ["Free WiFi", "Free parking (3 cars)", "EV charger (Level 2)", "Washer & dryer", "Iron", "Hair dryer"],
   "Activities Nearby": ["Hiking trails (direct access)", "Biking trails", "Skiing (Plumas Eureka)", "Fishing", "Golf (Graeagle Meadows)"],
 };
 
 const HOUSE_RULES = [
   { label: "Check-in", value: "4:00 PM" },
-  { label: "Check-out", value: "11:00 AM" },
+  { label: "Check-out", value: "10:00 AM" },
+  { label: "Minimum stay", value: "3 nights" },
   { label: "Pets", value: "Dogs welcome (2 max, $75 fee)" },
   { label: "Smoking", value: "No smoking indoors" },
   { label: "Parties", value: "No parties without prior approval" },
   { label: "Quiet hours", value: "10 PM – 8 AM" },
-  { label: "Max guests", value: "9" },
+  { label: "Max guests", value: "12" },
 ];
 
 const LOCATION = [
@@ -126,9 +127,9 @@ const vacationRentalSchema = {
   image: PHOTOS.map((p) => `https://californialuxurystays.com${p.src}`),
   address: { "@type": "PostalAddress", streetAddress: "47 Shasta Trail", addressLocality: "Graeagle", addressRegion: "CA", postalCode: "96103", addressCountry: "US" },
   aggregateRating: { "@type": "AggregateRating", ratingValue: PROPERTY.rating, reviewCount: PROPERTY.reviews, bestRating: 5 },
-  numberOfBedrooms: PROPERTY.bedrooms,
-  numberOfBathroomsTotal: PROPERTY.baths,
-  occupancy: { "@type": "QuantitativeValue", value: PROPERTY.guests },
+  numberOfBedrooms: 3,
+  numberOfBathroomsTotal: 2.5,
+  occupancy: { "@type": "QuantitativeValue", value: 12 },
   petsAllowed: true,
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
@@ -224,6 +225,18 @@ export default function GraeaglePage() {
             <section>
               <h2 className="text-2xl font-semibold text-white font-serif mb-4">Location</h2>
               <p className="text-stone-300 mb-4">{PROPERTY.address}</p>
+              <div className="rounded-xl overflow-hidden border border-gold-400/10 mb-4">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12322!2d-120.6175!3d39.7575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809c5d3b9da4f1d3%3A0x0!2s47+Shasta+Trail%2C+Graeagle%2C+CA+96103!5e0!3m2!1sen!2sus"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Graeagle cabin location map"
+                />
+              </div>
               <ul className="space-y-2">
                 {LOCATION.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-stone-300">
@@ -285,9 +298,7 @@ export default function GraeaglePage() {
           <div id="booking" className="space-y-6 scroll-mt-24">
             <div className="rounded-2xl border border-gold-400/15 bg-charcoal-600 p-6 space-y-5 sticky top-24">
               <div>
-                <p className="text-2xl font-semibold text-white font-serif">From $259<span className="text-base font-normal text-stone-400">/night</span></p>
-                <p className="text-sm text-gold-400/80 mt-1">{PROPERTY.rating} ★ · {PROPERTY.reviews} reviews · {PROPERTY.region}</p>
-                <p className="text-xs text-stone-500 mt-2">Rates vary by season. Holiday and peak weekends may have higher minimums.</p>
+                <p className="text-sm text-gold-400/80">{PROPERTY.rating} ★ · {PROPERTY.reviews} reviews · {PROPERTY.region}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-3 text-sm">
@@ -297,19 +308,8 @@ export default function GraeaglePage() {
                 <div className="rounded-xl bg-charcoal-700 p-3 text-center"><p className="text-stone-400">Rating</p><p className="font-semibold text-gold-300">{PROPERTY.rating} ★</p></div>
               </div>
 
-              {/* Availability Calendar */}
-              <AvailabilityCalendar propertyId={PROPERTY.lodgifyId} />
+              <LodgifyBookingWidget rentalId={PROPERTY.lodgifyId} />
 
-              <a
-                href={`https://checkout.lodgify.com/en/colby-culbertson/${PROPERTY.lodgifyId}/reservation?currency=USD`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full rounded-full bg-gold-400 py-3.5 text-center text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/20"
-              >
-                Book This Property
-              </a>
-
-              <p className="text-xs text-center text-stone-500">You&apos;ll be redirected to our secure booking partner to complete your reservation.</p>
               <p className="text-xs text-center text-stone-500">Book direct for the best rate — no platform fees</p>
             </div>
           </div>

@@ -15,10 +15,9 @@ const PROPERTIES = [
     name: "Graeagle Mountain Cabin",
     location: "Plumas County, Sierra Nevada",
     tagline: "A warm alpine escape nestled among towering pines",
-    rate: "From $259/night",
-    sleeps: 9,
-    beds: 5,
-    baths: 2,
+    sleeps: 12,
+    beds: 9,
+    baths: 2.5,
     highlights: ["Stone fireplace", "Forest views", "Hot tub", "Game room"],
     image: "/images/graeagle/front-yard-snow.jpg",
     imageAlt: "Graeagle cabin front yard blanketed in fresh snow",
@@ -30,9 +29,8 @@ const PROPERTIES = [
     name: "Northstar Luxury Retreat",
     location: "Lake Tahoe, Placer County",
     tagline: "Elevated mountain living with resort-style comforts",
-    rate: "From $690/night",
-    sleeps: 13,
-    beds: 7,
+    sleeps: 10,
+    beds: 6,
     baths: 3.5,
     highlights: ["Spa bathroom", "Chef's kitchen", "Ski-in proximity", "Mountain panoramas"],
     image: "/images/northstar/exterior-1.jpg",
@@ -86,7 +84,7 @@ export default function Home() {
                 Explore Properties
               </Link>
               <Link
-                href="/contact"
+                href="#properties"
                 className="rounded-full border border-gold-400/30 px-7 py-3.5 text-sm font-semibold text-gold-200 transition hover:border-gold-400 hover:text-gold-100"
               >
                 Book Your Stay
@@ -131,9 +129,6 @@ export default function Home() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-600/60 to-transparent" />
-                <div className="absolute top-4 right-4 rounded-full bg-charcoal-800/80 px-4 py-2 text-sm font-semibold text-gold-300 backdrop-blur-sm">
-                  {prop.rate}
-                </div>
               </div>
               <div className="p-7 space-y-4">
                 <div>
@@ -241,10 +236,10 @@ export default function Home() {
             Check availability for your dates. Book direct for the best rates and a personal touch.
           </p>
           <Link
-            href="/contact"
+            href="#properties"
             className="mt-8 inline-block rounded-full bg-gold-400 px-8 py-4 text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/20"
           >
-            Inquire About Availability
+            Explore Properties
           </Link>
         </motion.div>
       </section>

@@ -105,6 +105,7 @@
 | 2026-04-07 | Claude Opus 4.6 | Directive 2 sprint: context-aware Book Now, rich local guides with links, VacationRental + FAQPage schemas | Header.tsx, graeagle/page.tsx, northstar/page.tsx, faq/page.tsx |
 | 2026-04-07 | Claude Opus 4.6 | Wire contact form to /api/contact, add newsletter signup in footer, /api/newsletter route | api/contact/route.ts, api/newsletter/route.ts, contact/page.tsx, Footer.tsx |
 | 2026-04-07 | Claude Opus 4.6 | Build blog system: /blog index, /blog/[slug] with 5 posts, homepage blog cards, sitemap update | blog/page.tsx, blog/[slug]/page.tsx, content/blog/posts.ts, page.tsx, sitemap.ts |
+| 2026-04-07 | Claude Opus 4.6 | Add Google Maps embeds to both property pages, RSS feed at /feed.xml, RSS link in layout metadata | graeagle/page.tsx, northstar/page.tsx, feed.xml/route.ts, layout.tsx |
 
 ### 2026-04-06 QA Directive Fix Details
 
@@ -140,7 +141,7 @@ Based on `CLS_Website_Fix_Directive_1.md` design review:
 - [ ] **About page photos** — Needs owner/family photo and property photos
 - [ ] **Favicon** — `/favicon.ico` referenced in metadata but verify file exists in `/public/`
 - [ ] **OG image** — `og:image` meta tag needs a real property photo URL
-- [ ] **Google Maps embeds** — Interactive maps on property pages (currently text-only location info)
+- [x] **Google Maps embeds** — Interactive maps on both property pages in the Location section
 - [ ] **Resend API key** — Add `RESEND_API_KEY` to Vercel env vars for contact form email delivery
 - [ ] **Mailing list service** — Connect newsletter endpoint to Mailchimp/ConvertKit
 - [ ] **Blog content cadence** — Directive recommends 2 posts/week (every 3-4 days)

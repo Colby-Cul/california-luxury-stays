@@ -4,15 +4,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 import PhotoCarousel from "@/components/PhotoCarousel";
+import LodgifyBookingWidget from "@/components/LodgifyBookingWidget";
 
 const PROPERTY = {
   title: "Luxury Northstar Getaway",
   subtitle: "On the Golf Course · Hot Tub · 5,000 sq ft",
   address: "210 Bitter Brush Way, Truckee, CA 96161",
   region: "Northstar, Lake Tahoe",
-  guests: 13, bedrooms: 5, beds: 7, baths: 3.5,
+  guests: 10, bedrooms: 4, beds: 6, baths: 3.5,
   rating: 5.0, reviews: 5,
   lodgifyId: 746614,
 };
@@ -24,7 +24,7 @@ const DESCRIPTION = [
   "You're steps from Tompkins Trail for hiking and biking, minutes from Northstar Village with its shops and restaurants, and a short drive to Lake Tahoe's north shore. In winter, Northstar ski resort is literally next door.",
 ];
 
-const THE_SPACE = "5,000 sq ft remodeled home on two levels. Main floor: great room with vaulted ceilings and gas fireplace, chef's kitchen with premium appliances, dining area seats 12, primary suite with king bed and spa-style en-suite bathroom. Upper level: 4 additional bedrooms (2 kings, 1 queen, 1 bunk room), 2.5 additional bathrooms, family room with games, media room with projector. Expansive deck with hot tub and mountain views. Heated 2-car garage with ski and snowboard storage.";
+const THE_SPACE = "5,000 sq ft remodeled home on two levels. Main floor: great room with vaulted ceilings and gas fireplace, chef's kitchen with premium appliances, dining area seats 12, primary suite with king bed and spa-style en-suite bathroom. Upper level: 3 additional bedrooms, 2.5 additional bathrooms, family room with games, media room with projector. Expansive deck with hot tub and mountain views. Heated 2-car garage with ski and snowboard storage.";
 
 const AMENITIES = {
   "Kitchen & Dining": ["Chef's kitchen", "Premium appliances", "Island with bar seating", "Double oven", "Wine fridge", "Espresso machine", "Coffee maker", "Full cookware", "Dining for 12"],
@@ -37,12 +37,13 @@ const AMENITIES = {
 
 const HOUSE_RULES = [
   { label: "Check-in", value: "4:00 PM" },
-  { label: "Check-out", value: "11:00 AM" },
+  { label: "Check-out", value: "10:00 AM" },
+  { label: "Minimum stay", value: "4 nights" },
   { label: "Pets", value: "No pets (service animals welcome)" },
   { label: "Smoking", value: "No smoking on property" },
   { label: "Parties", value: "No parties or events" },
   { label: "Quiet hours", value: "10 PM – 8 AM" },
-  { label: "Max guests", value: "13" },
+  { label: "Max guests", value: "10" },
 ];
 
 const LOCATION = [
@@ -133,9 +134,9 @@ const vacationRentalSchema = {
   image: PHOTOS.map((p) => `https://californialuxurystays.com${p.src}`),
   address: { "@type": "PostalAddress", streetAddress: "210 Bitter Brush Way", addressLocality: "Truckee", addressRegion: "CA", postalCode: "96161", addressCountry: "US" },
   aggregateRating: { "@type": "AggregateRating", ratingValue: PROPERTY.rating, reviewCount: PROPERTY.reviews, bestRating: 5 },
-  numberOfBedrooms: PROPERTY.bedrooms,
-  numberOfBathroomsTotal: PROPERTY.baths,
-  occupancy: { "@type": "QuantitativeValue", value: PROPERTY.guests },
+  numberOfBedrooms: 4,
+  numberOfBathroomsTotal: 3.5,
+  occupancy: { "@type": "QuantitativeValue", value: 10 },
   petsAllowed: false,
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
@@ -226,6 +227,18 @@ export default function NorthstarPage() {
             <section>
               <h2 className="text-2xl font-semibold text-white font-serif mb-4">Location</h2>
               <p className="text-stone-300 mb-4">{PROPERTY.address}</p>
+              <div className="rounded-xl overflow-hidden border border-gold-400/10 mb-4">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12322!2d-120.1285!3d39.2745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809bd5e2f04b5e39%3A0x0!2s210+Bitter+Brush+Way%2C+Truckee%2C+CA+96161!5e0!3m2!1sen!2sus"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Northstar property location map"
+                />
+              </div>
               <ul className="space-y-2">
                 {LOCATION.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-stone-300">
@@ -286,9 +299,7 @@ export default function NorthstarPage() {
           <div id="booking" className="space-y-6 scroll-mt-24">
             <div className="rounded-2xl border border-gold-400/15 bg-charcoal-600 p-6 space-y-5 sticky top-24">
               <div>
-                <p className="text-2xl font-semibold text-white font-serif">From $690<span className="text-base font-normal text-stone-400">/night</span></p>
-                <p className="text-sm text-gold-400/80 mt-1">{PROPERTY.rating} ★ · {PROPERTY.reviews} reviews · {PROPERTY.region}</p>
-                <p className="text-xs text-stone-500 mt-2">Rates vary by season. Holiday and peak weekends may have higher minimums.</p>
+                <p className="text-sm text-gold-400/80">{PROPERTY.rating} ★ · {PROPERTY.reviews} reviews · {PROPERTY.region}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-3 text-sm">
@@ -298,18 +309,8 @@ export default function NorthstarPage() {
                 <div className="rounded-xl bg-charcoal-700 p-3 text-center"><p className="text-stone-400">Rating</p><p className="font-semibold text-gold-300">{PROPERTY.rating} ★</p></div>
               </div>
 
-              <AvailabilityCalendar propertyId={PROPERTY.lodgifyId} />
+              <LodgifyBookingWidget rentalId={PROPERTY.lodgifyId} />
 
-              <a
-                href={`https://checkout.lodgify.com/en/colby-culbertson/${PROPERTY.lodgifyId}/reservation?currency=USD`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full rounded-full bg-gold-400 py-3.5 text-center text-sm font-semibold text-charcoal-800 transition hover:bg-gold-300 hover:shadow-lg hover:shadow-gold-400/20"
-              >
-                Book This Property
-              </a>
-
-              <p className="text-xs text-center text-stone-500">You&apos;ll be redirected to our secure booking partner to complete your reservation.</p>
               <p className="text-xs text-center text-stone-500">Book direct for the best rate — no platform fees</p>
             </div>
           </div>
