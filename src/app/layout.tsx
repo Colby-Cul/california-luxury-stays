@@ -28,14 +28,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://californialuxurystays.com",
+    images: [{ url: "/images/cls-logo.png", width: 1200, height: 630, alt: "California Luxury Stays" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "California Luxury Stays",
     description: "Luxury mountain retreats in the Sierra Nevada",
+    images: ["/images/cls-logo.png"],
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
   alternates: {
     types: {
       "application/rss+xml": "/feed.xml",

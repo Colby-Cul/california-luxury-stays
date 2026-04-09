@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,13 +21,15 @@ export default function Header({ bookNowHref = "/#properties" }: { bookNowHref?:
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-gold-400/10 bg-charcoal-800/90 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link href="/" className="flex items-center gap-3 group" aria-label="California Luxury Stays home">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-400/40 bg-gold-400/10 text-xs font-bold uppercase tracking-[0.3em] text-gold-200 transition group-hover:bg-gold-400/20">
-            CLS
-          </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.4em] text-gold-300/80">Est. 2026</p>
-            <p className="text-base font-semibold text-white font-serif">California Luxury Stays</p>
-          </div>
+          <Image
+            src="/images/cls-icon-512.png"
+            alt="CLS logo"
+            width={44}
+            height={44}
+            className="rounded-lg transition group-hover:opacity-90"
+            priority
+          />
+          <p className="text-base font-semibold text-white font-serif hidden sm:block">California Luxury Stays</p>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
