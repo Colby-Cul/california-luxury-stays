@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import ChatWidget from "@/components/ChatWidget";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -79,7 +80,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-screen bg-charcoal-800 text-stone-100 font-sans">{children}</body>
+      <body className="min-h-screen bg-charcoal-800 text-stone-100 font-sans">
+        {children}
+        <ChatWidget />
+      </body>
     </html>
   );
 }

@@ -12,7 +12,7 @@ const PROPERTY = {
   subtitle: "On the Golf Course · Hot Tub · 5,000 sq ft",
   address: "210 Bitter Brush Way, Truckee, CA 96161",
   region: "Northstar, Lake Tahoe",
-  guests: 10, bedrooms: 4, beds: 6, baths: 3.5,
+  guests: 22, bedrooms: 7, baths: 6,
   rating: 5.0, reviews: 5,
   lodgifyId: 746614,
 };
@@ -43,7 +43,7 @@ const HOUSE_RULES = [
   { label: "Smoking", value: "No smoking on property" },
   { label: "Parties", value: "No parties or events" },
   { label: "Quiet hours", value: "10 PM – 8 AM" },
-  { label: "Max guests", value: "10" },
+  { label: "Max guests", value: "22" },
 ];
 
 const LOCATION = [
@@ -134,9 +134,9 @@ const vacationRentalSchema = {
   image: PHOTOS.map((p) => `https://californialuxurystays.com${p.src}`),
   address: { "@type": "PostalAddress", streetAddress: "210 Bitter Brush Way", addressLocality: "Truckee", addressRegion: "CA", postalCode: "96161", addressCountry: "US" },
   aggregateRating: { "@type": "AggregateRating", ratingValue: PROPERTY.rating, reviewCount: PROPERTY.reviews, bestRating: 5 },
-  numberOfBedrooms: 4,
-  numberOfBathroomsTotal: 3.5,
-  occupancy: { "@type": "QuantitativeValue", value: 10 },
+  numberOfBedrooms: 7,
+  numberOfBathroomsTotal: 6,
+  occupancy: { "@type": "QuantitativeValue", value: 22 },
   petsAllowed: false,
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },

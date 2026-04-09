@@ -29,9 +29,8 @@ const PROPERTIES = [
     name: "Northstar Luxury Retreat",
     location: "Lake Tahoe, Placer County",
     tagline: "Elevated mountain living with resort-style comforts",
-    sleeps: 10,
-    beds: 6,
-    baths: 3.5,
+    sleeps: 22,
+    baths: 6,
     highlights: ["Spa bathroom", "Chef's kitchen", "Ski-in proximity", "Mountain panoramas"],
     image: "/images/northstar/exterior-1.jpg",
     imageAlt: "Northstar luxury home exterior with aspen trees",
@@ -138,7 +137,7 @@ export default function Home() {
                 <p className="text-stone-300 leading-7">{prop.tagline}</p>
                 <div className="flex gap-6 text-sm text-stone-400">
                   <span>Sleeps {prop.sleeps}</span>
-                  <span>{prop.beds} Beds</span>
+                  {prop.beds && <span>{prop.beds} Beds</span>}
                   <span>{prop.baths} Baths</span>
                 </div>
                 <div className="flex flex-wrap gap-2">

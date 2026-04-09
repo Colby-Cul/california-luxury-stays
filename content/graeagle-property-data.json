@@ -6,10 +6,10 @@
   "region": "Plumas County, Sierra Nevada",
   "lodgify_property_id": 533203,
   "lodgify_room_id": 599857,
-  "max_guests": 9,
-  "bedrooms": 4,
-  "beds": 5,
-  "bathrooms": 2,
+  "max_guests": 12,
+  "bedrooms": 3,
+  "beds": 9,
+  "bathrooms": 2.5,
   "rating": 4.73,
   "review_count": 52,
   "price_range": "$259 – $580/night",
@@ -19,7 +19,7 @@
     "The cabin sits on a quiet, tree-lined street in one of Graeagle's most desirable neighborhoods. You're minutes from the Graeagle Meadow, the historic Graeagle Mill Pond, and Plumas Eureka State Park. In winter, skiing at Plumas Eureka and cross-country trails at the Graeagle Meadow are right in your backyard.",
     "Whether you're planning a ski weekend, a summer family reunion, or a quiet autumn escape — this is mountain living done right."
   ],
-  "the_space": "The main living area features an open floor plan with a stone fireplace as the centerpiece. The chef's kitchen is fully equipped with modern appliances, and the dining area seats 8. The family room features an 86-inch 4K Smart TV. Four bedrooms include a master suite with a king bed, two bedrooms with queen beds, and a bunk room for the kids. Two full bathrooms. A wraparound deck provides forest views from every angle.",
+  "the_space": "The main living area features an open floor plan with a stone fireplace as the centerpiece. The chef's kitchen is fully equipped with modern appliances, and the dining area seats 8. The family room features an 86-inch 4K Smart TV. Three bedrooms include a master suite with a king bed, a bedroom with a queen bed, and an upstairs loft bedroom. Two and a half bathrooms. A wraparound deck provides forest views from every angle.",
   "guest_access": "You have full access to the entire property, including the deck, yard, BBQ area, and EV charger. A dedicated parking area fits 3 vehicles.",
   "amenities": {
     "kitchen": ["Full kitchen", "Refrigerator", "Oven", "Microwave", "Dishwasher", "Coffee maker", "Toaster", "Cooking basics", "Dishes and silverware"],
@@ -32,12 +32,13 @@
   },
   "house_rules": {
     "check_in": "4:00 PM",
-    "check_out": "11:00 AM",
+    "check_out": "10:00 AM",
+    "minimum_stay": "3 nights",
     "pets": "Dogs allowed (2 max, $75 pet fee)",
     "smoking": "No smoking inside the property",
     "parties": "No parties or events without prior approval",
     "quiet_hours": "10:00 PM – 8:00 AM",
-    "max_guests": 9,
+    "max_guests": 12,
     "additional": ["Remove shoes indoors", "Take out trash on departure", "Lock doors when leaving"]
   },
   "location_highlights": [
