@@ -55,8 +55,16 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,169,110,0.12),_transparent_50%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-charcoal-800" />
+        <Image
+          src="/images/lake-tahoe-hero.jpg"
+          alt="Emerald Bay, Lake Tahoe — turquoise water surrounded by Sierra Nevada pine forests"
+          fill
+          priority
+          className="object-cover"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-charcoal-800/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal-800/40 via-transparent to-charcoal-800" />
         <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-32">
           <motion.div
             initial="hidden"
