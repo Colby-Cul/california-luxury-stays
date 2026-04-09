@@ -37,7 +37,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="rounded-2xl border border-gold-400/10 bg-charcoal-600 p-8 space-y-4">
-              <h2 className="text-xl font-semibold text-white font-serif">The Culbertson Approach</h2>
+              <h2 className="text-xl font-semibold text-white font-serif">The CLS Difference</h2>
               <ul className="space-y-3 text-stone-300">
                 <li className="flex gap-3"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" /> Book direct for the best rates &mdash; no platform markups</li>
                 <li className="flex gap-3"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" /> Personal concierge service for restaurant picks, trail guides, and local tips</li>

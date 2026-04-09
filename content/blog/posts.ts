@@ -16,7 +16,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "5 Golf Courses Within 25 Minutes of Our Graeagle Cabin",
     description: "From the Frank Lloyd Wright clubhouse at Nakoma to the top-rated Grizzly Ranch, here are our favorite courses near the cabin.",
     date: "2026-04-07",
-    author: "Colby Culbertson",
+    author: "CLS Team",
     category: "Graeagle",
     tags: ["golf", "graeagle", "outdoors", "summer"],
     body: `
@@ -48,7 +48,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Frazier Falls: The Easiest Spectacular Hike in the Sierra",
     description: "A 1-mile paved trail to a 178-foot waterfall — family-friendly, wheelchair accessible, and absolutely stunning in spring.",
     date: "2026-04-05",
-    author: "Colby Culbertson",
+    author: "CLS Team",
     category: "Graeagle",
     tags: ["hiking", "graeagle", "family", "outdoors", "summer"],
     body: `
@@ -80,7 +80,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "The Best Restaurants Near Northstar Village for Families",
     description: "From Ritz-Carlton dining to beloved Truckee breakfast spots, here's where to eat during your Northstar stay.",
     date: "2026-04-03",
-    author: "Colby Culbertson",
+    author: "CLS Team",
     category: "Northstar",
     tags: ["dining", "northstar", "family", "truckee", "tahoe"],
     body: `
@@ -119,7 +119,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Why Book Direct? The Real Cost of Platform Fees",
     description: "A transparent look at what Airbnb and VRBO actually charge — and how booking direct saves you money with better service.",
     date: "2026-04-01",
-    author: "Colby Culbertson",
+    author: "CLS Team",
     category: "Booking",
     tags: ["booking", "direct", "tips"],
     body: `
@@ -148,7 +148,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Northstar Mountain Biking: Everything You Need to Know",
     description: "From lift-served bike park to family-friendly trails, here's your complete guide to mountain biking at Northstar and beyond.",
     date: "2026-03-28",
-    author: "Colby Culbertson",
+    author: "CLS Team",
     category: "Northstar",
     tags: ["biking", "northstar", "outdoors", "summer"],
     body: `
