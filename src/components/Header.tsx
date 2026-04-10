@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "Graeagle Cabin", href: "/properties/graeagle" },
   { label: "Northstar Retreat", href: "/properties/northstar" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
