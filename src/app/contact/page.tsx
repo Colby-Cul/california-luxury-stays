@@ -30,7 +30,7 @@ export default function ContactPage() {
         setForm({ name: "", email: "", phone: "", property: "", checkin: "", checkout: "", guests: "", message: "", _honey: "" });
       }
     } catch {
-      setErrorMsg("Network error. Please email us directly at stay@californialuxurystays.com.");
+      setErrorMsg("Network error. Please email us directly at christine@californialuxurystays.com.");
       setStatus("error");
     }
   };
@@ -110,7 +110,7 @@ export default function ContactPage() {
               <div className="rounded-2xl border border-gold-400/10 bg-charcoal-600 p-6 space-y-5">
                 <h2 className="text-lg font-semibold text-white font-serif">Contact Info</h2>
                 <div className="space-y-3 text-sm text-stone-300">
-                  <div><p className="text-xs uppercase tracking-wider text-gold-400 mb-1">Email</p><a href="mailto:stay@californialuxurystays.com" className="hover:text-gold-300">stay@californialuxurystays.com</a></div>
+                  <div><p className="text-xs uppercase tracking-wider text-gold-400 mb-1">Email</p><a href="mailto:christine@californialuxurystays.com" className="hover:text-gold-300">christine@californialuxurystays.com</a></div>
                   <div><p className="text-xs uppercase tracking-wider text-gold-400 mb-1">Response Time</p><p>Within 2 hours (8 AM \u2013 10 PM PT)</p></div>
                 </div>
               </div>
