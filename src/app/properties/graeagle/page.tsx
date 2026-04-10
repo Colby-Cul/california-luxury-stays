@@ -160,9 +160,9 @@ export default function GraeaglePage() {
               <span>·</span>
               <span>{PROPERTY.guests} guests</span>
               <span>·</span>
-              <span>{PROPERTY.bedrooms} bed</span>
+              <span>{PROPERTY.bedrooms} Bedrooms</span>
               <span>·</span>
-              <span>{PROPERTY.baths} bath</span>
+              <span>{PROPERTY.baths} Bathrooms</span>
             </div>
           </div>
         </div>

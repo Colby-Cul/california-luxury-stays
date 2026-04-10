@@ -13,6 +13,7 @@ interface ContactForm {
 }
 
 const AGENTMAIL_API_KEY = process.env.AGENTMAIL_API_KEY;
+// Will switch to christine@californialuxurystays.com once custom domain is verified
 const CHRISTINE_INBOX = "christine.cls@agentmail.to";
 
 export async function POST(request: NextRequest) {

@@ -16,7 +16,7 @@ const PROPERTIES = [
     location: "Plumas County, Sierra Nevada",
     tagline: "A warm alpine escape nestled among towering pines",
     sleeps: 12,
-    beds: 9,
+    bedrooms: 3,
     baths: 2.5,
     highlights: ["Stone fireplace", "Forest views", "Hot tub", "Game room"],
     image: "/images/graeagle/front-yard-snow.jpg",
@@ -30,6 +30,7 @@ const PROPERTIES = [
     location: "Lake Tahoe, Placer County",
     tagline: "Elevated mountain living with resort-style comforts",
     sleeps: 22,
+    bedrooms: 7,
     baths: 6,
     highlights: ["Spa bathroom", "Chef's kitchen", "Ski-in proximity", "Mountain panoramas"],
     image: "/images/northstar/exterior-1.jpg",
@@ -145,7 +146,7 @@ export default function Home() {
                 <p className="text-stone-300 leading-7">{prop.tagline}</p>
                 <div className="flex gap-6 text-sm text-stone-400">
                   <span>Sleeps {prop.sleeps}</span>
-                  {prop.beds && <span>{prop.beds} Beds</span>}
+                  {prop.bedrooms && <span>{prop.bedrooms} Bedrooms</span>}
                   <span>{prop.baths} Baths</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
