@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: "California Luxury Stays",
               description: "Curated luxury cabin rentals in Graeagle and Northstar, California",
               url: "https://californialuxurystays.com",
-              email: "stay@californialuxurystays.com",
+              email: "christine@californialuxurystays.com",
               address: {
                 "@type": "PostalAddress",
                 addressRegion: "CA",
@@ -81,7 +81,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen bg-charcoal-800 text-stone-100 font-sans">
-        {children}
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-gold-400 focus:text-charcoal-800 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold">Skip to content</a>
+        <div id="main-content">{children}</div>
         <ChatWidget />
       </body>
     </html>
