@@ -19,7 +19,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "CLS Team",
     category: "Graeagle",
     tags: ["golf", "graeagle", "outdoors", "summer"],
-    image: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1200&q=80",
+    image: "/images/blog/golf.jpg",
     body: `
 <p>One of the best-kept secrets about the Graeagle area? It's home to some of the finest golf in California — six courses within 25 minutes of our cabin, each with its own character and stunning Sierra Nevada backdrop.</p>
 
@@ -52,7 +52,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "CLS Team",
     category: "Graeagle",
     tags: ["hiking", "graeagle", "family", "outdoors", "summer"],
-    image: "https://images.unsplash.com/photo-1432405972618-c6b0cfba8673?w=1200&q=80",
+    image: "/images/blog/frazier-falls.jpg",
     body: `
 <p>If you only do one hike during your stay at our Graeagle cabin, make it Frazier Falls. It's just 20 minutes from the front door, and it delivers one of the most dramatic payoffs in the Sierra Nevada for the least amount of effort.</p>
 
@@ -85,7 +85,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "CLS Team",
     category: "Northstar",
     tags: ["dining", "northstar", "family", "truckee", "tahoe"],
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80",
+    image: "/images/blog/restaurants.jpg",
     body: `
 <p>One of the best things about staying at our Northstar property is the dining. Whether you want a five-star meal at the Ritz-Carlton or a casual pizza in the Village, there's something for every taste and budget within 20 minutes.</p>
 
@@ -125,7 +125,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "CLS Team",
     category: "Booking",
     tags: ["booking", "direct", "tips"],
-    image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80",
+    image: "/images/blog/book-direct.jpg",
     body: `
 <p>If you've ever booked a vacation rental on Airbnb or VRBO, you've probably noticed the price jump between the listed nightly rate and the final checkout total. That gap is platform fees — and they add up fast, especially on premium properties.</p>
 
@@ -155,7 +155,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "CLS Team",
     category: "Northstar",
     tags: ["biking", "northstar", "outdoors", "summer"],
-    image: "https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=1200&q=80",
+    image: "/images/blog/mountain-biking.jpg",
     body: `
 <p>Northstar isn't just a ski resort — in summer, it transforms into one of the best mountain biking destinations in the Tahoe region. And with our property located steps from the Tompkins Trail, you can ride right from the front door.</p>
 
