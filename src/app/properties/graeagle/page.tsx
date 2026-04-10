@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import PhotoCarousel from "@/components/PhotoCarousel";
+import PhotoGrid from "@/components/PhotoGrid";
 import LodgifyBookingWidget from "@/components/LodgifyBookingWidget";
 
 const PROPERTY = {
@@ -148,7 +148,7 @@ export default function GraeaglePage() {
       {/* Hero — Photo Carousel + Property Info */}
       <section className="pt-20">
         <div className="mx-auto max-w-7xl px-6 pt-8 lg:px-10">
-          <PhotoCarousel photos={PHOTOS} aspectRatio="aspect-[16/9]" />
+          <PhotoGrid photos={PHOTOS} />
           <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-sm text-gold-400/80 uppercase tracking-wider">{PROPERTY.region}</p>
