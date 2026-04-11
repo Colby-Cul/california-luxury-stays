@@ -295,6 +295,44 @@ export default function NorthstarPage() {
                 </div>
               </div>
               <p className="mt-4 text-xs text-stone-500">Recreation Center hours: 8 AM – 9 PM. Some amenities are seasonal. Contact NPOA at (530) 562-0322 for current availability.</p>
+
+              {/* Community Events Calendar */}
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold text-white font-serif mb-4">Upcoming Community Events</h3>
+                <p className="text-sm text-stone-400 mb-4">
+                  Events hosted by the{" "}
+                  <a href="https://npoa.info/npoa-membership-events-information/" target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:text-gold-300">
+                    Northstar Property Owners Association
+                  </a>
+                  . Guests at our property have access to community events during their stay.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { date: "May 22", name: "Eastern Placer Future Town Hall", icon: "🏛️" },
+                    { date: "May 23–24", name: "Memorial Day Madness — Tennis & Pickleball Round Robins", icon: "🎾" },
+                    { date: "Jun 6", name: "Grand Slam Tennis Clinic", icon: "🎾" },
+                    { date: "Jun 27–28", name: "Signature Pickleball Weekend", icon: "🏓" },
+                    { date: "Jul 4", name: "Ice Cream Giveaway for Kids", icon: "🍦" },
+                    { date: "Jul 4–5", name: "Red, White & Boom — Tennis & Pickleball Round Robins", icon: "🇺🇸" },
+                    { date: "Jul 11", name: "Grand Slam Tennis Clinic", icon: "🎾" },
+                    { date: "Jul 11", name: "Summer Homeowner BBQ", icon: "🍖" },
+                    { date: "Jul 18–19", name: "Signature Pickleball Weekend", icon: "🏓" },
+                    { date: "Aug 8", name: "Cocktail Party in the Lounge", icon: "🍸" },
+                    { date: "Aug 8–9", name: "Signature Pickleball Weekend", icon: "🏓" },
+                    { date: "Aug 29", name: "Grand Slam Tennis Clinic", icon: "🎾" },
+                    { date: "Sep 5", name: "51st Annual Homeowners Meeting & BBQ", icon: "🎉" },
+                  ].map((event) => (
+                    <div key={`${event.date}-${event.name}`} className="flex items-start gap-3 rounded-lg bg-charcoal-700/50 px-4 py-3">
+                      <span className="text-lg shrink-0" aria-hidden="true">{event.icon}</span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-white">{event.name}</p>
+                        <p className="text-xs text-stone-400">{event.date}, 2026</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-3 text-xs text-stone-500">Summer yoga sessions also available — contact the Rec Center for schedule. Last updated April 2026.</p>
+              </div>
             </section>
 
             <section>
