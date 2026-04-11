@@ -254,6 +254,50 @@ export default function NorthstarPage() {
             </section>
 
             <section>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-2">Community Amenities</h2>
+              <p className="text-sm text-stone-400 mb-6">
+                Our property is located in the Northstar community with access to the{" "}
+                <a href="https://npoa.info/recreation-center/" target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:text-gold-300">
+                  NPOA Recreation Center
+                </a>{" "}
+                at 2200 N. Village Dr. — a short walk or shuttle ride away.
+              </p>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div>
+                  <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-3">Pools & Spa</h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Heated main pool (summer)</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Lap pool (year-round)</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Outdoor hot tubs / spas</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Spa & massage services</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-3">Fitness & Sports</h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Fitness center / gym</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Tennis courts</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Pickleball courts</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Basketball court</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Bocce ball courts</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-3">Family & Recreation</h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Arcade & game room</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Pool table</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Owners&apos; lounge</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Playground</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />BBQ & picnic areas</li>
+                    <li className="flex items-center gap-2 text-sm text-stone-300"><span className="h-1.5 w-1.5 rounded-full bg-gold-400 shrink-0" aria-hidden="true" />Free community shuttle</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="mt-4 text-xs text-stone-500">Recreation Center hours: 8 AM – 9 PM. Some amenities are seasonal. Contact NPOA at (530) 562-0322 for current availability.</p>
+            </section>
+
+            <section>
               <h2 className="text-2xl font-semibold text-white font-serif mb-4">House Rules</h2>
               <div className="grid gap-3 sm:grid-cols-2">
                 {HOUSE_RULES.map((rule) => (
