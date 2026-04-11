@@ -4,11 +4,29 @@ import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+const SUPABASE_URL = "https://bdlvwfobjqvnrffzxrfz.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJkbHZ3Zm9ianF2bnJmZnp4cmZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzMzUwNjAsImV4cCI6MjA4OTkxMTA2MH0.Tc4bdXUKWLhQQCVQlWbwFzcuV0Ry_gvFmuxcHKuvxHA";
+
 interface PhotoGridProps {
   photos: { src: string; alt: string }[];
+  propertyId?: string; // If provided, fetches from Supabase and overrides photos prop
 }
 
-export default function PhotoGrid({ photos }: PhotoGridProps) {
+export default function PhotoGrid({ photos: fallbackPhotos, propertyId }: PhotoGridProps) {
+  const [photos, setPhotos] = useState(fallbackPhotos);
+
+  useEffect(() => {
+    if (!propertyId) return;
+    fetch(
+      `${SUPABASE_URL}/rest/v1/property_photos?property_id=eq.${propertyId}&order=sort_order&select=src,alt`,
+      { headers: { apikey: SUPABASE_ANON_KEY } }
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) setPhotos(data);
+      })
+      .catch(() => {}); // fall back to hardcoded photos on error
+  }, [propertyId]);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [current, setCurrent] = useState(0);
 

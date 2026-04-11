@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PhotoGrid from "@/components/PhotoGrid";
 import LodgifyBookingWidget from "@/components/LodgifyBookingWidget";
+import AvailabilityCalendar from "@/components/AvailabilityCalendar";
 
 const PROPERTY = {
   title: "Family Cabin in Graeagle",
@@ -148,7 +149,7 @@ export default function GraeaglePage() {
       {/* Hero — Photo Carousel + Property Info */}
       <section className="pt-20">
         <div className="mx-auto max-w-7xl px-6 pt-8 lg:px-10">
-          <PhotoGrid photos={PHOTOS} />
+          <PhotoGrid photos={PHOTOS} propertyId="graeagle" />
           <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-sm text-gold-400/80 uppercase tracking-wider">{PROPERTY.region}</p>
@@ -307,6 +308,8 @@ export default function GraeaglePage() {
                 <div className="rounded-xl bg-charcoal-700 p-3 text-center"><p className="text-stone-400">Bathrooms</p><p className="font-semibold text-white">{PROPERTY.baths}</p></div>
                 <div className="rounded-xl bg-charcoal-700 p-3 text-center"><p className="text-stone-400">Rating</p><p className="font-semibold text-gold-300">{PROPERTY.rating} ★</p></div>
               </div>
+
+              <AvailabilityCalendar propertyId={PROPERTY.lodgifyId} />
 
               <LodgifyBookingWidget rentalId={PROPERTY.lodgifyId} />
 
