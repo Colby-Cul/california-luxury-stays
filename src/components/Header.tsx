@@ -25,12 +25,12 @@ export default function Header({ bookNowHref = "/#properties" }: { bookNowHref?:
           <Image
             src="/images/cls-icon-512.png"
             alt="CLS logo"
-            width={44}
-            height={44}
-            className="rounded-lg transition group-hover:opacity-90"
+            width={36}
+            height={36}
+            className="rounded-lg transition group-hover:opacity-90 shrink-0"
             priority
           />
-          <p className="text-base font-semibold text-white font-serif hidden sm:block">California Luxury Stays</p>
+          <span className="text-base font-semibold text-white font-serif hidden sm:block leading-none">California Luxury Stays</span>
         </Link>
 
         <nav className="hidden xl:flex items-center gap-8" aria-label="Main navigation">
