@@ -107,15 +107,16 @@ export default function BlogPostPage({ params }: Props) {
 
           <div className="mt-10 border-t border-gold-400/10 pt-10">
             <div
-              className="prose prose-invert prose-gold max-w-none
+              className="prose prose-invert prose-lg prose-gold max-w-none
                 prose-headings:font-serif prose-headings:text-white prose-headings:font-semibold
-                prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4
-                prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3
-                prose-p:text-stone-300 prose-p:leading-7
-                prose-li:text-stone-300
-                prose-a:text-gold-400 prose-a:no-underline hover:prose-a:text-gold-300
-                prose-strong:text-white
-                prose-ul:space-y-1"
+                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pt-8 prose-h2:border-t prose-h2:border-gold-400/10
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-gold-300
+                prose-p:text-stone-300 prose-p:leading-8 prose-p:mb-5 prose-p:text-base
+                prose-li:text-stone-300 prose-li:text-base prose-li:leading-8
+                prose-a:text-gold-400 prose-a:underline prose-a:underline-offset-4 prose-a:decoration-gold-400/30 hover:prose-a:text-gold-300 hover:prose-a:decoration-gold-300
+                prose-strong:text-white prose-strong:font-semibold
+                prose-ul:space-y-2 prose-ul:my-6 prose-ul:pl-1
+                prose-ol:space-y-2 prose-ol:my-6"
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
           </div>
