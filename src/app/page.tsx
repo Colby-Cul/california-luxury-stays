@@ -19,8 +19,8 @@ const PROPERTIES = [
     bedrooms: 3,
     baths: 2.5,
     highlights: ["Stone fireplace", "Forest views", "Hot tub", "Game room"],
-    image: "/images/graeagle/front-yard-snow.jpg",
-    imageAlt: "Graeagle cabin front yard blanketed in fresh snow",
+    image: "/images/graeagle/family-room.jpg",
+    imageAlt: "Cozy family room with stone fireplace and comfortable seating",
     accent: "from-amber-900/40 via-stone-900 to-charcoal-800",
     href: "/properties/graeagle",
   },
@@ -127,8 +127,8 @@ export default function Home() {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group overflow-hidden rounded-3xl border border-gold-400/10 bg-charcoal-600 shadow-2xl shadow-black/30 transition hover:border-gold-400/25"
             >
-              {/* Property image */}
-              <div className="relative h-64 overflow-hidden">
+              {/* Property image — links to property page */}
+              <Link href={prop.href} className="block relative h-64 overflow-hidden cursor-pointer">
                 <Image
                   src={prop.image}
                   alt={prop.imageAlt}
@@ -137,7 +137,7 @@ export default function Home() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-600/60 to-transparent" />
-              </div>
+              </Link>
               <div className="p-7 space-y-4">
                 <div>
                   <h3 className="text-2xl font-semibold text-white font-serif">{prop.name}</h3>
