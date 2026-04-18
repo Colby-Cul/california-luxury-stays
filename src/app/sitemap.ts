@@ -22,5 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/faq`, lastModified: new Date("2026-04-10"), changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/privacy`, lastModified: new Date("2026-04-04"), changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/terms`, lastModified: new Date("2026-04-04"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/things-to-do-in-graeagle`, lastModified: new Date("2026-04-18"), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/things-to-do-near-northstar`, lastModified: new Date("2026-04-18"), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/group-retreats-northstar`, lastModified: new Date("2026-04-18"), changeFrequency: "monthly", priority: 0.8 },
   ];
 }
