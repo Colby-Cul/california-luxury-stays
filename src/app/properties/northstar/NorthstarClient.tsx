@@ -169,22 +169,38 @@ const REVIEWS = [
 const vacationRentalSchema = {
   "@context": "https://schema.org",
   "@type": "VacationRental",
+  "@id": "https://californialuxurystays.com/properties/northstar#vacationrental",
   name: PROPERTY.title,
   description: DESCRIPTION[0],
   url: "https://californialuxurystays.com/properties/northstar",
-  image: PHOTOS.map((p) => `https://californialuxurystays.com${p.src}`),
+  image: PHOTOS.map((p) => (p.src.startsWith("http") ? p.src : `https://californialuxurystays.com${p.src}`)),
   address: { "@type": "PostalAddress", streetAddress: "210 Bitter Brush Way", addressLocality: "Truckee", addressRegion: "CA", postalCode: "96161", addressCountry: "US" },
+  geo: { "@type": "GeoCoordinates", latitude: 39.2833, longitude: -120.1340 },
   aggregateRating: { "@type": "AggregateRating", ratingValue: PROPERTY.rating, reviewCount: PROPERTY.reviews, bestRating: 5 },
   numberOfBedrooms: 7,
   numberOfBathroomsTotal: 6,
   occupancy: { "@type": "QuantitativeValue", value: 22 },
   petsAllowed: false,
+  brand: { "@type": "Organization", name: "California Luxury Stays", url: "https://californialuxurystays.com" },
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "WiFi", value: true },
     { "@type": "LocationFeatureSpecification", name: "Hot Tub", value: true },
     { "@type": "LocationFeatureSpecification", name: "Fireplace", value: true },
     { "@type": "LocationFeatureSpecification", name: "Free Parking", value: true },
     { "@type": "LocationFeatureSpecification", name: "Heated Garage", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Golf Course View", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Chef's Kitchen", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Media Room", value: true },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://californialuxurystays.com" },
+    { "@type": "ListItem", position: 2, name: "Properties", item: "https://californialuxurystays.com/#properties" },
+    { "@type": "ListItem", position: 3, name: "Luxury Northstar Retreat", item: "https://californialuxurystays.com/properties/northstar" },
   ],
 };
 
@@ -192,6 +208,7 @@ export default function NorthstarClient() {
   return (
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(vacationRentalSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Header bookNowHref="#booking" />
 
       {/* Hero — Photo Carousel + Property Info */}
