@@ -74,7 +74,7 @@ export default function BlogPostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Header />
       <div className="pt-20">
-        <article className="mx-auto max-w-3xl px-6 py-16 lg:px-10 pb-28">
+        <article className="mx-auto max-w-[680px] px-6 py-16 lg:px-8 pb-28">
           <nav aria-label="Breadcrumb" className="text-sm text-stone-400">
             <ol className="flex items-center gap-2">
               <li><Link href="/" className="hover:text-gold-300 transition">Home</Link></li>
@@ -92,8 +92,8 @@ export default function BlogPostPage({ params }: Props) {
             <span>{readingTime} min read</span>
           </div>
 
-          <h1 className="mt-4 text-3xl font-semibold text-white font-serif sm:text-4xl leading-tight">{post.title}</h1>
-          <p className="mt-4 text-lg text-stone-300 leading-8">{post.description}</p>
+          <h1 className="mt-4 text-3xl font-semibold text-white font-serif sm:text-4xl leading-[1.15] tracking-tight">{post.title}</h1>
+          <p className="mt-5 text-xl text-stone-300 leading-relaxed font-light">{post.description}</p>
 
           {post.image && (
             <div className="mt-8 overflow-hidden rounded-xl">
@@ -105,18 +105,9 @@ export default function BlogPostPage({ params }: Props) {
             </div>
           )}
 
-          <div className="mt-10 border-t border-gold-400/10 pt-10">
+          <div className="mt-12 border-t border-gold-400/10 pt-12">
             <div
-              className="prose prose-invert prose-lg prose-gold max-w-none
-                prose-headings:font-serif prose-headings:text-white prose-headings:font-semibold
-                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pt-8 prose-h2:border-t prose-h2:border-gold-400/10
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-gold-300
-                prose-p:text-stone-300 prose-p:leading-8 prose-p:mb-5 prose-p:text-base
-                prose-li:text-stone-300 prose-li:text-base prose-li:leading-8
-                prose-a:text-gold-400 prose-a:underline prose-a:underline-offset-4 prose-a:decoration-gold-400/30 hover:prose-a:text-gold-300 hover:prose-a:decoration-gold-300
-                prose-strong:text-white prose-strong:font-semibold
-                prose-ul:space-y-2 prose-ul:my-6 prose-ul:pl-1
-                prose-ol:space-y-2 prose-ol:my-6"
+              className="blog-content max-w-none text-stone-200"
               dangerouslySetInnerHTML={{ __html: post.body }}
             />
           </div>
