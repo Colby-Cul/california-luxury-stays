@@ -352,6 +352,48 @@ export default function NorthstarClient() {
               </div>
             </section>
 
+            {/* Upcoming Events Near Northstar */}
+            <section>
+              <h2 className="text-2xl font-semibold text-white font-serif mb-3">Upcoming Events Near Northstar</h2>
+              <p className="text-sm text-stone-400 mb-6">
+                Your stay puts you in the middle of it all — minutes from Northstar Village, Truckee, and Lake Tahoe&apos;s north shore event calendar.
+              </p>
+              <div className="space-y-3">
+                {[
+                  { date: "June 19–21, 2026", name: "Wanderlust Yoga + Music Festival", location: "Palisades Tahoe (Squaw Valley)", description: "Annual wellness festival combining world-class yoga, live music, meditation, and outdoor adventure. 3,000+ attendees gather at the base of Palisades for three days of programming.", category: "Festival" },
+                  { date: "June 27, 2026", name: "NPOA Summer Kickoff BBQ", location: "NPOA Pool Area, Northstar", description: "Annual community BBQ hosted by the Northstar Property Owners Association. Guests at our property are welcome to attend during their stay.", category: "Community" },
+                  { date: "July 4, 2026", name: "Truckee 4th of July Parade + Fireworks", location: "Downtown Truckee", description: "Annual Independence Day parade down historic Commercial Row followed by a community fireworks display at dusk. One of the best small-town Fourth of July celebrations in California.", category: "Holiday" },
+                  { date: "July 4, 2026", name: "NPOA July 4th Pool Party", location: "NPOA Recreation Center", description: "Community pool party hosted by the NPOA for homeowners and guests. Games, music, and fireworks viewing from the Recreation Center grounds.", category: "Community" },
+                  { date: "July 11, 2026", name: "NPOA Tennis/Pickleball Round Robin", location: "NPOA Courts, Northstar", description: "Open tennis and pickleball round robin tournament hosted by the NPOA. All skill levels welcome. Guests of our property are eligible to participate during their stay.", category: "Sports" },
+                  { date: "July 18–Aug 28, 2026", name: "Truckee Thursdays Summer Concert Series", location: "Truckee Regional Park", description: "Free outdoor concerts every Thursday evening through late August. Bring a blanket and a picnic — one of the best community traditions in the Tahoe region.", category: "Music" },
+                  { date: "July 24–Aug 30, 2026", name: "Lake Tahoe Shakespeare Festival", location: "Sand Harbor State Park, Nevada", description: "Outdoor Shakespeare performances on the shore of Lake Tahoe with the lake and Nevada mountains as the backdrop. One of the most spectacular theater venues in the world. Tickets sell out weeks in advance — book early.", category: "Theater", href: "https://laketahoeshakespeare.com/" },
+                  { date: "August 2, 2026", name: "NPOA Annual BBQ + Homeowners Meeting", location: "NPOA Recreation Center", description: "Annual homeowners BBQ and association meeting. Guests of our property are welcome at the social portion of the event.", category: "Community" },
+                  { date: "August 8, 2026", name: "Northstar Bike Park Opening Weekend", location: "Northstar California Resort", description: "Celebration of the bike park season with demo days, guided trail rides, clinics for all skill levels, and vendor activations in the Village. Free with a bike haul pass.", category: "Sports" },
+                  { date: "August 14–16, 2026", name: "Lake Tahoe Music Festival", location: "Various Tahoe City Venues", description: "Annual festival featuring classical and contemporary music performances across multiple venues in Tahoe City and the north shore. Indoor and outdoor concerts over three days.", category: "Music" },
+                  { date: "September 6–7, 2026", name: "Ironman 70.3 Lake Tahoe", location: "Kings Beach & North Shore", description: "Half-Ironman triathlon through Kings Beach and the Lake Tahoe north shore. Swim in Tahoe, bike the mountain roads, and run the north shore. Great spectator event if you're staying early September.", category: "Sports" },
+                  { date: "September 12–13, 2026", name: "Truckee Harvest Festival", location: "Downtown Truckee", description: "Two-day fall harvest celebration in historic downtown Truckee with artisan vendors, local food producers, live music, and fall Sierra Nevada atmosphere. One of the best small-town festivals in the region.", category: "Festival" },
+                ].map((event) => (
+                  <div key={`${event.date}-${event.name}`} className="rounded-xl border border-gold-400/10 bg-charcoal-700/50 p-4">
+                    <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                      <div className="flex-1 min-w-0">
+                        {event.href ? (
+                          <a href={event.href} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-white hover:text-gold-300 transition">
+                            {event.name} <span className="text-gold-400/50 text-xs">&nearr;</span>
+                          </a>
+                        ) : (
+                          <p className="text-sm font-semibold text-white">{event.name}</p>
+                        )}
+                        <p className="text-xs text-stone-400 mt-0.5">{event.date} · {event.location}</p>
+                      </div>
+                      <span className="shrink-0 text-xs px-2 py-0.5 rounded-full bg-gold-400/10 text-gold-400 border border-gold-400/20">{event.category}</span>
+                    </div>
+                    <p className="text-xs text-stone-400 leading-relaxed mt-2">{event.description}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3 text-xs text-stone-500">Event calendar is subject to change. Verify current schedules with event organizers before making travel plans. Last updated April 2026.</p>
+            </section>
+
             <section>
               <h2 className="text-2xl font-semibold text-white font-serif mb-4">House Rules</h2>
               <div className="grid gap-3 sm:grid-cols-2">
