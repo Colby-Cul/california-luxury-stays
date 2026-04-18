@@ -5,6 +5,15 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms of service and rental agreement for California Luxury Stays properties.",
+  alternates: {
+    canonical: "https://californialuxurystays.com/terms",
+  },
+  openGraph: {
+    title: "Terms of Service | California Luxury Stays",
+    description: "Terms of service and rental agreement for California Luxury Stays properties.",
+    type: "website",
+    url: "https://californialuxurystays.com/terms",
+  },
 };
 
 export default function TermsPage() {

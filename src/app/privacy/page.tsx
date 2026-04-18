@@ -5,6 +5,15 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy policy for California Luxury Stays vacation rental properties.",
+  alternates: {
+    canonical: "https://californialuxurystays.com/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | California Luxury Stays",
+    description: "Privacy policy for California Luxury Stays vacation rental properties.",
+    type: "website",
+    url: "https://californialuxurystays.com/privacy",
+  },
 };
 
 export default function PrivacyPage() {

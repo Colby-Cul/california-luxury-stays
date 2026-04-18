@@ -17,27 +17,27 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "California Luxury Stays | Sierra Nevada Mountain Retreats",
+    default: "Luxury Cabin Rentals in Graeagle & Lake Tahoe | California Luxury Stays",
     template: "%s | California Luxury Stays",
   },
-  description: "Curated luxury cabin rentals in Graeagle and Northstar, California. Ski weekends, summer escapes, and unforgettable mountain getaways in the Sierra Nevada.",
+  description: "Book direct and save on luxury vacation rentals in Graeagle and Northstar, Lake Tahoe. Sleeps up to 22. Hot tub, golf course views, mountain panoramas — zero platform fees.",
   metadataBase: new URL("https://californialuxurystays.com"),
   openGraph: {
-    title: "California Luxury Stays",
-    description: "Luxury mountain retreats in the Sierra Nevada",
+    title: "Luxury Cabin Rentals in Graeagle & Lake Tahoe",
+    description: "Book direct and save on luxury Sierra Nevada vacation rentals — Graeagle cabin (sleeps 12) and Northstar retreat (sleeps 22).",
     siteName: "California Luxury Stays",
     type: "website",
     locale: "en_US",
     url: "https://californialuxurystays.com",
-    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "California Luxury Stays" }],
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Emerald Bay, Lake Tahoe — California Luxury Stays" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "California Luxury Stays",
-    description: "Luxury mountain retreats in the Sierra Nevada",
+    title: "Luxury Cabin Rentals in Graeagle & Lake Tahoe",
+    description: "Book direct. Sleep up to 22. Graeagle & Northstar vacation rentals.",
     images: ["/images/og-image.png"],
   },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32" },
@@ -49,6 +49,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   alternates: {
+    canonical: "https://californialuxurystays.com",
     types: {
       "application/rss+xml": "/feed.xml",
     },
@@ -65,17 +66,66 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
+              "@id": "https://californialuxurystays.com/#business",
               name: "California Luxury Stays",
-              description: "Curated luxury cabin rentals in Graeagle and Northstar, California",
+              description: "Direct-booking luxury vacation rentals in Graeagle and Northstar, Lake Tahoe",
               url: "https://californialuxurystays.com",
               email: "christine@californialuxurystays.com",
-              address: {
-                "@type": "PostalAddress",
-                addressRegion: "CA",
-                addressCountry: "US",
-              },
-              hasMap: "https://maps.google.com/?q=Graeagle+CA",
+              logo: "https://californialuxurystays.com/images/cls-icon-512.png",
+              image: "https://californialuxurystays.com/images/og-image.png",
+              address: { "@type": "PostalAddress", addressRegion: "CA", addressCountry: "US" },
+              areaServed: [
+                { "@type": "City", name: "Graeagle" },
+                { "@type": "City", name: "Truckee" },
+                { "@type": "AdministrativeArea", name: "Lake Tahoe" },
+                { "@type": "AdministrativeArea", name: "Sierra Nevada" },
+              ],
               priceRange: "$259 - $3,029",
+              currenciesAccepted: "USD",
+              paymentAccepted: "Credit Card",
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://californialuxurystays.com/#organization",
+              name: "California Luxury Stays",
+              url: "https://californialuxurystays.com",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://californialuxurystays.com/images/cls-icon-512.png",
+                width: 512,
+                height: 512,
+              },
+              email: "christine@californialuxurystays.com",
+              description: "Family-operated direct-booking luxury vacation rentals in the Sierra Nevada.",
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://californialuxurystays.com/#website",
+              url: "https://californialuxurystays.com",
+              name: "California Luxury Stays",
+              description: "Luxury vacation rentals in Graeagle and Lake Tahoe",
+              publisher: { "@id": "https://californialuxurystays.com/#organization" },
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://californialuxurystays.com/blog?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+              inLanguage: "en-US",
             }),
           }}
         />

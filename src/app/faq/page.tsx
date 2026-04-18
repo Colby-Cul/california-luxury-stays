@@ -3,8 +3,16 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "FAQ",
-  description: "Frequently asked questions about booking, check-in, cancellation, pets, and amenities at our Sierra Nevada cabin rentals.",
+  title: "Frequently Asked Questions",
+  description: "Answers to common questions about booking, check-in, cancellation, pets, parking, and amenities at our Graeagle and Northstar vacation rentals.",
+  alternates: {
+    canonical: "https://californialuxurystays.com/faq",
+  },
+  openGraph: {
+    title: "FAQ | California Luxury Stays",
+    description: "Everything you need to know about booking with California Luxury Stays.",
+    url: "https://californialuxurystays.com/faq",
+  },
 };
 
 const FAQS = [

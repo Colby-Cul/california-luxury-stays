@@ -3,8 +3,16 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Family-operated luxury cabin rentals in Graeagle and Northstar, California. Learn about our approach to Sierra Nevada hospitality.",
+  title: "About Us",
+  description: "Meet the family behind California Luxury Stays — direct-booking luxury cabin rentals in Graeagle and Northstar. Our approach to Sierra Nevada hospitality.",
+  alternates: {
+    canonical: "https://californialuxurystays.com/about",
+  },
+  openGraph: {
+    title: "About California Luxury Stays",
+    description: "Family-operated luxury vacation rentals in the Sierra Nevada.",
+    url: "https://californialuxurystays.com/about",
+  },
 };
 
 export default function AboutPage() {

@@ -7,12 +7,19 @@ import { BLOG_POSTS, getReadingTime } from "@/../content/blog/posts";
 export const metadata: Metadata = {
   title: "Blog",
   description: "Local guides, seasonal tips, and insider knowledge from California Luxury Stays — your hosts in Graeagle and Northstar.",
-  openGraph: {
-    title: "Blog | California Luxury Stays",
-    description: "Local guides, seasonal tips, and insider knowledge from California Luxury Stays — your hosts in Graeagle and Northstar.",
-  },
   alternates: {
     canonical: "https://californialuxurystays.com/blog",
+  },
+  openGraph: {
+    title: "Sierra Nevada Travel Guide & Local Tips | California Luxury Stays Blog",
+    description: "Local guides, seasonal tips, and insider knowledge from California Luxury Stays — your hosts in Graeagle and Northstar.",
+    type: "website",
+    url: "https://californialuxurystays.com/blog",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sierra Nevada Travel Guide & Local Tips | California Luxury Stays Blog",
+    description: "Local guides, seasonal tips, and insider knowledge from California Luxury Stays — your hosts in Graeagle and Northstar.",
   },
 };
 
@@ -20,9 +27,38 @@ const sorted = [...BLOG_POSTS].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
 );
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://californialuxurystays.com/blog#blog",
+  url: "https://californialuxurystays.com/blog",
+  name: "California Luxury Stays Blog",
+  description: "Sierra Nevada travel guides and local tips from your Graeagle and Northstar hosts.",
+  publisher: { "@id": "https://californialuxurystays.com/#organization" },
+  blogPost: BLOG_POSTS.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.title,
+    url: `https://californialuxurystays.com/blog/${p.slug}`,
+    datePublished: p.date,
+    author: { "@type": "Person", name: p.author },
+    image: p.image ? `https://californialuxurystays.com${p.image}` : undefined,
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://californialuxurystays.com" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://californialuxurystays.com/blog" },
+  ],
+};
+
 export default function BlogIndex() {
   return (
     <div className="min-h-screen bg-charcoal-800 text-stone-100">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Header />
       <div className="pt-20">
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10">
