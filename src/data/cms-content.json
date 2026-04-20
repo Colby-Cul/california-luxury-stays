@@ -1,0 +1,94 @@
+{
+  "graeagle": {
+    "wifi": {
+      "name": "GraeagleStays_5G",
+      "password": "sierra2024!"
+    },
+    "doorCode": "4729#",
+    "parking": "Driveway parking for up to 3 vehicles. Level 2 EV charger (J1772) is in the driveway — feel free to use it.",
+    "houseGuide": [
+      {
+        "title": "Stone Fireplace",
+        "instructions": "Open the damper fully by pulling the chain on the left side of the firebox before lighting. Use the kindling and firewood stacked on the porch. Light with the long-handled lighter in the hearth basket. Never leave a fire unattended. Close the damper when the fire is fully extinguished and cool.",
+        "videoUrl": null
+      },
+      {
+        "title": "86\" 4K TV & Streaming",
+        "instructions": "The Samsung remote controls everything. Press the Home button and select your streaming app (Netflix, Hulu, Disney+ are pre-installed). HDMI 1 is connected to the Apple TV — use the small silver remote. HDMI 2 is available for gaming consoles. Volume is controlled by the soundbar remote on the coffee table.",
+        "videoUrl": null
+      },
+      {
+        "title": "Weber Charcoal BBQ",
+        "instructions": "Charcoal and lighter fluid are in the cabinet below the BBQ. Fill the chimney starter with charcoal, light two fire starters underneath, and wait 15–20 minutes until coals are ashed over. Pour into the lower grate, replace the cooking grate, and preheat for 5 minutes. Clean the grill after use — brush and scraper are hanging on the side.",
+        "videoUrl": null
+      },
+      {
+        "title": "Traeger Electric Smoker",
+        "instructions": "Fill the hopper with wood pellets (stored in the gray bin nearby). Plug in the Traeger and set to your desired temperature using the digital dial. Allow 10–15 minutes to preheat. The app (Traeger) is also available for remote control. Empty the ash cup under the barrel after every few uses.",
+        "videoUrl": null
+      },
+      {
+        "title": "EV Charger",
+        "instructions": "The Level 2 charger is a standard J1772 connector mounted on the exterior wall by the driveway. Just plug in your vehicle — it will begin charging automatically. The breaker is labeled 'EV Charger' in the main panel if you need to reset it.",
+        "videoUrl": null
+      },
+      {
+        "title": "Thermostat",
+        "instructions": "The Nest thermostat is on the main hallway wall. Tap to wake the screen. Rotate the outer ring to set temperature. We recommend 68°F for comfortable nights. The system is set to Eco mode between 10 PM and 8 AM. Please set to 65°F when you leave.",
+        "videoUrl": null
+      }
+    ],
+    "emergency": {
+      "propertyManager": "530-555-0187",
+      "propertyManagerEmail": "host@californialuxurystays.com"
+    },
+    "reviewUrls": {
+      "google": "https://g.page/r/CdS5lAnmYjxBEBM/review"
+    },
+    "houseRules": {
+      "trash": "Trash pickup is Monday mornings. Roll the bins to the end of the driveway Sunday night. Black bin = trash, blue = recycling, green = compost."
+    },
+    "checkoutInstructions": "Please set the thermostat to 65°F, ensure all windows and doors are locked, and leave your key fob on the kitchen counter. Take all trash to the outdoor bins before departure."
+  },
+  "northstar": {
+    "wifi": {
+      "name": "NorthstarLux_WiFi",
+      "password": "tahoe2024!"
+    },
+    "doorCode": "8312#",
+    "parking": "Two reserved spots in the covered garage (spaces 14 and 15). Guest overflow in the upper lot — turn left at the gate. No street parking in the village.",
+    "houseGuide": [
+      {
+        "title": "Hot Tub",
+        "instructions": "The hot tub is pre-heated to 102°F. Lift the cover fully and fold to the side — use the velcro strap to secure it. Jets are controlled by the panel on the side: press 'Jets 1' for standard, 'Jets 2' for full power. Replace the cover after each use and ensure the latches are secured. Do not add soaps or oils. Max occupancy: 6 persons.",
+        "videoUrl": null
+      },
+      {
+        "title": "TV & Streaming",
+        "instructions": "Each room has an Apple TV. Use the Siri Remote to navigate. Press and hold the microphone button to use Siri. Netflix, Hulu, Peacock, and Disney+ are pre-loaded. For the main family room, use the Bang & Olufsen soundbar remote for audio — found in the credenza drawer.",
+        "videoUrl": null
+      },
+      {
+        "title": "Chef's Kitchen",
+        "instructions": "The Sub-Zero fridge uses the built-in ice maker — ice is dispensed from the door panel. The Wolf 6-burner range requires you to press and hold the igniter for 2 seconds before the gas catches. The Miele dishwasher is loaded from the top — use the pods in the cabinet under the sink. Do not use the Wolf grill for high-smoke items indoors.",
+        "videoUrl": null
+      },
+      {
+        "title": "Thermostat",
+        "instructions": "Ecobee thermostats are in each zone (main floor, upstairs). Set your preferred temperature using the touchscreen. The snowflake icon means cooling, flame = heating. Please set to 65°F when checking out. Radiant floor heat in the primary bath takes 20 minutes to warm — thermostat is on the bathroom wall.",
+        "videoUrl": null
+      }
+    ],
+    "emergency": {
+      "propertyManager": "530-555-0294",
+      "propertyManagerEmail": "host@californialuxurystays.com"
+    },
+    "reviewUrls": {
+      "google": "https://g.page/r/CdS5lAnmYjxBEBM/review"
+    },
+    "houseRules": {
+      "trash": "Trash and recycling bins are in the garage alcove. Trash pickup is Tuesday. Roll bins to the curb on Monday night — follow the property manager's instructions for the correct spot."
+    },
+    "checkoutInstructions": "Please replace the hot tub cover and secure the latches, set all thermostats to 65°F, and leave key fobs and garage clickers on the entry table. All trash should be taken to the garage bins."
+  }
+}

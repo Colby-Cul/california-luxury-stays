@@ -1,3 +1,5 @@
+import cmsContent from './cms-content.json';
+
 export interface DiningSpot {
   name: string;
   type: string;
@@ -43,26 +45,58 @@ export interface Property {
     airbnb: string;
     google: string;
   };
+  checkoutInstructions?: string;
 }
 
-export const properties: Record<string, Property> = {
+// Merge static property data with CMS content (CMS overrides placeholders)
+function mergeWithCMS(propertyId: string, base: Property): Property {
+  const cms = (cmsContent as Record<string, any>)[propertyId];
+  if (!cms) return base;
+
+  // Check for localStorage overrides (admin panel changes)
+  let localOverrides: Record<string, any> = {};
+  if (typeof window !== 'undefined') {
+    try {
+      const stored = localStorage.getItem(`cms-override-${propertyId}`);
+      if (stored) localOverrides = JSON.parse(stored);
+    } catch {}
+  }
+
+  const merged = { ...cms, ...localOverrides };
+
+  return {
+    ...base,
+    wifi: merged.wifi ?? base.wifi,
+    doorCode: merged.doorCode ?? base.doorCode,
+    parking: merged.parking ?? base.parking,
+    houseGuide: merged.houseGuide ?? base.houseGuide,
+    checkoutInstructions: merged.checkoutInstructions ?? base.checkoutInstructions,
+    houseRules: {
+      ...base.houseRules,
+      ...(merged.houseRules ?? {}),
+    },
+    emergency: {
+      ...base.emergency,
+      ...(merged.emergency ?? {}),
+    },
+    reviewUrls: {
+      ...base.reviewUrls,
+      ...(merged.reviewUrls ?? {}),
+    },
+  };
+}
+
+const _baseProperties: Record<string, Property> = {
   graeagle: {
     id: 'graeagle',
     name: 'Family Cabin in Graeagle',
     subtitle: '47 Shasta Trail, Graeagle, CA 96103',
     lodgifyId: 533203,
     features: ['3 Bedrooms', 'Sleeps 10', 'EV Charger', 'Stone Fireplace', '86" 4K TV', 'BBQ & Smoker'],
-    wifi: { name: '{{WIFI_NAME}}', password: '{{WIFI_PASSWORD}}' },
-    doorCode: '{{DOOR_CODE}}',
+    wifi: { name: '', password: '' },
+    doorCode: '',
     parking: 'Driveway parking for 3 vehicles. EV charger in driveway.',
-    houseGuide: [
-      { title: 'Stone Fireplace', instructions: '{{FIREPLACE_INSTRUCTIONS}}', videoUrl: null },
-      { title: '86" 4K TV & Streaming', instructions: '{{TV_INSTRUCTIONS}}', videoUrl: null },
-      { title: 'Weber Charcoal BBQ', instructions: '{{BBQ_INSTRUCTIONS}}', videoUrl: null },
-      { title: 'Traeger Electric Smoker', instructions: '{{SMOKER_INSTRUCTIONS}}', videoUrl: null },
-      { title: 'EV Charger', instructions: '{{EV_INSTRUCTIONS}}', videoUrl: null },
-      { title: 'Thermostat', instructions: '{{THERMOSTAT_INSTRUCTIONS}}', videoUrl: null },
-    ],
+    houseGuide: [],
     kitchen: [
       'Fully equipped cookware',
       'Coffee maker',
@@ -90,18 +124,18 @@ export const properties: Record<string, Property> = {
       pets: 'No pets allowed',
       smoking: 'No smoking indoors',
       parties: 'No parties or events',
-      trash: 'Take trash to bins at end of driveway',
+      trash: '',
     },
     emergency: {
       localPolice: '530-832-4950',
       fire: '911',
       hospital: 'Plumas District Hospital, Quincy — 530-283-2121',
-      propertyManager: '{{MANAGER_PHONE}}',
-      propertyManagerEmail: '{{MANAGER_EMAIL}}',
+      propertyManager: '',
+      propertyManagerEmail: '',
     },
     reviewUrls: {
       airbnb: 'https://www.airbnb.com/rooms/533203',
-      google: '{{GOOGLE_REVIEW_URL}}',
+      google: '',
     },
   },
   northstar: {
@@ -110,15 +144,10 @@ export const properties: Record<string, Property> = {
     subtitle: '210 Bitter Brush Way, Placer County, CA 96161',
     lodgifyId: 746614,
     features: ['Luxury 5-Star', 'Hot Tub', "Chef's Kitchen", 'Golf Course Views', 'Two Family Rooms', 'Mountain Views'],
-    wifi: { name: '{{WIFI_NAME}}', password: '{{WIFI_PASSWORD}}' },
-    doorCode: '{{DOOR_CODE}}',
-    parking: '{{PARKING_INSTRUCTIONS}}',
-    houseGuide: [
-      { title: 'Hot Tub', instructions: '{{HOT_TUB_INSTRUCTIONS}}', videoUrl: null },
-      { title: 'TV & Streaming', instructions: '{{TV_INSTRUCTIONS}}', videoUrl: null },
-      { title: "Chef's Kitchen", instructions: '{{KITCHEN_INSTRUCTIONS}}', videoUrl: null },
-      { title: 'Thermostat', instructions: '{{THERMOSTAT_INSTRUCTIONS}}', videoUrl: null },
-    ],
+    wifi: { name: '', password: '' },
+    doorCode: '',
+    parking: '',
+    houseGuide: [],
     kitchen: ["Chef's kitchen", 'High-end cookware', 'Premium coffee maker', 'Full appliances'],
     dining: [
       { name: 'Northstar Golf Course Grill', type: 'Restaurant/Golf', distance: 'On property', notes: '' },
@@ -138,26 +167,70 @@ export const properties: Record<string, Property> = {
       pets: 'No pets allowed',
       smoking: 'No smoking indoors',
       parties: 'No parties or events',
-      trash: '{{TRASH_INSTRUCTIONS}}',
+      trash: '',
     },
     emergency: {
       localPolice: '530-546-1212',
       fire: '911',
       hospital: 'Tahoe Forest Hospital, Truckee — 530-587-6011',
-      propertyManager: '{{MANAGER_PHONE}}',
-      propertyManagerEmail: '{{MANAGER_EMAIL}}',
+      propertyManager: '',
+      propertyManagerEmail: '',
     },
     reviewUrls: {
       airbnb: 'https://www.airbnb.com/rooms/746614',
-      google: '{{GOOGLE_REVIEW_URL}}',
+      google: '',
     },
   },
 };
 
+// Properties are built lazily client-side to support localStorage overrides
+let _cachedProperties: Record<string, Property> | null = null;
+
+function buildProperties(): Record<string, Property> {
+  return Object.fromEntries(
+    Object.entries(_baseProperties).map(([id, base]) => [id, mergeWithCMS(id, base)])
+  );
+}
+
+// Proxy to rebuild when accessed (handles localStorage changes)
+export function getProperties(): Record<string, Property> {
+  return buildProperties();
+}
+
+// Named export for backward compat — rebuilt on each access if needed
+export const properties: Record<string, Property> = new Proxy({} as Record<string, Property>, {
+  get(_target, prop: string) {
+    return buildProperties()[prop];
+  },
+  ownKeys() {
+    return Object.keys(_baseProperties);
+  },
+  has(_target, prop: string) {
+    return prop in _baseProperties;
+  },
+  getOwnPropertyDescriptor(_target, prop: string) {
+    if (prop in _baseProperties) return { enumerable: true, configurable: true };
+    return undefined;
+  },
+});
+
 export function getProperty(id: string): Property | undefined {
-  return properties[id];
+  return buildProperties()[id];
 }
 
 export function getAllPropertyIds(): string[] {
-  return Object.keys(properties);
+  return Object.keys(_baseProperties);
+}
+
+export function savePropertyOverride(propertyId: string, overrides: Partial<Property>): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const existing = JSON.parse(localStorage.getItem(`cms-override-${propertyId}`) || '{}');
+    localStorage.setItem(`cms-override-${propertyId}`, JSON.stringify({ ...existing, ...overrides }));
+  } catch {}
+}
+
+export function clearPropertyOverride(propertyId: string): void {
+  if (typeof window === 'undefined') return;
+  localStorage.removeItem(`cms-override-${propertyId}`);
 }
