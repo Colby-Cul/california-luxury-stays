@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import WelcomeBook from '@/components/WelcomeBook';
 
 export function generateStaticParams() {
@@ -5,5 +6,9 @@ export function generateStaticParams() {
 }
 
 export default function WelcomeBookPage({ params }: { params: { property: string } }) {
-  return <WelcomeBook propertyId={params.property} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <WelcomeBook propertyId={params.property} />
+    </Suspense>
+  );
 }

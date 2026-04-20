@@ -92,7 +92,7 @@ export default function CheckoutGuide({ propertyId }: { propertyId: string }) {
 
   return (
     <>
-      <NavigationBar currentProperty={propertyId} />
+      <NavigationBar currentProperty={propertyId} mode="checkout" />
 
       <main className="pt-20 pb-12 px-4 max-w-2xl mx-auto min-h-screen">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>

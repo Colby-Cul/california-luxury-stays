@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { properties } from '@/data/properties';
 import NavigationBar from '@/components/NavigationBar';
 import SectionProgress from '@/components/SectionProgress';
 import ShareButton from '@/components/ShareButton';
+import { useLodgifyBooking } from '@/hooks/useLodgifyBooking';
 
 const sectionLabels = [
   'Welcome',
@@ -28,6 +30,9 @@ const slideVariants = {
 
 export default function WelcomeBook({ propertyId }: { propertyId: string }) {
   const property = properties[propertyId];
+  const searchParams = useSearchParams();
+  const bookingIdOverride = searchParams ? Number(searchParams.get('booking')) || null : null;
+  const { booking } = useLodgifyBooking(propertyId, bookingIdOverride);
 
   const [section, setSection] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -70,11 +75,24 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
       <div className="aspect-[16/9] w-full max-w-2xl bg-luxury-gray rounded-2xl mb-8 flex items-center justify-center border border-white/5">
         <span className="text-luxury-muted">Property Hero Photo</span>
       </div>
-      <h1 className="font-serif text-3xl md:text-5xl text-white mb-3">{property.name}</h1>
+      <h1 className="font-serif text-3xl md:text-5xl text-white mb-3">
+        {booking?.guestFirstName ? `Welcome, ${booking.guestFirstName}!` : property.name}
+      </h1>
       <p className="text-gold text-lg mb-2">{property.subtitle}</p>
-      <p className="text-luxury-muted max-w-md">
-        Welcome to your stay! We&apos;re thrilled to have you. This guide has everything you need for a wonderful visit.
-      </p>
+      {booking ? (
+        <div className="space-y-2">
+          <p className="text-luxury-muted max-w-md">
+            Your stay runs <span className="text-white">{booking.checkIn}</span> to <span className="text-white">{booking.checkOut}</span>.
+          </p>
+          {booking.people > 0 && (
+            <p className="text-luxury-muted text-sm">{booking.people} {booking.people === 1 ? 'guest' : 'guests'} · {property.name}</p>
+          )}
+        </div>
+      ) : (
+        <p className="text-luxury-muted max-w-md">
+          Welcome to your stay! We&apos;re thrilled to have you. This guide has everything you need for a wonderful visit.
+        </p>
+      )}
     </div>,
 
     // 1: Property Details
@@ -261,7 +279,7 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
 
   return (
     <>
-      <NavigationBar currentProperty={propertyId} />
+      <NavigationBar currentProperty={propertyId} mode="welcome" />
       <SectionProgress
         current={section}
         total={sectionLabels.length}

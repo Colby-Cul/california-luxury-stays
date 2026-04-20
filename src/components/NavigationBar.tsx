@@ -3,29 +3,66 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-export default function NavigationBar({ currentProperty }: { currentProperty?: string }) {
+interface NavProps {
+  currentProperty?: string;
+  mode?: 'welcome' | 'checkout' | 'qr' | 'home';
+}
+
+export default function NavigationBar({ currentProperty, mode = 'welcome' }: NavProps) {
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className="fixed top-0 left-0 right-0 z-50 bg-luxury-black/90 backdrop-blur-md border-b border-white/5 no-print"
     >
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="font-serif text-lg text-gold">California Luxury Stays</span>
+      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-2">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <span className="font-serif text-base sm:text-lg text-gold leading-tight">
+            <span className="hidden sm:inline">California </span>Luxury Stays
+          </span>
         </Link>
-        <div className="flex items-center gap-4 text-sm">
+
+        {/* Links */}
+        <div className="flex items-center gap-1 sm:gap-4 text-xs sm:text-sm overflow-x-auto">
+          {currentProperty && (
+            <>
+              <Link
+                href={`/welcome/${currentProperty}`}
+                className={`whitespace-nowrap px-2 py-1 rounded transition-colors ${
+                  mode === 'welcome' ? 'text-gold' : 'text-luxury-muted hover:text-white'
+                }`}
+              >
+                Welcome
+              </Link>
+              <Link
+                href={`/checkout/${currentProperty}`}
+                className={`whitespace-nowrap px-2 py-1 rounded transition-colors ${
+                  mode === 'checkout' ? 'text-gold' : 'text-luxury-muted hover:text-white'
+                }`}
+              >
+                Checkout
+              </Link>
+              <span className="text-white/10 hidden sm:inline">|</span>
+            </>
+          )}
           <Link
             href="/welcome/graeagle"
-            className={`transition-colors ${currentProperty === 'graeagle' ? 'text-gold' : 'text-luxury-muted hover:text-white'}`}
+            className={`whitespace-nowrap px-2 py-1 rounded transition-colors ${
+              currentProperty === 'graeagle' ? 'text-white/60' : 'text-luxury-muted hover:text-white'
+            }`}
           >
-            Graeagle
+            <span className="hidden sm:inline">Graeagle</span>
+            <span className="sm:hidden">GAE</span>
           </Link>
           <Link
             href="/welcome/northstar"
-            className={`transition-colors ${currentProperty === 'northstar' ? 'text-gold' : 'text-luxury-muted hover:text-white'}`}
+            className={`whitespace-nowrap px-2 py-1 rounded transition-colors ${
+              currentProperty === 'northstar' ? 'text-white/60' : 'text-luxury-muted hover:text-white'
+            }`}
           >
-            Northstar
+            <span className="hidden sm:inline">Northstar</span>
+            <span className="sm:hidden">NST</span>
           </Link>
         </div>
       </div>
