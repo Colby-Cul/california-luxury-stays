@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/california-luxury-stays',
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
