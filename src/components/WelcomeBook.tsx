@@ -9,6 +9,7 @@ import NavigationBar from '@/components/NavigationBar';
 import SectionProgress from '@/components/SectionProgress';
 import ShareButton from '@/components/ShareButton';
 import { useLodgifyBooking } from '@/hooks/useLodgifyBooking';
+import ContactGate from '@/components/ContactGate';
 
 const sectionLabels = [
   'Welcome',
@@ -278,7 +279,7 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
   ];
 
   return (
-    <>
+    <ContactGate propertySlug={propertyId} propertyName={property.name}>
       <NavigationBar currentProperty={propertyId} mode="welcome" />
       <SectionProgress
         current={section}
@@ -351,6 +352,6 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
           </button>
         </div>
       </div>
-    </>
+    </ContactGate>
   );
 }
