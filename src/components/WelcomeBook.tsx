@@ -17,7 +17,8 @@ const sectionLabels = [
   'Access',
   'House Guide',
   'Kitchen',
-  'Dining & Activities',
+  'Dining',
+  'Area Guide',
   'House Rules',
   'Emergency',
   'Thank You',
@@ -135,7 +136,12 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
       <div className="space-y-4">
         <div className="luxury-card p-5">
           <h3 className="text-gold text-sm uppercase tracking-wider mb-2">Door Code</h3>
-          <p className="text-white text-xl font-mono">{property.doorCode}</p>
+          <p className="text-white text-xl font-mono">
+            {booking?.accessCode ?? property.doorCode}
+          </p>
+          {booking?.accessCode && booking.accessCode !== property.doorCode && (
+            <p className="text-luxury-muted text-xs mt-1">Personalized code for your reservation</p>
+          )}
         </div>
         <div className="luxury-card p-5">
           <h3 className="text-gold text-sm uppercase tracking-wider mb-2">WiFi</h3>
@@ -182,42 +188,67 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
       </div>
     </div>,
 
-    // 5: Dining & Activities
+    // 5: Dining
     <div key="dining" className="max-w-2xl mx-auto px-4">
-      <h2 className="font-serif text-3xl text-white mb-6">Dining &amp; Activities</h2>
-      <div className="space-y-6">
-        <div>
-          <h3 className="text-gold text-sm uppercase tracking-wider mb-3">Nearby Dining</h3>
-          <div className="space-y-3">
-            {property.dining.map((d) => (
-              <div key={d.name} className="luxury-card p-4 flex justify-between items-start">
-                <div>
-                  <p className="text-white font-medium">{d.name}</p>
-                  <p className="text-luxury-muted text-sm">{d.type}</p>
-                  {d.notes && <p className="text-gold/60 text-xs mt-1">{d.notes}</p>}
-                </div>
-                <span className="text-gold text-sm whitespace-nowrap">{d.distance}</span>
-              </div>
-            ))}
+      <h2 className="font-serif text-3xl text-white mb-6">Dining</h2>
+      <div className="space-y-3">
+        {property.dining.map((d) => (
+          <div key={d.name} className="luxury-card p-4 flex justify-between items-start">
+            <div>
+              <p className="text-white font-medium">{d.name}</p>
+              <p className="text-luxury-muted text-sm">{d.type}</p>
+              {d.notes && <p className="text-gold/60 text-xs mt-1">{d.notes}</p>}
+            </div>
+            <span className="text-gold text-sm whitespace-nowrap ml-3">{d.distance}</span>
           </div>
-        </div>
-        <div>
-          <h3 className="text-gold text-sm uppercase tracking-wider mb-3">Activities</h3>
-          <div className="luxury-card p-5">
-            <ul className="space-y-2">
-              {property.activities.map((a) => (
-                <li key={a} className="flex items-center gap-3 text-luxury-muted text-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
-                  {a}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        ))}
       </div>
     </div>,
 
-    // 6: House Rules
+    // 6: Area Guide (local recommendations)
+    <div key="area" className="max-w-2xl mx-auto px-4">
+      <h2 className="font-serif text-3xl text-white mb-6">Area Guide</h2>
+      {property.localRecommendations && property.localRecommendations.length > 0 ? (
+        <div className="space-y-6">
+          {property.localRecommendations.map((cat) => (
+            <div key={cat.category}>
+              <h3 className="text-gold text-sm uppercase tracking-wider mb-3">
+                {cat.emoji} {cat.category}
+              </h3>
+              <div className="space-y-2">
+                {cat.items.map((item) => (
+                  <div key={item.name} className="luxury-card p-4">
+                    <div className="flex justify-between items-start mb-1">
+                      <p className="text-white font-medium text-sm">{item.name}</p>
+                      {item.distance && (
+                        <span className="text-gold text-xs whitespace-nowrap ml-3">{item.distance}</span>
+                      )}
+                    </div>
+                    <p className="text-luxury-muted text-xs">{item.description}</p>
+                    {item.tip && (
+                      <p className="text-gold/70 text-xs mt-1 italic">💡 {item.tip}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="luxury-card p-5">
+          <ul className="space-y-2">
+            {property.activities.map((a) => (
+              <li key={a} className="flex items-center gap-3 text-luxury-muted text-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
+                {a}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>,
+
+    // 7: House Rules
     <div key="rules" className="max-w-2xl mx-auto px-4">
       <h2 className="font-serif text-3xl text-white mb-6">House Rules</h2>
       <div className="luxury-card p-6 space-y-4">
@@ -237,7 +268,7 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
       </div>
     </div>,
 
-    // 7: Emergency & Contact
+    // 8: Emergency & Contact
     <div key="emergency" className="max-w-2xl mx-auto px-4">
       <h2 className="font-serif text-3xl text-white mb-6">Emergency &amp; Contact</h2>
       <div className="space-y-4">
@@ -266,7 +297,7 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
       </div>
     </div>,
 
-    // 8: Thank You
+    // 9: Thank You
     <div key="thankyou" className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
       <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">Thank You!</h2>
       <p className="text-luxury-muted max-w-md mb-8">

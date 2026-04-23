@@ -1,73 +1,79 @@
 #!/usr/bin/env node
 /**
  * sync-lodgify.mjs
- * Pulls upcoming reservations from the Lodgify API and writes them to
- * bookings.json (served as a static asset alongside the Next.js export).
+ * ----------------
+ * Fetches live reservations from the Lodgify API for all CLS properties
+ * and writes the result to:
+ *   public/bookings.json  (served at runtime by Next.js / GitHub Pages)
+ *   bookings.json         (root-level snapshot for reference / admin)
  *
- * Usage:
- *   LODGIFY_API_KEY=<key> node scripts/sync-lodgify.mjs
+ * Requires:
+ *   LODGIFY_API_KEY env var — add as a GitHub Actions secret:
+ *     Repository → Settings → Secrets → Actions → New repository secret
+ *     Name: LODGIFY_API_KEY
  *
- * Options (env vars):
- *   LODGIFY_API_KEY     — required
- *   LODGIFY_DATE_FROM   — ISO date, default: today
- *   LODGIFY_DATE_TO     — ISO date, default: 18 months from today
- *   LODGIFY_INCLUDE_ALL — 'true' to include all statuses (default: active only)
- *   DRY_RUN             — 'true' to print without writing
+ * Falls back gracefully (non-zero exit NOT thrown) if:
+ *   - API key is missing
+ *   - Lodgify API is down or returns an error
  */
 
-import { writeFileSync, readFileSync, existsSync } from 'fs';
-import { resolve, dirname } from 'path';
+import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = resolve(__dirname, '..');
-const OUTPUT_PATH = resolve(ROOT, 'bookings.json');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// ─── Lodgify config ───────────────────────────────────────────────────────────
-const API_KEY = process.env.LODGIFY_API_KEY;
-if (!API_KEY) {
-  console.error('❌  LODGIFY_API_KEY is not set. Export it before running this script.');
-  process.exit(1);
-}
+const LODGIFY_BASE_URL = 'https://api.lodgify.com/v2';
 
-const BASE_URL = 'https://api.lodgify.com/v2';
-const ACTIVE_STATUSES = new Set(['Open', 'Booked']);
-
-const today = new Date();
-const eighteenMonthsOut = new Date(today);
-eighteenMonthsOut.setMonth(eighteenMonthsOut.getMonth() + 18);
-
-const DATE_FROM = process.env.LODGIFY_DATE_FROM ?? today.toISOString().slice(0, 10);
-const DATE_TO = process.env.LODGIFY_DATE_TO ?? eighteenMonthsOut.toISOString().slice(0, 10);
-const INCLUDE_ALL = process.env.LODGIFY_INCLUDE_ALL === 'true';
-const DRY_RUN = process.env.DRY_RUN === 'true';
-
-// Property map (slug → Lodgify ID)
+// Property slug → Lodgify property ID
 const PROPERTIES = {
   graeagle: 533203,
   northstar: 746614,
 };
 
-// ─── API helpers ──────────────────────────────────────────────────────────────
+// Reservation statuses considered "active" (has a real guest)
+const ACTIVE_STATUSES = new Set(['Open', 'Booked']);
 
-async function fetchPage(propertyId, page, size = 50) {
+/** Normalise a raw Lodgify reservation into the app's shape */
+function normalise(raw) {
+  return {
+    id: raw.id,
+    arrival: (raw.arrival || '').slice(0, 10),
+    departure: (raw.departure || '').slice(0, 10),
+    property_id: raw.property_id,
+    guest: {
+      name: raw.guest?.name ?? '',
+      phone: raw.guest?.phone_number ?? null,
+      email: raw.guest?.email ?? null,
+    },
+    people: raw.people ?? 0,
+    status: raw.status,
+    source: raw.source,
+    // Notes field may contain host-entered access codes
+    notes: raw.notes ?? null,
+    // Lodgify may expose door/access codes on higher plan tiers
+    accessCode: raw.access_code ?? raw.door_code ?? null,
+  };
+}
+
+async function fetchPage(apiKey, propertyId, page, pageSize, dateFrom, dateTo) {
   const params = new URLSearchParams({
     includeOnRequest: 'true',
     page: String(page),
-    size: String(size),
-    dateFrom: DATE_FROM,
-    dateTo: DATE_TO,
-    propertyId: String(propertyId),
+    size: String(pageSize),
+    dateFrom,
+    dateTo,
   });
+  if (propertyId) params.set('propertyId', String(propertyId));
 
-  const url = `${BASE_URL}/reservations?${params}`;
+  const url = `${LODGIFY_BASE_URL}/reservations?${params}`;
   const res = await fetch(url, {
-    headers: { 'X-ApiKey': API_KEY, Accept: 'application/json' },
+    headers: { 'X-ApiKey': apiKey, Accept: 'application/json' },
   });
 
   if (!res.ok) {
     const body = await res.text().catch(() => '');
-    throw new Error(`Lodgify ${res.status} for property ${propertyId}: ${body}`);
+    throw new Error(`Lodgify API ${res.status}: ${body.slice(0, 200)}`);
   }
 
   const data = await res.json();
@@ -76,126 +82,71 @@ async function fetchPage(propertyId, page, size = 50) {
   return { items, total };
 }
 
-async function fetchAllReservations(propertyId) {
-  const pageSize = 50;
-  let page = 1;
-  let fetched = 0;
-  let total = null;
+async function fetchAllReservations(apiKey) {
+  const today = new Date();
+  const dateFrom = today.toISOString().slice(0, 10);
+  const oneYearOut = new Date(today);
+  oneYearOut.setFullYear(oneYearOut.getFullYear() + 1);
+  const dateTo = oneYearOut.toISOString().slice(0, 10);
+
+  const PAGE_SIZE = 50;
   const all = [];
 
-  while (true) {
-    const { items, total: t } = await fetchPage(propertyId, page, pageSize);
-    if (total === null && t !== null) total = t;
+  for (const [slug, propertyId] of Object.entries(PROPERTIES)) {
+    console.log(`  📋 ${slug} (Lodgify ID ${propertyId})…`);
+    let page = 1;
+    let fetched = 0;
+    let total = null;
 
-    all.push(...items);
-    fetched += items.length;
+    do {
+      const { items, total: t } = await fetchPage(apiKey, propertyId, page, PAGE_SIZE, dateFrom, dateTo);
+      if (total === null && t !== null) total = t;
 
-    if (items.length < pageSize || (total !== null && fetched >= total)) break;
-    page++;
+      const active = items.filter((r) => ACTIVE_STATUSES.has(r.status));
+      all.push(...active.map(normalise));
+      fetched += items.length;
+
+      const done = items.length < PAGE_SIZE || (total !== null && fetched >= total);
+      if (done) break;
+      page++;
+    } while (true);
+
+    const count = all.filter((b) => b.property_id === propertyId).length;
+    console.log(`     → ${count} active reservation(s)`);
   }
 
   return all;
 }
 
-function normalise(raw, propertyId) {
-  return {
-    id: raw.id,
-    arrival: (raw.arrival ?? '').slice(0, 10),
-    departure: (raw.departure ?? '').slice(0, 10),
-    property_id: propertyId,
-    guest: {
-      name: raw.guest?.name ?? '',
-      phone: raw.guest?.phone_number ?? null,
-      email: raw.guest?.email ?? null,
-    },
-    people: raw.people ?? 0,
-    status: raw.status,
-    source: raw.source ?? '',
-  };
-}
-
-// ─── Main ─────────────────────────────────────────────────────────────────────
-
 async function main() {
-  console.log('🏠  Lodgify Booking Sync');
-  console.log(`   Date range : ${DATE_FROM} → ${DATE_TO}`);
-  console.log(`   Include all: ${INCLUDE_ALL}`);
-  console.log(`   Dry run    : ${DRY_RUN}`);
-  console.log('');
+  const apiKey = process.env.LODGIFY_API_KEY;
 
-  const bookings = [];
-  let totalFetched = 0;
-  let totalKept = 0;
-
-  for (const [slug, propertyId] of Object.entries(PROPERTIES)) {
-    console.log(`📋  Fetching ${slug} (ID: ${propertyId})...`);
-    try {
-      const raw = await fetchAllReservations(propertyId);
-      totalFetched += raw.length;
-
-      const filtered = INCLUDE_ALL
-        ? raw
-        : raw.filter((r) => ACTIVE_STATUSES.has(r.status));
-
-      const normalised = filtered.map((r) => normalise(r, propertyId));
-      bookings.push(...normalised);
-      totalKept += normalised.length;
-
-      console.log(`   ✓ ${raw.length} fetched, ${normalised.length} kept`);
-
-      // Brief summary per booking
-      for (const b of normalised) {
-        console.log(`     [${b.status}] ${b.id} | ${b.guest.name} | ${b.arrival} → ${b.departure}`);
-      }
-    } catch (err) {
-      console.error(`   ✗ Error for ${slug}: ${err.message}`);
-    }
+  if (!apiKey) {
+    console.warn('⚠️  LODGIFY_API_KEY not set — skipping sync, using existing bookings.json');
+    process.exit(0);
   }
 
-  // Sort ascending by arrival
-  bookings.sort((a, b) => a.arrival.localeCompare(b.arrival));
+  console.log('🔄 Syncing Lodgify reservations…');
 
-  console.log('');
-  console.log(`📊  Summary: ${totalFetched} fetched, ${totalKept} written`);
+  try {
+    const bookings = await fetchAllReservations(apiKey);
+    const json = JSON.stringify(bookings, null, 2);
 
-  if (DRY_RUN) {
-    console.log('\n--- DRY RUN (not writing) ---');
-    console.log(JSON.stringify(bookings, null, 2));
-    return;
+    // Write to public/ (served at runtime)
+    const publicPath = path.join(__dirname, '..', 'public', 'bookings.json');
+    fs.writeFileSync(publicPath, json, 'utf-8');
+
+    // Also write to root (snapshot for admin/debug)
+    const rootPath = path.join(__dirname, '..', 'bookings.json');
+    fs.writeFileSync(rootPath, json, 'utf-8');
+
+    console.log(`✅ Synced ${bookings.length} reservation(s) → public/bookings.json`);
+  } catch (err) {
+    console.error('❌ Lodgify sync failed:', err.message);
+    console.warn('   Continuing with existing bookings.json — build will not be blocked.');
+    // Graceful degradation — do NOT throw
+    process.exit(0);
   }
-
-  // Preserve any local-only entries that came from non-Lodgify sources
-  // (e.g., manual entries with property_id not in PROPERTIES)
-  let existing = [];
-  if (existsSync(OUTPUT_PATH)) {
-    try {
-      existing = JSON.parse(readFileSync(OUTPUT_PATH, 'utf8'));
-    } catch {}
-  }
-
-  const lodgifyIds = new Set(bookings.map((b) => b.id));
-  const preserved = existing.filter(
-    (b) => !Object.values(PROPERTIES).includes(b.property_id) && !lodgifyIds.has(b.id)
-  );
-
-  if (preserved.length > 0) {
-    console.log(`   Preserving ${preserved.length} non-Lodgify manual entries`);
-  }
-
-  const final = [...bookings, ...preserved].sort((a, b) =>
-    a.arrival.localeCompare(b.arrival)
-  );
-
-  writeFileSync(OUTPUT_PATH, JSON.stringify(final, null, 2) + '\n');
-  console.log(`✅  Written to ${OUTPUT_PATH}`);
-
-  // Also write to public/ so the static export picks it up
-  const publicPath = resolve(ROOT, 'public', 'bookings.json');
-  writeFileSync(publicPath, JSON.stringify(final, null, 2) + '\n');
-  console.log(`✅  Mirrored to ${publicPath}`);
 }
 
-main().catch((err) => {
-  console.error('Fatal:', err);
-  process.exit(1);
-});
+main();

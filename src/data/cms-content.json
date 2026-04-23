@@ -38,8 +38,64 @@
         "videoUrl": null
       }
     ],
+    "localRecommendations": [
+      {
+        "category": "Dining",
+        "emoji": "🍽️",
+        "items": [
+          { "name": "Knotty Pine Bar & Restaurant", "description": "Local favorite — great burgers, cold beers, and mountain atmosphere.", "distance": "Walkable", "tip": "Best spot for a casual dinner without driving." },
+          { "name": "Graeagle Landing", "description": "Casual lakeside dining with burgers, sandwiches, and gorgeous views.", "distance": "5 min", "tip": "Great for lunch by the water." },
+          { "name": "Mohawk Valley Grill", "description": "Classic American comfort food, family-friendly.", "distance": "10 min", "tip": "" }
+        ]
+      },
+      {
+        "category": "Golf",
+        "emoji": "⛳",
+        "items": [
+          { "name": "Graeagle Meadows Golf Course", "description": "Championship 18-hole course along Graeagle Creek. Stunning mountain views.", "distance": "5 min", "tip": "Book tee times in advance during peak summer season." },
+          { "name": "Plumas Pines Golf Resort", "description": "Another excellent course with forested fairways.", "distance": "10 min", "tip": "" },
+          { "name": "Dragon Golf at Black Bear", "description": "Challenging 18-hole course with dramatic elevation changes.", "distance": "20 min", "tip": "" }
+        ]
+      },
+      {
+        "category": "Outdoor Adventures",
+        "emoji": "🏔️",
+        "items": [
+          { "name": "Feather River Canyon", "description": "Spectacular canyon with world-class fishing, swimming holes, and hiking.", "distance": "15 min", "tip": "Bring sunscreen — the canyon heats up fast in summer." },
+          { "name": "Lake Davis", "description": "Pristine mountain lake known for excellent fishing and kayaking.", "distance": "20 min", "tip": "Pick up fishing licenses in Portola." },
+          { "name": "Gold Lake", "description": "Stunning alpine lake in the Lakes Basin recreation area.", "distance": "25 min", "tip": "Arrive early — parking fills up on weekends." },
+          { "name": "Graeagle Tennis & Pickleball Courts", "description": "Free public courts just down the street.", "distance": "Walkable", "tip": "" },
+          { "name": "Haskell Peak Trail", "description": "4-mile summit hike with 360° views of the Sierra Nevada.", "distance": "20 min", "tip": "" }
+        ]
+      },
+      {
+        "category": "Shopping & Essentials",
+        "emoji": "🛒",
+        "items": [
+          { "name": "Portola Save Mart", "description": "Full-service grocery store.", "distance": "15 min", "tip": "Stock up here — options are limited in Graeagle itself." },
+          { "name": "Plumas District Hospital", "description": "Full emergency services.", "distance": "15 min (Quincy)", "tip": "530-283-2121" },
+          { "name": "Graeagle General Store", "description": "Convenience items, ice, snacks, and local gifts.", "distance": "5 min", "tip": "" }
+        ]
+      }
+    ],
+    "checkoutTasks": [
+      { "id": "g-dishes", "category": "Kitchen", "label": "Load dishwasher and start it" },
+      { "id": "g-counters", "category": "Kitchen", "label": "Wipe down kitchen counters and stove top" },
+      { "id": "g-trash-inside", "category": "Kitchen", "label": "Bag all indoor trash" },
+      { "id": "g-trash-outside", "category": "Trash", "label": "Take all trash bags to outdoor bins" },
+      { "id": "g-recycling", "category": "Trash", "label": "Sort recycling into blue bin" },
+      { "id": "g-beds", "category": "Linens", "label": "Strip all beds and pile linens in the laundry room" },
+      { "id": "g-fireplace", "category": "Before You Leave", "label": "Ensure fireplace damper is closed and fire is fully out" },
+      { "id": "g-thermostat", "category": "Before You Leave", "label": "Set thermostat to 65°F" },
+      { "id": "g-lights", "category": "Before You Leave", "label": "Turn off all lights and fans" },
+      { "id": "g-doors", "category": "Before You Leave", "label": "Lock all doors and windows" },
+      { "id": "g-keyfob", "category": "Before You Leave", "label": "Leave key fob on the kitchen counter" },
+      { "id": "g-belongings", "category": "Final Check", "label": "Check all rooms for personal belongings" },
+      { "id": "g-chargers", "category": "Final Check", "label": "Check outlets for phone chargers and cables" },
+      { "id": "g-feedback", "category": "Final Check", "label": "Leave us a review — we appreciate it!" }
+    ],
     "emergency": {
-      "propertyManager": "530-555-0187",
+      "propertyManager": "916-705-4374",
       "propertyManagerEmail": "host@californialuxurystays.com"
     },
     "reviewUrls": {
@@ -52,43 +108,122 @@
   },
   "northstar": {
     "wifi": {
-      "name": "NorthstarLux_WiFi",
-      "password": "tahoe2024!"
+      "name": "210 Bitter Brush",
+      "password": "BearBox2025**"
     },
     "doorCode": "8312#",
     "parking": "Two reserved spots in the covered garage (spaces 14 and 15). Guest overflow in the upper lot — turn left at the gate. No street parking in the village.",
     "houseGuide": [
       {
         "title": "Hot Tub",
-        "instructions": "The hot tub is pre-heated to 102°F. Lift the cover fully and fold to the side — use the velcro strap to secure it. Jets are controlled by the panel on the side: press 'Jets 1' for standard, 'Jets 2' for full power. Replace the cover after each use and ensure the latches are secured. Do not add soaps or oils. Max occupancy: 6 persons.",
+        "instructions": "Remove the cover COMPLETELY — flip it over the support bar and use the velcro strap to secure it. Do not leave the cover partially on. Jets: press 'Jets 1' for standard, 'Jets 2' for full power. Set temperature using the arrow buttons on the digital panel (recommended 103–104°F — do not exceed 104°F). Replace and latch the cover after every use. Max occupancy: 5 people. No glass containers near the spa.",
         "videoUrl": null
       },
       {
-        "title": "TV & Streaming",
-        "instructions": "Each room has an Apple TV. Use the Siri Remote to navigate. Press and hold the microphone button to use Siri. Netflix, Hulu, Peacock, and Disney+ are pre-loaded. For the main family room, use the Bang & Olufsen soundbar remote for audio — found in the credenza drawer.",
+        "title": "Fireplaces",
+        "instructions": "Family Room & Dining Room fireplaces are remote controlled — use the remotes on the coffee table and dining credenza. Upstairs bedroom fireplace is thermostat controlled. Turn all fireplaces off before leaving. If you see error codes on any fireplace panel, text 916-705-4374 immediately — do not attempt to reset.",
         "videoUrl": null
       },
       {
         "title": "Chef's Kitchen",
-        "instructions": "The Sub-Zero fridge uses the built-in ice maker — ice is dispensed from the door panel. The Wolf 6-burner range requires you to press and hold the igniter for 2 seconds before the gas catches. The Miele dishwasher is loaded from the top — use the pods in the cabinet under the sink. Do not use the Wolf grill for high-smoke items indoors.",
+        "instructions": "Sub-Zero fridge dispenses ice from the door panel. Wolf 6-burner range: press and hold the igniter 2 seconds before gas catches. Miele dishwasher loads from the top — pods are under the sink. Do not use the Wolf indoor grill for high-smoke items. Viking wine cooler is pre-set to 55°F.",
+        "videoUrl": null
+      },
+      {
+        "title": "TV & Streaming",
+        "instructions": "Each room has an Apple TV. Use the Siri Remote to navigate — press and hold the mic button for Siri. Netflix, Hulu, Peacock, and Disney+ are pre-loaded. For the main family room, use the Bang & Olufsen soundbar remote (in the credenza drawer) for audio.",
+        "videoUrl": null
+      },
+      {
+        "title": "Humidifiers",
+        "instructions": "Two whole-home humidifiers maintain comfortable mountain humidity. They run automatically — no action needed during your stay. Before checkout, please empty both water tanks and power off both units. Cleaning supplies are under the kitchen sink if tanks need a rinse.",
         "videoUrl": null
       },
       {
         "title": "Thermostat",
-        "instructions": "Ecobee thermostats are in each zone (main floor, upstairs). Set your preferred temperature using the touchscreen. The snowflake icon means cooling, flame = heating. Please set to 65°F when checking out. Radiant floor heat in the primary bath takes 20 minutes to warm — thermostat is on the bathroom wall.",
+        "instructions": "Ecobee thermostats are in each zone (main floor, upstairs). Set your preferred temperature using the touchscreen — snowflake = cooling, flame = heating. Please set all thermostats to 65°F at checkout. Radiant floor heat in the primary bath takes 20 minutes to warm — the thermostat is on the bathroom wall.",
         "videoUrl": null
       }
     ],
+    "localRecommendations": [
+      {
+        "category": "Skiing & Snow Sports",
+        "emoji": "🎿",
+        "items": [
+          { "name": "Northstar California Resort", "description": "World-class skiing and snowboarding literally 5 minutes away. Download the app for FREE shuttle pickup/dropoff from our driveway.", "distance": "5 min", "tip": "Free tram service via the Northstar app — highly recommend." },
+          { "name": "Palisades Tahoe", "description": "Legendary resort with Palisades + Alpine Meadows terrain. World-class steeps and a massive village.", "distance": "30 min", "tip": "Go mid-week for lighter crowds." },
+          { "name": "Sugar Bowl", "description": "Quaint, less-crowded mountain with great terrain variety.", "distance": "20 min", "tip": "" },
+          { "name": "Tahoe Rim Trail (Snowshoe)", "description": "Stunning snowshoe trails with views across the entire basin.", "distance": "15 min", "tip": "" },
+          { "name": "Northstar Ice Rink", "description": "Outdoor ice skating in the Northstar Village — fun for all ages.", "distance": "5 min", "tip": "" }
+        ]
+      },
+      {
+        "category": "Dining",
+        "emoji": "🍽️",
+        "items": [
+          { "name": "Moody's Bistro Bar & Beats", "description": "Upscale mountain dining with live music. Best fine dining in Truckee.", "distance": "10 min", "tip": "Reservations required — book on OpenTable." },
+          { "name": "Coffeebar Truckee", "description": "Best espresso in the area. Local favorite and perfect morning stop.", "distance": "10 min", "tip": "" },
+          { "name": "Squeeze In", "description": "Legendary breakfast spot, famous for enormous omelets.", "distance": "10 min", "tip": "Expect a wait on weekends — worth it." },
+          { "name": "Trokay Brewing Company", "description": "Local craft beer and pub food. Perfect après-ski.", "distance": "10 min", "tip": "" },
+          { "name": "Pianeta Ristorante", "description": "Authentic Italian with an excellent wine list. Romantic atmosphere.", "distance": "10 min", "tip": "" },
+          { "name": "Jax at the Tracks", "description": "Steakhouse in a historic train car — a uniquely Truckee experience.", "distance": "10 min", "tip": "" }
+        ]
+      },
+      {
+        "category": "Golf & Summer Activities",
+        "emoji": "⛳",
+        "items": [
+          { "name": "Northstar Golf Course", "description": "Championship course right on our property — golf course views from the hot tub deck.", "distance": "Walking distance", "tip": "Tee times available at northstarcalifornia.com" },
+          { "name": "Coyote Moon Golf Course", "description": "Jack Nicklaus design through the pines. Stunning.", "distance": "15 min", "tip": "" },
+          { "name": "Northstar Bike Park", "description": "World-class lift-served mountain biking in summer.", "distance": "5 min", "tip": "" },
+          { "name": "Lake Tahoe Beaches", "description": "Kings Beach and Tahoe City are the closest. Crystal-clear water.", "distance": "20 min", "tip": "" },
+          { "name": "Donner Lake", "description": "Scenic lake great for swimming, paddleboarding, and history walks.", "distance": "15 min", "tip": "" }
+        ]
+      },
+      {
+        "category": "Shopping & Essentials",
+        "emoji": "🛒",
+        "items": [
+          { "name": "Safeway Truckee", "description": "Full-service grocery open 6 AM – 1 AM daily.", "distance": "10 min", "tip": "11429 Donner Pass Rd" },
+          { "name": "Tahoe Forest Hospital", "description": "Full emergency services.", "distance": "10 min", "tip": "530-587-6011 · 10121 Pine Ave, Truckee" },
+          { "name": "CVS Pharmacy", "description": "24-hour pharmacy.", "distance": "10 min", "tip": "11541 Deerfield Dr" },
+          { "name": "Historic Downtown Truckee", "description": "Shops, galleries, restaurants, and railroad history along the main street.", "distance": "10 min", "tip": "" }
+        ]
+      }
+    ],
+    "checkoutTasks": [
+      { "id": "n-hottub", "category": "Hot Tub", "label": "Replace hot tub cover and secure ALL latches" },
+      { "id": "n-hottub-area", "category": "Hot Tub", "label": "Remove towels and personal items from spa area" },
+      { "id": "n-fp-family", "category": "Fireplaces", "label": "Turn off family room fireplace (remote on coffee table)" },
+      { "id": "n-fp-dining", "category": "Fireplaces", "label": "Turn off dining room fireplace (remote in credenza)" },
+      { "id": "n-fp-upstairs", "category": "Fireplaces", "label": "Turn off upstairs bedroom fireplace (thermostat on wall)" },
+      { "id": "n-humidifier", "category": "Humidifiers", "label": "Empty both humidifier water tanks completely" },
+      { "id": "n-humidifier-off", "category": "Humidifiers", "label": "Power off both humidifier units" },
+      { "id": "n-dishes", "category": "Kitchen", "label": "Load dishwasher with pods under the sink and start" },
+      { "id": "n-counters", "category": "Kitchen", "label": "Wipe down kitchen counters" },
+      { "id": "n-trash", "category": "Trash", "label": "Take all trash to garage bins" },
+      { "id": "n-recycling", "category": "Trash", "label": "Separate recycling into blue bin in garage alcove" },
+      { "id": "n-beds", "category": "Linens", "label": "Strip all beds and pile linens in laundry room" },
+      { "id": "n-thermostat", "category": "Before You Leave", "label": "Set ALL thermostats to 65°F" },
+      { "id": "n-lights", "category": "Before You Leave", "label": "Turn off all lights and electronics" },
+      { "id": "n-doors", "category": "Before You Leave", "label": "Lock all doors and windows" },
+      { "id": "n-keyfob", "category": "Before You Leave", "label": "Leave key fobs and garage clickers on the entry table" },
+      { "id": "n-belongings", "category": "Final Check", "label": "Check all rooms and outdoor areas for personal belongings" },
+      { "id": "n-chargers", "category": "Final Check", "label": "Check outlets for chargers — especially bedrooms" },
+      { "id": "n-feedback", "category": "Final Check", "label": "Leave us a review — we'd love to hear from you!" }
+    ],
     "emergency": {
-      "propertyManager": "530-555-0294",
+      "propertyManager": "916-705-4374",
       "propertyManagerEmail": "host@californialuxurystays.com"
     },
     "reviewUrls": {
       "google": "https://g.page/r/CdS5lAnmYjxBEBM/review"
     },
     "houseRules": {
-      "trash": "Trash and recycling bins are in the garage alcove. Trash pickup is Tuesday. Roll bins to the curb on Monday night — follow the property manager's instructions for the correct spot."
+      "quietHours": "9:00 PM – 9:00 AM",
+      "maxOccupancy": 22,
+      "trash": "Trash and recycling bins are in the garage alcove. Trash pickup is Tuesday. Roll bins to the curb on Monday night."
     },
-    "checkoutInstructions": "Please replace the hot tub cover and secure the latches, set all thermostats to 65°F, and leave key fobs and garage clickers on the entry table. All trash should be taken to the garage bins."
+    "checkoutInstructions": "Replace the hot tub cover and secure all latches. Empty both humidifier tanks. Set all thermostats to 65°F. Leave key fobs and garage clickers on the entry table. Take all trash to the garage bins."
   }
 }

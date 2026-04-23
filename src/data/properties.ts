@@ -1,5 +1,24 @@
 import cmsContent from './cms-content.json';
 
+export interface LocalRecommendationItem {
+  name: string;
+  description: string;
+  distance?: string;
+  tip?: string;
+}
+
+export interface LocalRecommendationCategory {
+  category: string;
+  emoji: string;
+  items: LocalRecommendationItem[];
+}
+
+export interface CheckoutTask {
+  id: string;
+  category: string;
+  label: string;
+}
+
 export interface DiningSpot {
   name: string;
   type: string;
@@ -17,6 +36,7 @@ export interface Property {
   id: string;
   name: string;
   subtitle: string;
+  heroImageUrl?: string;
   lodgifyId: number;
   features: string[];
   wifi: { name: string; password: string };
@@ -46,6 +66,8 @@ export interface Property {
     google: string;
   };
   checkoutInstructions?: string;
+  localRecommendations?: LocalRecommendationCategory[];
+  checkoutTasks?: CheckoutTask[];
 }
 
 // Merge static property data with CMS content (CMS overrides placeholders)
@@ -66,11 +88,20 @@ function mergeWithCMS(propertyId: string, base: Property): Property {
 
   return {
     ...base,
+    name: merged.name ?? base.name,
+    subtitle: merged.subtitle ?? base.subtitle,
+    heroImageUrl: merged.heroImageUrl ?? base.heroImageUrl,
+    features: merged.features ?? base.features,
     wifi: merged.wifi ?? base.wifi,
     doorCode: merged.doorCode ?? base.doorCode,
     parking: merged.parking ?? base.parking,
     houseGuide: merged.houseGuide ?? base.houseGuide,
+    kitchen: merged.kitchen ?? base.kitchen,
+    dining: merged.dining ?? base.dining,
+    activities: merged.activities ?? base.activities,
     checkoutInstructions: merged.checkoutInstructions ?? base.checkoutInstructions,
+    localRecommendations: merged.localRecommendations ?? base.localRecommendations,
+    checkoutTasks: merged.checkoutTasks ?? base.checkoutTasks,
     houseRules: {
       ...base.houseRules,
       ...(merged.houseRules ?? {}),

@@ -53,5 +53,16 @@
 
   .luxury-card {
     @apply bg-white border border-gray-200;
+    break-inside: avoid;
   }
+
+  /* QR page: two-column print layout */
+  .print\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Ensure QR codes print with proper contrast */
+  .luxury-card h2 { color: #111 !important; }
+  .luxury-card p, .luxury-card a { color: #444 !important; }
+  .luxury-card .text-gold { color: #b8860b !important; }
 }

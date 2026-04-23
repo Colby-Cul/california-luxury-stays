@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { properties } from '@/data/properties';
@@ -16,7 +16,7 @@ interface ChecklistGroup {
   items: ChecklistItem[];
 }
 
-const checklistGroups: ChecklistGroup[] = [
+const DEFAULT_CHECKLIST_GROUPS: ChecklistGroup[] = [
   {
     title: 'Cleaning & Kitchen',
     items: [
@@ -44,7 +44,7 @@ const checklistGroups: ChecklistGroup[] = [
     items: [
       { id: 'lights', label: 'Turn off all lights' },
       { id: 'fans', label: 'Turn off all fans' },
-      { id: 'thermostat', label: 'Set thermostat to 68\u00B0F' },
+      { id: 'thermostat', label: 'Set thermostat to 65\u00B0F' },
       { id: 'doors', label: 'Lock all doors and windows' },
       { id: 'garage', label: 'Ensure garage door is closed' },
       { id: 'furniture', label: 'Return any moved furniture to original position' },
@@ -61,10 +61,26 @@ const checklistGroups: ChecklistGroup[] = [
   },
 ];
 
-const allItemIds = checklistGroups.flatMap((g) => g.items.map((i) => i.id));
-
 export default function CheckoutGuide({ propertyId }: { propertyId: string }) {
   const property = properties[propertyId];
+
+  // Build checklist from property-specific tasks or fall back to default
+  const checklistGroups = useMemo<ChecklistGroup[]>(() => {
+    if (property?.checkoutTasks && property.checkoutTasks.length > 0) {
+      const grouped: Record<string, ChecklistItem[]> = {};
+      for (const task of property.checkoutTasks) {
+        if (!grouped[task.category]) grouped[task.category] = [];
+        grouped[task.category].push({ id: task.id, label: task.label });
+      }
+      return Object.entries(grouped).map(([title, items]) => ({ title, items }));
+    }
+    return DEFAULT_CHECKLIST_GROUPS;
+  }, [property]);
+
+  const allItemIds = useMemo(
+    () => checklistGroups.flatMap((g) => g.items.map((i) => i.id)),
+    [checklistGroups]
+  );
 
   const [checked, setChecked] = useState<Set<string>>(new Set());
 

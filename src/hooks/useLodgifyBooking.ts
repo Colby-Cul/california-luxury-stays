@@ -15,6 +15,8 @@ export interface LodgifyBooking {
   people: number;
   status: string;
   source: string;
+  notes?: string | null;
+  accessCode?: string | null;
 }
 
 /** Statuses we treat as live / upcoming reservations */
@@ -67,6 +69,10 @@ export interface BookingInfo {
   isCurrentStay: boolean;
   /** True if booking starts in the future */
   isUpcoming: boolean;
+  /** Access code from Lodgify reservation (if provided) */
+  accessCode: string | null;
+  /** Raw reservation notes — may contain host-entered access codes */
+  notes: string | null;
 }
 
 /**
@@ -166,6 +172,8 @@ export function useLodgifyBooking(
             source: matched.source,
             isCurrentStay,
             isUpcoming,
+            accessCode: matched.accessCode ?? null,
+            notes: matched.notes ?? null,
           });
         }
 

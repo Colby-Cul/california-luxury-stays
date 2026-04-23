@@ -1,0 +1,743 @@
+[
+  {
+    "id": 15365989,
+    "arrival": "2026-07-15",
+    "departure": "2026-07-19",
+    "property_id": 533203,
+    "guest": {
+      "name": "Christopher Roland",
+      "phone": "18313595688"
+    },
+    "people": 10,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 16597221,
+    "arrival": "2026-09-17",
+    "departure": "2026-09-20",
+    "property_id": 533203,
+    "guest": {
+      "name": "Tran",
+      "phone": null
+    },
+    "people": 1,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 17023231,
+    "arrival": "2026-06-04",
+    "departure": "2026-06-07",
+    "property_id": 533203,
+    "guest": {
+      "name": "Michael Browne",
+      "phone": "14406356898"
+    },
+    "people": 8,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 17040864,
+    "arrival": "2026-06-10",
+    "departure": "2026-06-13",
+    "property_id": 533203,
+    "guest": {
+      "name": "Geoff",
+      "phone": null
+    },
+    "people": 4,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 17068324,
+    "arrival": "2026-08-09",
+    "departure": "2026-08-12",
+    "property_id": 533203,
+    "guest": {
+      "name": "Jon Hamilton",
+      "phone": "+1 510 225 5535"
+    },
+    "people": 6,
+    "status": "Declined",
+    "source": "BookingCom"
+  },
+  {
+    "id": 17215986,
+    "arrival": "2026-07-15",
+    "departure": "2026-07-19",
+    "property_id": 533203,
+    "guest": {
+      "name": "Christopher Roland",
+      "phone": "18313595688"
+    },
+    "people": 10,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 17679538,
+    "arrival": "2026-07-30",
+    "departure": "2026-08-03",
+    "property_id": 533203,
+    "guest": {
+      "name": "Michael Gabe",
+      "phone": "19179913193"
+    },
+    "people": 8,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 17922471,
+    "arrival": "2026-05-28",
+    "departure": "2026-05-31",
+    "property_id": 533203,
+    "guest": {
+      "name": "Nicholas Rogers",
+      "phone": "16507875256"
+    },
+    "people": 8,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 17996410,
+    "arrival": "2026-07-23",
+    "departure": "2026-07-26",
+    "property_id": 533203,
+    "guest": {
+      "name": "Robert Wailes",
+      "phone": "17607164137"
+    },
+    "people": 6,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18039519,
+    "arrival": "2026-07-01",
+    "departure": "2026-07-08",
+    "property_id": 533203,
+    "guest": {
+      "name": "Mark Crumley",
+      "phone": "+1 208 949 4113"
+    },
+    "people": 6,
+    "status": "Declined",
+    "source": "BookingCom"
+  },
+  {
+    "id": 18039869,
+    "arrival": "2026-06-18",
+    "departure": "2026-06-21",
+    "property_id": 533203,
+    "guest": {
+      "name": "James Doyle",
+      "phone": "17048073897"
+    },
+    "people": 2,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18090063,
+    "arrival": "2026-07-29",
+    "departure": "2026-08-02",
+    "property_id": 746614,
+    "guest": {
+      "name": "Michael",
+      "phone": null
+    },
+    "people": 14,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18146479,
+    "arrival": "2026-07-17",
+    "departure": "2026-07-22",
+    "property_id": 746614,
+    "guest": {
+      "name": "Heidi Van Woerkom",
+      "phone": "19167616619"
+    },
+    "people": 12,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18146828,
+    "arrival": "2026-08-13",
+    "departure": "2026-08-16",
+    "property_id": 746614,
+    "guest": {
+      "name": "Linda O'Connor",
+      "phone": "+14082344494"
+    },
+    "people": 11,
+    "status": "Booked",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18147964,
+    "arrival": "2026-08-31",
+    "departure": "2026-09-04",
+    "property_id": 746614,
+    "guest": {
+      "name": "Dee",
+      "phone": null
+    },
+    "people": 6,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18150016,
+    "arrival": "2026-06-19",
+    "departure": "2026-06-22",
+    "property_id": 746614,
+    "guest": {
+      "name": "Cynthia Ferris-Bennett",
+      "phone": " +17756712164"
+    },
+    "people": 2,
+    "status": "Open",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18155965,
+    "arrival": "2026-06-24",
+    "departure": "2026-06-27",
+    "property_id": 746614,
+    "guest": {
+      "name": "Wendy Madrid",
+      "phone": "+13852765621"
+    },
+    "people": 9,
+    "status": "Declined",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18158798,
+    "arrival": "2026-06-11",
+    "departure": "2026-06-14",
+    "property_id": 746614,
+    "guest": {
+      "name": "Safwanur Rahman",
+      "phone": "12159396832"
+    },
+    "people": 16,
+    "status": "Declined",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18169474,
+    "arrival": "2026-08-06",
+    "departure": "2026-08-09",
+    "property_id": 746614,
+    "guest": {
+      "name": "Brooke Thompson",
+      "phone": "19162206156"
+    },
+    "people": 16,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18170574,
+    "arrival": "2026-10-21",
+    "departure": "2026-10-24",
+    "property_id": 746614,
+    "guest": {
+      "name": "Karim Othman",
+      "phone": "16577208908"
+    },
+    "people": 14,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18192751,
+    "arrival": "2026-07-02",
+    "departure": "2026-07-06",
+    "property_id": 533203,
+    "guest": {
+      "name": "Kimberly",
+      "phone": null
+    },
+    "people": 8,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18208069,
+    "arrival": "2026-06-19",
+    "departure": "2026-06-22",
+    "property_id": 746614,
+    "guest": {
+      "name": "Cynthia Ferris-Bennett",
+      "phone": "+17756712164"
+    },
+    "people": 16,
+    "status": "Booked",
+    "source": "OH"
+  },
+  {
+    "id": 18228604,
+    "arrival": "2026-06-11",
+    "departure": "2026-06-15",
+    "property_id": 746614,
+    "guest": {
+      "name": "anita carapiet",
+      "phone": " +1 (916) 765-0711"
+    },
+    "people": 10,
+    "status": "Booked",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18284267,
+    "arrival": "2026-12-26",
+    "departure": "2027-01-02",
+    "property_id": 746614,
+    "guest": {
+      "name": "Robert Conroy",
+      "phone": "14406103362"
+    },
+    "people": 12,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18383732,
+    "arrival": "2026-05-13",
+    "departure": "2026-05-17",
+    "property_id": 746614,
+    "guest": {
+      "name": "Karrie Mitten",
+      "phone": "12094998664"
+    },
+    "people": 1,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18403946,
+    "arrival": "2026-07-26",
+    "departure": "2026-07-29",
+    "property_id": 533203,
+    "guest": {
+      "name": "Dan Miller",
+      "phone": " +15309137447"
+    },
+    "people": 12,
+    "status": "Declined",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18602053,
+    "arrival": "2026-07-31",
+    "departure": "2026-08-04",
+    "property_id": 746614,
+    "guest": {
+      "name": "Dennis Young",
+      "phone": " +19255109011"
+    },
+    "people": 14,
+    "status": "Booked",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18616956,
+    "arrival": "2026-10-15",
+    "departure": "2026-10-18",
+    "property_id": 533203,
+    "guest": {
+      "name": "Rolanda Pollard",
+      "phone": "+1 831 524 5820"
+    },
+    "people": 6,
+    "status": "Booked",
+    "source": "BookingCom"
+  },
+  {
+    "id": 18634766,
+    "arrival": "2026-05-01",
+    "departure": "2026-05-03",
+    "property_id": 533203,
+    "guest": {
+      "name": "Adam Horecki",
+      "phone": "15037131228"
+    },
+    "people": 8,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18637596,
+    "arrival": "2026-06-03",
+    "departure": "2026-06-06",
+    "property_id": 746614,
+    "guest": {
+      "name": "Justin LoPilato",
+      "phone": "19784075318"
+    },
+    "people": 12,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18654019,
+    "arrival": "2026-07-02",
+    "departure": "2026-07-05",
+    "property_id": 533203,
+    "guest": {
+      "name": "Zachary Davis",
+      "phone": "17073651502"
+    },
+    "people": 4,
+    "status": "Declined",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18712173,
+    "arrival": "2026-06-25",
+    "departure": "2026-06-30",
+    "property_id": 533203,
+    "guest": {
+      "name": "Marc Brown",
+      "phone": "+19493825866"
+    },
+    "people": 8,
+    "status": "Booked",
+    "source": "OH"
+  },
+  {
+    "id": 18731846,
+    "arrival": "2026-11-17",
+    "departure": "2026-11-19",
+    "property_id": 746614,
+    "guest": {
+      "name": "Sara",
+      "phone": null
+    },
+    "people": 16,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18762275,
+    "arrival": "2026-09-10",
+    "departure": "2026-09-13",
+    "property_id": 746614,
+    "guest": {
+      "name": "Madison Jackett",
+      "phone": " +19257871379"
+    },
+    "people": 14,
+    "status": "Booked",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18762331,
+    "arrival": "2026-07-03",
+    "departure": "2026-07-06",
+    "property_id": 533203,
+    "guest": {
+      "name": "Matt",
+      "phone": null
+    },
+    "people": 4,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18800882,
+    "arrival": "2026-08-06",
+    "departure": "2026-08-09",
+    "property_id": 533203,
+    "guest": {
+      "name": "Stephanie Tanaka",
+      "phone": "15309279793"
+    },
+    "people": 12,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18807741,
+    "arrival": "2026-04-24",
+    "departure": "2026-04-26",
+    "property_id": 533203,
+    "guest": {
+      "name": "Mark Robinson",
+      "phone": "+1 916 837 5170"
+    },
+    "people": 4,
+    "status": "Booked",
+    "source": "BookingCom"
+  },
+  {
+    "id": 18865105,
+    "arrival": "2026-06-25",
+    "departure": "2026-06-29",
+    "property_id": 746614,
+    "guest": {
+      "name": "Sarah Marquez",
+      "phone": " +19259152345"
+    },
+    "people": 14,
+    "status": "Booked",
+    "source": "HomeAway"
+  },
+  {
+    "id": 18869288,
+    "arrival": "2026-09-14",
+    "departure": "2026-09-18",
+    "property_id": 533203,
+    "guest": {
+      "name": "Kandis Lackemacher",
+      "phone": "12099818181"
+    },
+    "people": 8,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 18923265,
+    "arrival": "2026-06-30",
+    "departure": "2026-07-05",
+    "property_id": 533203,
+    "guest": {
+      "name": "Michele Bachman",
+      "phone": "+1 407 421 0887"
+    },
+    "people": 2,
+    "status": "Declined",
+    "source": "BookingCom"
+  },
+  {
+    "id": 18994259,
+    "arrival": "2026-05-21",
+    "departure": "2026-05-25",
+    "property_id": 746614,
+    "guest": {
+      "name": "R R",
+      "phone": "19252865530"
+    },
+    "people": 6,
+    "status": "Declined",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19027632,
+    "arrival": "2026-08-21",
+    "departure": "2026-08-23",
+    "property_id": 533203,
+    "guest": {
+      "name": "Trenton Bartlett",
+      "phone": "17072948515"
+    },
+    "people": 8,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19056261,
+    "arrival": "2026-09-09",
+    "departure": "2026-09-13",
+    "property_id": 533203,
+    "guest": {
+      "name": "Jeff Baker",
+      "phone": "13037102793"
+    },
+    "people": 6,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19059258,
+    "arrival": "2026-09-03",
+    "departure": "2026-09-07",
+    "property_id": 746614,
+    "guest": {
+      "name": "Jessica Fuller",
+      "phone": "19073513372"
+    },
+    "people": 16,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19068631,
+    "arrival": "2026-07-10",
+    "departure": "2026-07-13",
+    "property_id": 533203,
+    "guest": {
+      "name": "Mike Smidt",
+      "phone": " +17143356657"
+    },
+    "people": 7,
+    "status": "Booked",
+    "source": "HomeAway"
+  },
+  {
+    "id": 19129348,
+    "arrival": "2026-09-14",
+    "departure": "2026-09-17",
+    "property_id": 746614,
+    "guest": {
+      "name": "\u2068Michelle (Shelly)\u2069",
+      "phone": null
+    },
+    "people": 6,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19247395,
+    "arrival": "2026-05-15",
+    "departure": "2026-05-17",
+    "property_id": 533203,
+    "guest": {
+      "name": "Kyle Aiton",
+      "phone": "17755446470"
+    },
+    "people": 6,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19292283,
+    "arrival": "2026-06-21",
+    "departure": "2026-06-24",
+    "property_id": 533203,
+    "guest": {
+      "name": "Lisa Bungcayao",
+      "phone": "+1 209 482 7191"
+    },
+    "people": 4,
+    "status": "Booked",
+    "source": "BookingCom"
+  },
+  {
+    "id": 19384984,
+    "arrival": "2026-08-27",
+    "departure": "2026-08-30",
+    "property_id": 533203,
+    "guest": {
+      "name": "Jeff Bradford",
+      "phone": "19255676403"
+    },
+    "people": 4,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19607555,
+    "arrival": "2026-04-26",
+    "departure": "2026-05-01",
+    "property_id": 746614,
+    "guest": {
+      "name": "Andy Pruss",
+      "phone": "12155314302"
+    },
+    "people": 9,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19686557,
+    "arrival": "2026-07-24",
+    "departure": "2026-07-28",
+    "property_id": 746614,
+    "guest": {
+      "name": "Stephanie",
+      "phone": null
+    },
+    "people": 11,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19687095,
+    "arrival": "2026-09-04",
+    "departure": "2026-09-07",
+    "property_id": 533203,
+    "guest": {
+      "name": "Jonathan Becker",
+      "phone": "17077750619"
+    },
+    "people": 11,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19700217,
+    "arrival": "2026-09-16",
+    "departure": "2026-09-20",
+    "property_id": 746614,
+    "guest": {
+      "name": "John Fumia",
+      "phone": " +14088286068"
+    },
+    "people": 9,
+    "status": "Booked",
+    "source": "HomeAway"
+  },
+  {
+    "id": 19796575,
+    "arrival": "2026-06-30",
+    "departure": "2026-07-07",
+    "property_id": 746614,
+    "guest": {
+      "name": "Danielle Hendrickson",
+      "phone": "14086553504"
+    },
+    "people": 12,
+    "status": "Open",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19797678,
+    "arrival": "2026-07-06",
+    "departure": "2026-07-12",
+    "property_id": 746614,
+    "guest": {
+      "name": "Danielle Hendrickson",
+      "phone": "14086553504"
+    },
+    "people": 12,
+    "status": "Booked",
+    "source": "AirbnbIntegration"
+  },
+  {
+    "id": 19860900,
+    "arrival": "2026-06-07",
+    "departure": "2026-06-12",
+    "property_id": 533203,
+    "guest": {
+      "name": "Mike Gliko",
+      "phone": "+1 916 390 6965"
+    },
+    "people": 6,
+    "status": "Booked",
+    "source": "BookingCom"
+  },
+  {
+    "id": 19946630,
+    "arrival": "2026-07-03",
+    "departure": "2026-07-06",
+    "property_id": 533203,
+    "guest": {
+      "name": "Simas Christina",
+      "phone": "+1 925 642 8136"
+    },
+    "people": 6,
+    "status": "Booked",
+    "source": "BookingCom"
+  }
+]
