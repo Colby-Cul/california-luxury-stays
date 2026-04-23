@@ -3,6 +3,11 @@ name: Deploy CaliforniaLuxuryStays
 on:
   push:
     branches: [main]
+  # Daily sync at 6 AM PT (14:00 UTC) to keep bookings.json fresh
+  schedule:
+    - cron: '0 14 * * *'
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,17 +18,40 @@ jobs:
     env:
       NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
       NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      LODGIFY_API_KEY: ${{ secrets.LODGIFY_API_KEY }}
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
       - run: npm ci
+
+      # Sync Lodgify bookings before build so bookings.json is current
+      - name: Sync Lodgify Bookings
+        run: node scripts/sync-lodgify.mjs
+        env:
+          LODGIFY_API_KEY: ${{ secrets.LODGIFY_API_KEY }}
+        continue-on-error: true  # Don't block deploy if Lodgify is down
+
       - run: npm run build
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           force_orphan: true
+
+      # On scheduled runs, commit updated bookings.json back to main
+      - name: Commit updated bookings.json
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add bookings.json public/bookings.json || true
+          git diff --cached --quiet || git commit -m "chore: sync Lodgify bookings [skip ci]"
+          git push origin main || true

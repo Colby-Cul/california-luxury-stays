@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync": "node scripts/sync-lodgify.mjs",
+    "sync:dry": "DRY_RUN=true node scripts/sync-lodgify.mjs",
+    "sync:all": "LODGIFY_INCLUDE_ALL=true node scripts/sync-lodgify.mjs",
+    "prebuild": "node scripts/sync-lodgify.mjs || echo '⚠️  Lodgify sync skipped (no API key)'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.0",

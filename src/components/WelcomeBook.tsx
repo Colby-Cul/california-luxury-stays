@@ -73,20 +73,41 @@ export default function WelcomeBook({ propertyId }: { propertyId: string }) {
   const sections = [
     // 0: Welcome Hero
     <div key="hero" className="flex flex-col items-center justify-center min-h-[70vh] text-center px-4">
-      <div className="aspect-[16/9] w-full max-w-2xl bg-luxury-gray rounded-2xl mb-8 flex items-center justify-center border border-white/5">
-        <span className="text-luxury-muted">Property Hero Photo</span>
+      <div className="aspect-[16/9] w-full max-w-2xl rounded-2xl mb-8 overflow-hidden border border-white/5 bg-luxury-gray flex items-center justify-center">
+        {property.heroImageUrl ? (
+          <img
+            src={property.heroImageUrl}
+            alt={property.name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-luxury-muted text-sm">Property Photo</span>
+        )}
       </div>
       <h1 className="font-serif text-3xl md:text-5xl text-white mb-3">
-        {booking?.guestFirstName ? `Welcome, ${booking.guestFirstName}!` : property.name}
+        {booking?.guestFirstName ? `Welcome, ${booking.guestFirstName}!` : `Welcome to ${property.name}`}
       </h1>
       <p className="text-gold text-lg mb-2">{property.subtitle}</p>
       {booking ? (
         <div className="space-y-2">
+          {booking.isCurrentStay && (
+            <p className="text-gold/80 text-sm uppercase tracking-widest mb-1">You&apos;re checked in 🏡</p>
+          )}
+          {booking.isUpcoming && (
+            <p className="text-gold/80 text-sm uppercase tracking-widest mb-1">Your upcoming stay</p>
+          )}
           <p className="text-luxury-muted max-w-md">
-            Your stay runs <span className="text-white">{booking.checkIn}</span> to <span className="text-white">{booking.checkOut}</span>.
+            <span className="text-white">{booking.checkIn}</span>
+            {' → '}
+            <span className="text-white">{booking.checkOut}</span>
+            {booking.nights > 0 && (
+              <span className="text-luxury-muted/70"> · {booking.nights} {booking.nights === 1 ? 'night' : 'nights'}</span>
+            )}
           </p>
           {booking.people > 0 && (
-            <p className="text-luxury-muted text-sm">{booking.people} {booking.people === 1 ? 'guest' : 'guests'} · {property.name}</p>
+            <p className="text-luxury-muted text-sm">
+              {booking.people} {booking.people === 1 ? 'guest' : 'guests'}
+            </p>
           )}
         </div>
       ) : (
