@@ -333,6 +333,22 @@ export default function PropertiesPageClient({ tenantId }: { tenantId: string })
             </button>
           </div>
         </div>
+
+        {/* Tab nav */}
+        <div className="max-w-6xl mx-auto px-5 flex gap-1 pb-0">
+          <Link
+            href={`/admin/${tenantId}/properties`}
+            className="px-4 py-2.5 text-sm text-[#c9a84c] border-b-2 border-[#c9a84c] transition-colors font-medium"
+          >
+            Properties
+          </Link>
+          <Link
+            href={`/admin/${tenantId}/contacts`}
+            className="px-4 py-2.5 text-sm text-white/40 hover:text-white/70 border-b-2 border-transparent transition-colors"
+          >
+            Contacts
+          </Link>
+        </div>
       </header>
 
       <main className="max-w-6xl mx-auto px-5 py-8">

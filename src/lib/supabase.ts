@@ -14,6 +14,41 @@ export interface GuestCapture {
   booking_source?: string;
 }
 
+export interface GuestRecord {
+  id: string;
+  property_slug: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string | null;
+  booking_source: string;
+  created_at: string;
+}
+
+export async function getGuestContacts(propertySlug?: string): Promise<{ data: GuestRecord[]; error?: string }> {
+  try {
+    let query = supabase
+      .from('str_guests')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (propertySlug) {
+      query = query.eq('property_slug', propertySlug);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error('Supabase fetch error:', error);
+      return { data: [], error: error.message };
+    }
+
+    return { data: data as GuestRecord[] };
+  } catch (err: any) {
+    return { data: [], error: err.message };
+  }
+}
+
 export async function captureGuest(data: GuestCapture): Promise<{ success: boolean; error?: string }> {
   try {
     const { error } = await supabase
