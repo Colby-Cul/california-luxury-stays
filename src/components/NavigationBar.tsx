@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface NavProps {
@@ -18,9 +19,14 @@ export default function NavigationBar({ currentProperty, mode = 'welcome' }: Nav
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between gap-2">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <span className="font-serif text-base sm:text-lg text-gold leading-tight">
-            <span className="hidden sm:inline">California </span>Luxury Stays
-          </span>
+          <Image
+            src="/logo.png"
+            alt="California Luxury Stays"
+            width={200}
+            height={56}
+            className="h-9 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Links */}
