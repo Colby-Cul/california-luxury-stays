@@ -173,7 +173,7 @@ POLICIES (BOTH PROPERTIES)
 Check-in: 4:00 PM | Check-out: 10:00 AM
 Cancellation: 30+ days before = full refund | 14–29 days = 50% refund | Under 14 days = non-refundable | Holiday periods require 60 days for full refund
 Long-stay discounts: 7+ nights = 10% off | 14+ nights = 15% off | Monthly rates available on request
-Cleaning fee: Included at checkout — full breakdown shown before booking. No hidden platform fees when booking direct.
+Cleaning fee: There is a cleaning fee for each stay — it is NOT included in the nightly rate. The full fee breakdown (cleaning fee, taxes, and any applicable fees) is shown at checkout before you confirm your booking. If a guest asks about the cleaning fee, confirm it exists, tell them the full breakdown will be visible at checkout, and offer to pull the specific fee for the property they are asking about if they want to know upfront. Never say the cleaning fee is included in the nightly rate or that guests won't be charged separately for it.
 WiFi: Free high-speed at both properties
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
