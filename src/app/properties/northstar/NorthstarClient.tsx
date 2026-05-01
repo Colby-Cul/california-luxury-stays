@@ -348,7 +348,7 @@ export default function NorthstarClient() {
                     </div>
                   ))}
                 </div>
-                <p className="mt-3 text-xs text-stone-500">Summer yoga sessions also available — contact the Rec Center for schedule. Last updated April 2026.</p>
+                <p className="mt-3 text-xs text-stone-500">Summer yoga sessions also available — contact the Rec Center for schedule. Last updated May 2026.</p>
               </div>
             </section>
 
